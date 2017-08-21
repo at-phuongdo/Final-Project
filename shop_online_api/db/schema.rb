@@ -12,22 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20170818044008) do
 
-  create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "role"
-    t.string "username"
-    t.string "password"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "description"
-    t.bigint "sub_id"
+    t.bigint "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["sub_id"], name: "index_categories_on_sub_id"
+    t.index ["parent_id"], name: "index_categories_on_parent_id"
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -36,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170818044008) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "iamges_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "images_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -85,6 +76,14 @@ ActiveRecord::Schema.define(version: 20170818044008) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "supliers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "username"
+    t.string "password"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "units", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "syntax"
@@ -95,12 +94,14 @@ ActiveRecord::Schema.define(version: 20170818044008) do
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email"
     t.string "password"
-    t.string "full_name"
+    t.string "firstname"
+    t.string "lastname"
     t.string "phone"
     t.string "address"
     t.integer "gender"
     t.date "birthday"
     t.string "avatar"
+    t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
