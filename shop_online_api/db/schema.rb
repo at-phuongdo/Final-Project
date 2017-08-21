@@ -80,8 +80,10 @@ ActiveRecord::Schema.define(version: 20170818044008) do
     t.string "username"
     t.string "password"
     t.string "email"
+    t.bigint "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_supliers_on_parent_id"
   end
 
   create_table "units", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -93,7 +95,7 @@ ActiveRecord::Schema.define(version: 20170818044008) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.string "firstname"
     t.string "lastname"
     t.string "phone"
@@ -102,6 +104,9 @@ ActiveRecord::Schema.define(version: 20170818044008) do
     t.date "birthday"
     t.string "avatar"
     t.integer "role"
+    t.string "confirm_token"
+    t.date "confirm_at"
+    t.date "confirm_send"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
