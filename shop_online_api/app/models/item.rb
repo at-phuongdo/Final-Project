@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
-  has_and_belongs_to_many :categorys
+  has_many :items_categories
+  has_many :categories, through: :items_categories
   has_many :images_items
   has_many :comments
   has_many :order_items
