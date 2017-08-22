@@ -3,12 +3,8 @@ class User < ApplicationRecord
   has_many :orders
   has_many :comments
 
-  # has_secure_password
-
-  class << self
-    def new_token
-      SecureRandom.urlsafe_base64.to_s
-    end
+  def self.new_token
+    SecureRandom.urlsafe_base64.to_s
   end
 
   def email_activate
@@ -21,7 +17,7 @@ class User < ApplicationRecord
   end
 
   def send_activation_email
-    UserMailer.confirm_email(self).deliver_now
+    UserMailer.email_confirmation(self).deliver_now
   end
 
   def confirmation_token
