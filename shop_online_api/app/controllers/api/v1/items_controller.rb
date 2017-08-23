@@ -1,8 +1,9 @@
-class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :destroy, :update]
+class Api::V1::ItemsController < ApplicationController
+  # before_action :set_item, only: [:show, :destroy, :update]
   def index
     @items = Item.all
-    render json: @items
+    message = { msg: 'hello', status: 400}
+    render json: message
   end
 
   def show
