@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20170821065405) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email"
+    t.string "password_digest"
     t.string "password"
     t.string "firstname"
     t.string "lastname"
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 20170821065405) do
     t.string "confirm_token"
     t.date "confirm_at"
     t.date "confirm_send"
+    t.string "reset_password_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
