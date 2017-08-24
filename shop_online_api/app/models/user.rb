@@ -8,10 +8,9 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64.to_s
   end
 
-  def is_email_activate?
+  def active_email?
     if confirm_send + 1.days >= Time.now
       update(confirm_at: Time.now)
-      true
     else
       new_email_token = User.new_token
       update(confirm_token: new_email_token)

@@ -7,7 +7,6 @@ export class UserService {
   constructor(private http: Http) {}
 
   getAll() {
-    // return this.http.get("http://172.17.28.89:3000/api/v1/comments").map(res => res.json());
     return this.http.get("http://localhost:3000/users").map(res => res.json());
   }
 

@@ -14,6 +14,8 @@ export class UpdatePasswordComponent implements OnInit {
   updatePasswordForm: any;
   sub: any;
   id: any;
+  errors: any;
+
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
@@ -33,9 +35,8 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   updatePassword(user,id){
-    this.userService.updatePassword(user,this.id).subscribe(
-      data => {
-        return true;
+    this.userService.updatePassword(user,this.id).subscribe(data => {
+        this.errors = data.message;
       },
       error => {
         console.error("Error");

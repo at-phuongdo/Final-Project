@@ -9,7 +9,8 @@ import { Observable } from 'rxjs/Rx';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
-  resetPasswordForm: any
+  resetPasswordForm: any;
+  errors: any;
 
   constructor(
     private userService: UserService,
@@ -24,12 +25,10 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   resetPassword(user){
-    this.userService.resetPassword(user).subscribe(
-      data => {
-        return true;
+    this.userService.resetPassword(user).subscribe(data => {
+        this.errors = data.message;
       },
       error => {
-        console.error("Error");
         return Observable.throw(error);
       }
     );
