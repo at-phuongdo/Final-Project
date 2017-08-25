@@ -4,6 +4,12 @@ class User < ApplicationRecord
   has_many :comments
   has_secure_password
 
+  validates :email, uniqueness: true
+  validates :email, :password_digest, presence: true, on: :create
+  # validates :firstname, :lastname, presence: true, except: create
+  enum gender: %w[male female other]
+  enum role: %w[member admin]
+
   def self.new_token
     SecureRandom.urlsafe_base64.to_s
   end
