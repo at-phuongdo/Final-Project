@@ -14,10 +14,9 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64.to_s
   end
 
-  def is_email_activate?
-    if confirm_send + 2.days >= Time.now
+  def active_email?
+    if confirm_send + 1.days >= Time.now
       update(confirm_at: Time.now)
-      true
     else
       new_email_token = User.new_token
       update(confirm_token: new_email_token)
@@ -31,5 +30,14 @@ class User < ApplicationRecord
 
   def confirmation_token
     self.confirm_token = User.new_token
+  end
+
+  def reset_password
+    reset_password = User.new_token
+    update(reset_password_token: reset_password)
+  end
+
+  def send_reset_password_email
+    UserMailer.email_resetPassword(self).deliver_now
   end
 end

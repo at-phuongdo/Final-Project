@@ -26,4 +26,18 @@ export class UserService {
     let body = JSON.stringify(loginParams);
     return this.http.post(this.url + 'login', body, options ).map((res: Response) => res.json());
   }
+
+  resetPassword(user) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers : headers });
+    let body = JSON.stringify(user);
+    return this.http.post(this.url + 'reset_passwords ', body, options ).map((res: Response) => res.json());
+  }
+
+  updatePassword(user, id) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers : headers });
+    let body = JSON.stringify(user);
+    return this.http.put(this.url + 'reset_passwords/'+id, body, options ).map((res: Response) => res.json());
+  }
 }
