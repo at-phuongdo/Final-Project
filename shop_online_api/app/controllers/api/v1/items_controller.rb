@@ -2,8 +2,7 @@ class Api::V1::ItemsController < ApplicationController
   # before_action :set_item, only: [:show, :destroy, :update]
   def index
     @items = Item.all
-    message = { msg: 'hello', status: 400}
-    render json: message
+    render json: { msg: 'complete', status: 200, items: @items }
   end
 
   def show
