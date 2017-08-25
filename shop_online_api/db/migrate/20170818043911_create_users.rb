@@ -2,7 +2,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
       t.string :email
-      # t.string :password_digest
+      t.string :password_digest
       t.string :password
       t.string :firstname
       t.string :lastname
@@ -15,6 +15,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :confirm_token
       t.date :confirm_at
       t.date :confirm_send
+      t.string :reset_password_token
       t.timestamps
     end
   end
