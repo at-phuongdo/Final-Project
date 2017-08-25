@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+1.times do |i|
+  item = Item.new(name: "item#{i + 1}", price: rand(10000), avatar: 'https://vcdn.tikicdn.com/assets/media/tuyen-tap-dien-thoai.jpg', status: 'Còn hàng', quantity: rand(100))
+  item.save
+end
+
+# 10.times do |i|
+#   unit = Unit.new(name: "DVT#{i}", syntax: "DVT#{i}")
+#   unit.save
+# end
+
+# 10.times do |i|
+#   shop = Shop.new(name: "shop #{i}", email: "shop#{i}@gmail.com")
+#   shop.save
+# end

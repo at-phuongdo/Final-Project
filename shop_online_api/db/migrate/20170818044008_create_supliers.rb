@@ -5,6 +5,7 @@ class CreateSupliers < ActiveRecord::Migration[5.1]
       t.string :password
       t.string :email
       t.references :parent, index: true
+      t.references :shop, index: true
       t.timestamps
     end
   end

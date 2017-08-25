@@ -2,7 +2,10 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ListItemComponent } from './home/list-item/list-item.component';
+import { HomeComponent } from './home/home.component';
 import { UserService } from './service/user/user.service';
+import { ItemService } from './service/item/item.service';
 import { HttpModule }  from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { Location } from '@angular/common';
@@ -13,10 +16,13 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { routing } from './app.route';
 
+
 @NgModule({
   declarations: [
     AppComponent,
+    ListItemComponent,
     SignUpComponent,
+    HomeComponent,
     LoginComponent,
     ResetPasswordComponent,
     UpdatePasswordComponent
@@ -32,7 +38,9 @@ import { routing } from './app.route';
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [UserService],
+  providers: [UserService,
+    ItemService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

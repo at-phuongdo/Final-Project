@@ -6,11 +6,11 @@ import { LocalStorageModule } from 'angular-2-local-storage';
 @Injectable()
 export class UserService {
 
-  private url = "http://localhost:3000/api/v1/";
+  private url = 'http://localhost:3000/api/v1/';
   constructor(private http: Http, private localStorage: LocalStorageModule) {}
 
   getAll() {
-    return this.http.get(this.url + 'users').map(res => res.json());
+    return this.http.get(this.url+"/users").map(res => res.json());
   }
 
   registerUser(user) {
