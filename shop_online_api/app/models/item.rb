@@ -4,6 +4,6 @@ class Item < ApplicationRecord
   has_many :images_items
   has_many :comments
   has_many :order_items
-  belongs_to :unit, optional: true
-  belongs_to :shop, optional: true
+  belongs_to :unit
+  belongs_to :shop
 end

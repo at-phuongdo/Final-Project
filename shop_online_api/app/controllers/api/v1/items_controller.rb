@@ -1,5 +1,5 @@
 class Api::V1::ItemsController < ApplicationController
-  # before_action :set_item, only: [:show, :destroy, :update]
+  before_action :set_item, only: [:show, :destroy, :update]
   def index
     @items = Item.all
     render json: { msg: 'complete', status: 200, items: @items }
@@ -33,12 +33,10 @@ class Api::V1::ItemsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_item
     @user = Item.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through
   def item_params
     params.require(:item).permit(:name, :price, :quantity, :avatar)
   end

@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 1.times do |i|
   item = Item.new(name: "item#{i + 1}", price: rand(10000), avatar: 'https://vcdn.tikicdn.com/assets/media/tuyen-tap-dien-thoai.jpg', status: 'Còn hàng', quantity: rand(100))
-  binding.pry
   item.save
 end
 
