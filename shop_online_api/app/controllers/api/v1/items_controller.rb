@@ -1,43 +1,18 @@
 class Api::V1::ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :destroy, :update]
   def index
-    @items = Item.all
-    render json: { msg: 'complete', status: 200, items: @items }
-  end
-
-  def show
-    render json: @item
-  end
-
-  def destroy
-    @item.destroy
-    render
-  end
-
-  def update
-    if @item.update(item_params)
-      render json: @item
+    if params[:check] == 'new'
+      @items = Item.last(8)
+    elsif params[:check] == 'best'
+      order = OrderItem.select(:item_id, 'COUNT(item_id) as sl').group(:item_id).order('sl DESC')
+      ids = order.map(&:item_id)
+      @items = Item.find(ids)
     else
-      render json: @item.errors
+      @items = Item.all
     end
-  end
-
-  def create
-    item = Item.new(item_params)
-    if @item.save
-      render json: @item, status: :created
+    if @items
+      render json: { message: 'complete', status: :ok, items: @items }
     else
-      render json: @item.errors
+      render json: { message: 'errors', status: :found }
     end
-  end
-
-  private
-
-  def set_item
-    @user = Item.find(params[:id])
-  end
-
-  def item_params
-    params.require(:item).permit(:name, :price, :quantity, :avatar)
   end
 end

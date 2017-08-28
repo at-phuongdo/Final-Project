@@ -8,13 +8,20 @@ import { ItemService } from '../../service/item/item.service';
 })
 export class ListItemComponent implements OnInit {
 
-  listItems: any;
+  listNewItems: any;
+  listBestItems: any;
 
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
-    this.itemService.getAll().subscribe((data: any) => {
-      this.listItems = data;
+    this.itemService.getNewItems().subscribe((data: any) => {
+      this.listNewItems = data.items;
+      console.log(data);
+    });
+
+    this.itemService.getBestItems().subscribe((data: any) => {
+      this.listBestItems = data.items;
+      console.log(this.listBestItems);
     });
   }
 
