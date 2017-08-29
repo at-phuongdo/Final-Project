@@ -15,6 +15,7 @@ export class DetailsComponent implements OnInit {
   id: number;
   detail: any;
   images_items: any;
+  relativeItem: any;
 
   constructor(
     private itemService: ItemService,
@@ -29,13 +30,18 @@ export class DetailsComponent implements OnInit {
       this.id = params['id'];
     });
     this.itemService.getDetail(this.id).subscribe(data => {
-      this.detail = data;
+      this.detail = data.item;
+      this.relativeItem = data.relativeItem;
       this.errors = data.message;
       console.log(this.detail);
+      console.log(this.relativeItem);
     });
     this.itemService.getImages(this.id).subscribe(data => {
-      this.images_items = data;
+      this.images_items = data.image_items;
       console.log(this.images_items);
     });
+
   }
+
+ 
 }

@@ -27,5 +27,5 @@ export class ItemService {
   getBestItems() {
     return this.http.get(this.url+"items?check=best").map(res => res.json());
   }
-
+  
 }
