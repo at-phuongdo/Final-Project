@@ -19,6 +19,7 @@ export class UserService {
   }
 
   registerUser(user) {
+    user = {"user": user}
     let body = JSON.stringify(user);
     return this.http.post(this.url + 'users', body, this.options ).map((res: Response) => res.json());
   }
