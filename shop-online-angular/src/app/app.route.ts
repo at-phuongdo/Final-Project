@@ -6,8 +6,10 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { DetailsComponent } from './details/details.component';
+import { HomeComponent } from './home/home.component';
 
 const routes = [
+  { path: '', component: HomeComponent  },
   { path: 'register', component: SignUpComponent },
   { path: 'resetPassword', component: ResetPasswordComponent},
   { path: 'updatePassword/:id', component: UpdatePasswordComponent},
