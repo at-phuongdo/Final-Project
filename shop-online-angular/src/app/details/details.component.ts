@@ -28,20 +28,22 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
-    });
-    this.itemService.getDetail(this.id).subscribe(data => {
+      this.getDetail(this.id);
+      this.getImages(this.id); 
+      window.scrollTo(0, 0);
+    }); 
+  }
+  getDetail(id: number) {
+    this.itemService.getDetail(id).subscribe(data => {
       this.detail = data.item;
       this.relativeItem = data.relativeItem;
       this.errors = data.message;
-      console.log(this.detail);
-      console.log(this.relativeItem);
     });
-    this.itemService.getImages(this.id).subscribe(data => {
-      this.images_items = data.image_items;
-      console.log(this.images_items);
-    });
-
   }
 
- 
+  getImages(id: number) {
+    this.itemService.getImages(id).subscribe(data => {
+      this.images_items = data.image_items;
+    });
+  }
 }
