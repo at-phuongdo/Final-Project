@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { routing } from './app.route';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { routing } from './app.route';
     HomeComponent,
     LoginComponent,
     ResetPasswordComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
+    LogoutComponent
   ],
   imports: [
     LocalStorageModule.withConfig({

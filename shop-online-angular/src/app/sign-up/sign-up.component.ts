@@ -30,6 +30,7 @@ export class SignUpComponent implements OnInit {
   }
 
   register(user) {
+    console.log(user);
     this.userService.registerUser(user).subscribe(
       data => {
         return true;

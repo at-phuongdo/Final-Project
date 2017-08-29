@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { HomeComponent } from './home/home.component';
+import { LogoutComponent } from './logout/logout.component';
+
 
 
 const routes = [
@@ -13,7 +15,8 @@ const routes = [
   { path: 'register', component: SignUpComponent },
   { path: 'resetPassword', component: ResetPasswordComponent},
   { path: 'updatePassword/:id', component: UpdatePasswordComponent},
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent }
 ]
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
