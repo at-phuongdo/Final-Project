@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
 
   api_version(module: 'API/V1', path: { value: '/api/v1' }) do
-    resources :items
+    resources :items do
+      resources :images_items, only: :index
+    end
     #login $ logout
     post 'login' => 'sessions#create'
     resources :users
@@ -17,5 +19,6 @@ Rails.application.routes.draw do
         get 'resetPassword' => 'reset_passwords#resetPassword'
       end
     end
+    resources :details, only: [:show]
   end
 end
