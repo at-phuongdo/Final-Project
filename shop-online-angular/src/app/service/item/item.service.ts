@@ -10,4 +10,12 @@ export class ItemService {
   getAll() {
     return this.http.get(this.url+"/items").map(res => res.json());
   }
+
+  getDetail(id) {
+    return this.http.get(this.url+"details/"+id).map(res => res.json());
+  }
+
+  getImages(id) {
+    return this.http.get(this.url+"items/"+id+"/images_items").map(res => res.json());
+  }
 }

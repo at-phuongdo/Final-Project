@@ -19,7 +19,7 @@
     <!-- //for-mobile-apps -->
     <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- <link href="style.css" rel="stylesheet" type="text/css" media="all" /> -->
+    <link href="/assets/css/styleindex.css" rel="stylesheet" type="text/css" media="all" />
     <!-- js -->
     <script src="/assets/js/jquery.min.js"></script>
     <!-- //js -->
@@ -36,6 +36,19 @@
     <!-- //timer -->
     <!-- animation-effect -->
     <link href="/assets/css/animate.min.css" rel="stylesheet"> 
+    <script defer src="/assets/js/jquery.flexslider.js"></script>
+    <link rel="stylesheet" href="/assets/css/flexslider.css" type="text/css" media="screen" />
+    <script>
+      // Can also be used with $(document).ready()
+      $(window).load(function () {
+        $('.flexslider').flexslider({
+          animation: "slide",
+          controlNav: "thumbnails"
+        });
+      });
+    </script>
+    
+    
     <!-- <script src="/assets/js/wow.min.js"></script> -->
 <!--     <script>
       new WOW().init();
