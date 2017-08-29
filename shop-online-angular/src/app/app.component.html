@@ -8,9 +8,13 @@
     <div class="container">
       <div class="header-grid">
         <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
-          <ul>
+          <ul *ngIf="!checkLogin">
             <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a [routerLink]="['/login']">Login</a></li>
             <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a [routerLink]="['/register']">Register</a></li>
+          </ul>
+          <ul *ngIf="checkLogin">
+            <li><i class="glyphicon glyphicon-hello" aria-hidden="true"></i><a [routerLink]="['/']">Hello {{firstName}}</a></li>
+            <li><i class="glyphicon glyphicon-log-out" aria-hidden="true"></i><a [routerLink]="['/logout']">Logout</a></li>
           </ul>
         </div>
         <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">

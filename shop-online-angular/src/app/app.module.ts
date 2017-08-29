@@ -16,7 +16,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { routing } from './app.route';
 import { DetailsComponent } from './details/details.component';
-
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { DetailsComponent } from './details/details.component';
     LoginComponent,
     ResetPasswordComponent,
     UpdatePasswordComponent,
-    DetailsComponent
+    DetailsComponent,
+    LogoutComponent
   ],
   imports: [
     LocalStorageModule.withConfig({
