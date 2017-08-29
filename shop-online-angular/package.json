@@ -22,8 +22,11 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "@types/jquery": "^3.2.12",
     "angular-2-local-storage": "^1.0.1",
     "core-js": "^2.4.1",
+    "flexslider": "^2.6.4",
+    "jquery": "^3.2.1",
     "rxjs": "^5.4.1",
     "zone.js": "^0.8.14"
   },
