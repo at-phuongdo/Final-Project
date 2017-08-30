@@ -15,8 +15,8 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { routing } from './app.route';
+import { DetailsComponent } from './details/details.component';
 import { LogoutComponent } from './logout/logout.component';
-
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import { LogoutComponent } from './logout/logout.component';
     LoginComponent,
     ResetPasswordComponent,
     UpdatePasswordComponent,
+    DetailsComponent,
     LogoutComponent
   ],
   imports: [

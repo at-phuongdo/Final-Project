@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170821065405) do
     t.string "avatar"
     t.string "status"
     t.integer "quantity"
+    t.text "description"
     t.bigint "unit_id"
     t.bigint "shop_id"
     t.datetime "created_at", null: false

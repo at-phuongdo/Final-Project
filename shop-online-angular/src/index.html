@@ -35,7 +35,18 @@
     <link rel="stylesheet" href="/assets/css/jquery.countdown.css" />
     <!-- //timer -->
     <!-- animation-effect -->
-    <link href="/assets/css/animate.min.css" rel="stylesheet">
+    <link href="/assets/css/animate.min.css" rel="stylesheet"> 
+    <script defer src="/assets/js/jquery.flexslider.js"></script>
+    <link rel="stylesheet" href="/assets/css/flexslider.css" type="text/css" media="screen" />
+    <script>
+      // Can also be used with $(document).ready()
+      $(window).load(function () {
+        $('.flexslider').flexslider({
+          animation: "slide",
+          controlNav: "thumbnails"
+        });
+      });
+    </script>
     <!-- <script src="/assets/js/wow.min.js"></script> -->
 <!--     <script>
       new WOW().init();

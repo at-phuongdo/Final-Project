@@ -658,6 +658,10 @@ p.est{
   text-align: center;
   font-weight: 500 !important;
 }
+
+.image-item {
+	float: left;
+}
 .new-collections-grid{
 	padding-left:0;
   padding-bottom: 15px;
@@ -3837,4 +3841,6 @@ td.invert-image a img {
 		float: left;
 		text-align: left;
 	}
+
+	
 }

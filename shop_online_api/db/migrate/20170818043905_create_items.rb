@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration[5.1]
       t.string :avatar
       t.string :status
       t.integer :quantity
+      t.text :description
       t.references :unit, index: true
       t.references :shop, index: true
       t.timestamps
