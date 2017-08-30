@@ -8,8 +8,6 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 
-
-
 const routes = [
   { path: '', component: HomeComponent  },
   { path: 'register', component: SignUpComponent },
