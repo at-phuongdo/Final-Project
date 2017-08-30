@@ -9,7 +9,6 @@ import { DetailsComponent } from './details/details.component';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 
-
 const routes = [
   { path: '', component: HomeComponent  },
   { path: 'register', component: SignUpComponent },
