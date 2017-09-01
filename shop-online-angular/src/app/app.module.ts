@@ -6,7 +6,7 @@ import { ListItemComponent } from './home/list-item/list-item.component';
 import { HomeComponent } from './home/home.component';
 import { UserService } from './service/user/user.service';
 import { ItemService } from './service/item/item.service';
-import { HttpModule }  from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { Location } from '@angular/common';
 import { AppComponent } from './app.component';
@@ -17,6 +17,8 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { routing } from './app.route';
 import { DetailsComponent } from './details/details.component';
 import { LogoutComponent } from './logout/logout.component';
+import {CartService} from './service/cart/cart.service';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { LogoutComponent } from './logout/logout.component';
     ResetPasswordComponent,
     UpdatePasswordComponent,
     DetailsComponent,
-    LogoutComponent
+    LogoutComponent,
+    CartComponent
   ],
   imports: [
     LocalStorageModule.withConfig({
@@ -42,7 +45,8 @@ import { LogoutComponent } from './logout/logout.component';
     FormsModule,
   ],
   providers: [UserService,
-    ItemService
+    ItemService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })

@@ -8,17 +8,23 @@ Rails.application.routes.draw do
     end
     #login $ logout
     post 'login' => 'sessions#create'
+
     resources :users
+
     resources :confirmations, only: [:index] do
       member do
         get 'confirm' => 'confirmations#confirm_email'
       end
     end
+
     resources :reset_passwords, only: [:create, :update] do
       member do
         get 'resetPassword' => 'reset_passwords#resetPassword'
       end
     end
+
     resources :details, only: [:show]
+
+    resources :orders
   end
 end

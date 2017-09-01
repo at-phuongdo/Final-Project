@@ -10,7 +10,7 @@ class Api::V1::ItemsController < ApplicationController
       @items = Item.all
     end
     if @items
-      render json: { message: 'complete', status: :ok, items: @items }
+      render json: @items, status: :ok
     else
       render json: { message: 'errors', status: :found }
     end

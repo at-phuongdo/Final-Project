@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :email, uniqueness: true
-  validates :email, :password_digest, presence: true, on: :create
+  validates :email, :password_digest, presence: true
   # validates :firstname, :lastname, presence: true, except: create
   enum gender: %w[male female other]
   enum role: %w[member admin]

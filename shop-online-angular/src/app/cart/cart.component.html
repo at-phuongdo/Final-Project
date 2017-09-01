@@ -1,0 +1,55 @@
+<!-- checkout -->
+<div class="checkout">
+  <div class="container">
+    <h3 class="animated wow slideInLeft" data-wow-delay=".5s">Your shopping cart contains: <span>3 Products</span></h3>
+    <div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
+      <table class="timetable_sub">
+        <thead>
+        <tr>
+          <th>SL No.</th>
+          <th>Product</th>
+          <th>Quality</th>
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>Remove</th>
+        </tr>
+        </thead>
+        <tr class="rem1" *ngFor=" let cart of carts">
+          <td class="invert">1</td>
+          <td class="invert-image"><a [routerLink]="['/detail', cart.id]"><img src="{{cart.avatar}}" alt=" " class="img-responsive" /></a></td>
+          <td class="invert">
+            <div class="quantity">
+              <div class="quantity-select">
+                <button class="entry value-minus" (click)="removeQuantity(cart)">&nbsp;</button>
+                <div class="entry value"><span>{{cart.quantity}}</span></div>
+                <button class="entry value-plus active" (click)="addItemToCart(cart)">&nbsp;</button>
+              </div>
+            </div>
+          </td>
+          <td class="invert">{{cart.name}}</td>
+          <td class="invert">{{cart.price}}</td>
+          <td class="invert">
+            <div class="rem">
+              <button class="btn close1" (click)="removeItem(cart)"></button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="checkout-left">
+      <div class="checkout-left-basket animated wow slideInLeft" data-wow-delay=".5s">
+        <h4>Continue to basket</h4>
+        <ul>
+          <li *ngFor="let cart of carts">{{cart.name}}<i>-</i> <span>{{cart.price * cart.quantity}}</span></li>
+          <li>Total <i>-</i> <span>{{total}}</span></li>
+        </ul>
+      </div>
+      <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
+        <a [routerLink]="['']"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+      </div>
+      <button (click)="order()">Order</button>
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+<!-- //checkout -->

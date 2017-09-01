@@ -15,31 +15,31 @@ export class UserService {
   }
 
   getAll() {
-    return this.http.get(this.url+"/users").map(res => res.json());
+    return this.http.get(this.url + '/users').map(res => res.json());
   }
 
   registerUser(user) {
-    user = {"user": user}
-    let body = JSON.stringify(user);
+    user = {'user': user};
+    const body = JSON.stringify(user);
     return this.http.post(this.url + 'users', body, this.options ).map((res: Response) => res.json());
   }
 
   login(loginParams) {
-    let body = JSON.stringify(loginParams);
+    const body = JSON.stringify(loginParams);
     return this.http.post(this.url + 'login', body, this.options ).map((res: Response) => res.json());
   }
 
   resetPassword(user) {
-    let body = JSON.stringify(user);
+    const body = JSON.stringify(user);
     return this.http.post(this.url + 'reset_passwords ', body, this.options ).map((res: Response) => res.json());
   }
 
   updatePassword(user, id) {
-    let body = JSON.stringify(user);
-    return this.http.put(this.url + 'reset_passwords/'+id, body, this.options ).map((res: Response) => res.json());
+    const body = JSON.stringify(user);
+    return this.http.put(this.url + 'reset_passwords/' + id, body, this.options ).map((res: Response) => res.json());
   }
 
   getUserByToken(token: string) {
-    return this.http.get(this.url+'users/'+token).map(res => res.json());
+    return this.http.get(this.url + 'users/' + token).map(res => res.json());
   }
 }
