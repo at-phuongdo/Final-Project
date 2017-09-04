@@ -31,9 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
     if(localStorage.getItem('currentUser')) {
       this.router.navigate([this.returnUrl]);
     }

@@ -18,7 +18,9 @@ import { routing } from './app.route';
 import { DetailsComponent } from './details/details.component';
 import { LogoutComponent } from './logout/logout.component';
 import {CartService} from './service/cart/cart.service';
+import {OrderService} from './service/order/order.service';
 import { CartComponent } from './cart/cart.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { CartComponent } from './cart/cart.component';
     UpdatePasswordComponent,
     DetailsComponent,
     LogoutComponent,
-    CartComponent
+    CartComponent,
+    PaymentComponent
   ],
   imports: [
     LocalStorageModule.withConfig({
@@ -46,7 +49,8 @@ import { CartComponent } from './cart/cart.component';
   ],
   providers: [UserService,
     ItemService,
-    CartService
+    CartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

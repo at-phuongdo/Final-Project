@@ -9,6 +9,7 @@ export class UserService {
   private url = 'http://localhost:3000/api/v1/';
   private headers: any;
   private options: any;
+
   constructor(private http: Http, private localStorage: LocalStorageModule) {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
     this.options = new RequestOptions({ headers : this.headers });

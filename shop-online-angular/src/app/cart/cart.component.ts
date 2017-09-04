@@ -27,8 +27,4 @@ export class CartComponent implements OnInit {
   removeQuantity(item: any) {
     this.cartService.removeQuantity(item);
   }
-
-  order() {
-    this.cartService.createOrder();
-  }
 }

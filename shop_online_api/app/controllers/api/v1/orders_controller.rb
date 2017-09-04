@@ -1,7 +1,7 @@
 class Api::V1::OrdersController < ApplicationController
   def index
     @orders = Order.all
-      render json: @users, status: :ok
+    render json: @users, status: :ok
   end
 
   def show
@@ -12,9 +12,16 @@ class Api::V1::OrdersController < ApplicationController
   def create
     confirm_token = request.headers['Access-token']
     @user = User.find_by(confirm_token: confirm_token)
-    if @user
-      
+    @order = Order.new(order_params)
+    @order.update(user_id: @user.id)
+    order_items = params[:orderItems]
+    if order_items && @order.save
+      order_items.each do |order_item|
+        OrderItem.create(price: order_item[:price], quantity: order_item[:quantity], item_id: order_item[:id], order_id: @order.id)
+      end
+      render json: @order, status: :created
     else
+      render json: @order.errors, status: :unprocessable_entity
     end
   end
 
