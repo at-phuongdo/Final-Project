@@ -3,8 +3,4 @@ class Order < ApplicationRecord
   has_one :payment
   belongs_to :user
 
-  def reateOrder data_orders
-    
-    order = Order.new()
-  end
 end

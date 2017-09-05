@@ -50,9 +50,9 @@ export class PaymentComponent implements OnInit {
     }
     this.orderService.createOrder(data).subscribe((a: any) => {
         this.cartService.removeCart();
-        alert('Đặt hàng thành công!');
+        alert('Order success!');
       }, (err: any) => {
-        alert( 'Đặt hàng thất bại!');
+        alert( 'Fail!');
       });
   }
 }
