@@ -3,7 +3,7 @@
     <div class="col-md-5 single-right-left animated wow slideInUp clearfix" data-wow-delay=".5s">
       <div class="flexslider">
         <ul class="slides">
-          <li *ngFor="let item of images_items" data-thumb="">
+          <li *ngFor="let item of images_items" [attr.data-thumb]="item.image">
             <div class="thumb-image"> <img src="{{item.image}}" data-imagezoom="true" class="img-responsive"> </div>
           </li>
         </ul>

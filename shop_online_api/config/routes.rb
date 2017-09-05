@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-
   api_version(module: 'API/V1', path: { value: '/api/v1' }) do
     resources :items do
       resources :images_items, only: :index
     end
+
     #login $ logout
     post 'login' => 'sessions#create'
 
@@ -26,5 +26,7 @@ Rails.application.routes.draw do
     resources :details, only: [:show]
 
     resources :orders
+
+    resources :categories, only: [:index, :show]
   end
 end

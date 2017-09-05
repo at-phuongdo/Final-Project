@@ -1,3 +1,4 @@
+import { CategoryService } from './service/category/category.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -21,6 +22,9 @@ import {CartService} from './service/cart/cart.service';
 import {OrderService} from './service/order/order.service';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './payment/payment.component';
+import { CategoryComponent } from './category/category.component';
+import { ListProductByCategoryComponent } from './list-product-by-category/list-product-by-category.component';
+import { OverviewComponent } from './category/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,10 @@ import { PaymentComponent } from './payment/payment.component';
     DetailsComponent,
     LogoutComponent,
     CartComponent,
-    PaymentComponent
+    PaymentComponent,
+    CategoryComponent,
+    ListProductByCategoryComponent,
+    OverviewComponent
   ],
   imports: [
     LocalStorageModule.withConfig({
@@ -50,7 +57,8 @@ import { PaymentComponent } from './payment/payment.component';
   providers: [UserService,
     ItemService,
     CartService,
-    OrderService
+    OrderService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })

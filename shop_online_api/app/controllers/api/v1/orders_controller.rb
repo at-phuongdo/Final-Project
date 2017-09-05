@@ -1,7 +1,7 @@
 class Api::V1::OrdersController < ApplicationController
   def index
     @orders = Order.all
-    render json: @users, status: :ok
+    render json: @orders, status: :ok
   end
 
   def show
