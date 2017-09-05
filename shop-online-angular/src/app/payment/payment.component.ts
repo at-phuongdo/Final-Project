@@ -35,6 +35,10 @@ export class PaymentComponent implements OnInit {
       this.router.navigate(['/cart']);
       console.log("rong");
     }
+    if(!localStorage.getItem('currentUser')) {
+      alert('You have to login!');
+      this.router.navigate(['/cart']);
+    }
   }
 
   order(info) {
