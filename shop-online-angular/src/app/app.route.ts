@@ -1,3 +1,5 @@
+import { ListItemComponent } from './home/list-item/list-item.component';
+import { CategoryComponent } from './category/category.component';
 import { Component, ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -8,6 +10,8 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { DetailsComponent } from './details/details.component';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ListProductByCategoryComponent } from './list-product-by-category/list-product-by-category.component';
+import { OverviewComponent } from './category/overview/overview.component';
 
 const routes = [
   { path: '', component: HomeComponent  },
@@ -16,7 +20,14 @@ const routes = [
   { path: 'updatePassword/:id', component: UpdatePasswordComponent},
   { path: 'login', component: LoginComponent },
   { path: 'detail/:id', component: DetailsComponent},
-  { path: 'logout', component: LogoutComponent }
+  { path: 'logout', component: LogoutComponent },
+  { path: 'category', component: CategoryComponent,
+    children: [
+      { path: '', component: OverviewComponent },
+      { path: ':id', component: ListProductByCategoryComponent}
+    ]
+  }
+
 ]
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

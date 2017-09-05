@@ -1,3 +1,4 @@
+import { CategoryService } from './service/category/category.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -17,6 +18,9 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { routing } from './app.route';
 import { DetailsComponent } from './details/details.component';
 import { LogoutComponent } from './logout/logout.component';
+import { CategoryComponent } from './category/category.component';
+import { ListProductByCategoryComponent } from './list-product-by-category/list-product-by-category.component';
+import { OverviewComponent } from './category/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,10 @@ import { LogoutComponent } from './logout/logout.component';
     ResetPasswordComponent,
     UpdatePasswordComponent,
     DetailsComponent,
-    LogoutComponent
+    LogoutComponent,
+    CategoryComponent,
+    ListProductByCategoryComponent,
+    OverviewComponent
   ],
   imports: [
     LocalStorageModule.withConfig({
@@ -42,7 +49,7 @@ import { LogoutComponent } from './logout/logout.component';
     FormsModule,
   ],
   providers: [UserService,
-    ItemService
+    ItemService, CategoryService
   ],
   bootstrap: [AppComponent]
 })

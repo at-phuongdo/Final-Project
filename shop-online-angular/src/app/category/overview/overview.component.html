@@ -1,0 +1,27 @@
+<div class="new-collections">
+  <div class="group" *ngFor=" let items of listSubCate; let i = index ">
+    <div class="row">
+      <h3 class="animated wow zoomIn" data-wow-delay=".5s">{{items.name}}</h3>
+      <div class="new-collections-grids">
+        <div class="col-md-4 new-collections-grid" *ngFor=" let item of listProduct[i]">
+          <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+            <div class="new-collections-grid1-image">
+              <a [routerLink]="['/detail', item.id]" class="product-image"><img src="{{item.avatar}}" alt=" " class="img-responsive" style="height: 200px" /></a>
+              <div class="new-collections-grid1-image-pos">
+                <a [routerLink]="['/detail', item.id]">Quick View</a>
+              </div>
+            </div>
+            <h4><a [routerLink]="['/detail', item.id]">{{item.name}}</a></h4>
+            <div class="new-collections-grid1-left simpleCart_shelfItem">
+              <p><i>{{item.price | currency: "VND" }}</i> <span class="item_price">{{item.price | currency: "VND"}}</span>
+                <a
+                  href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+              </p>
+            </div>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
