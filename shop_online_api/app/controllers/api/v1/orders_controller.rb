@@ -12,7 +12,7 @@ class Api::V1::OrdersController < ApplicationController
   def create
     confirm_token = request.headers['Access-token']
     user = User.find_by(confirm_token: confirm_token)
-    if !user
+    if user
       @order = Order.new(order_params)
       @order.update(user_id: user.id)
       order_items = params[:orderItems]
