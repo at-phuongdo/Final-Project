@@ -1,0 +1,28 @@
+<div class="breadcrumbs">
+  <div class="container">
+    <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+      <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+      <li class="active">Infomation Payment</li>
+    </ol>
+  </div>
+</div>
+<!-- //breadcrumbs -->
+<!-- register -->
+<div class="register">
+  <div class="container">
+    <h3 class="animated wow zoomIn" data-wow-delay=".5s">Fill out enough information</h3>
+    <div class="login-form-grids">
+      <form ngNoForm [formGroup]="paymentForm" (ngSubmit)="order(paymentForm.value)">
+        <div class="animated wow slideInUp" data-wow-delay=".5s">
+          <input type="text" placeholder="Full Name..." required=" " formControlName="name">
+          <input type="text" placeholder="Phone..." required=" " formControlName="phone" pattern="[0-9]+">
+          <input type="text" placeholder="Address..." required=" " formControlName="address">
+          <input type="submit" value="Order">
+        </div>
+      </form>
+    </div>
+    <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
+        <a [routerLink]="['/cart']"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Come back Cart</a>
+      </div>
+  </div>
+</div>

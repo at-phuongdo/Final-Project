@@ -7,7 +7,7 @@ import { ListItemComponent } from './home/list-item/list-item.component';
 import { HomeComponent } from './home/home.component';
 import { UserService } from './service/user/user.service';
 import { ItemService } from './service/item/item.service';
-import { HttpModule }  from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { Location } from '@angular/common';
 import { AppComponent } from './app.component';
@@ -18,6 +18,10 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { routing } from './app.route';
 import { DetailsComponent } from './details/details.component';
 import { LogoutComponent } from './logout/logout.component';
+import {CartService} from './service/cart/cart.service';
+import {OrderService} from './service/order/order.service';
+import { CartComponent } from './cart/cart.component';
+import { PaymentComponent } from './payment/payment.component';
 import { CategoryComponent } from './category/category.component';
 import { ListProductByCategoryComponent } from './list-product-by-category/list-product-by-category.component';
 import { OverviewComponent } from './category/overview/overview.component';
@@ -33,6 +37,8 @@ import { OverviewComponent } from './category/overview/overview.component';
     UpdatePasswordComponent,
     DetailsComponent,
     LogoutComponent,
+    CartComponent,
+    PaymentComponent,
     CategoryComponent,
     ListProductByCategoryComponent,
     OverviewComponent
@@ -49,7 +55,10 @@ import { OverviewComponent } from './category/overview/overview.component';
     FormsModule,
   ],
   providers: [UserService,
-    ItemService, CategoryService
+    ItemService,
+    CartService,
+    OrderService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })

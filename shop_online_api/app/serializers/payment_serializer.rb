@@ -1,3 +1,4 @@
 class PaymentSerializer < ActiveModel::Serializer
-  attributes :id, :status, :order_id
+  attributes :id, :status
+  belongs_to :order
 end

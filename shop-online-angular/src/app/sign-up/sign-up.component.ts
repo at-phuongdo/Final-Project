@@ -10,6 +10,7 @@ import { UserService } from '../service/user/user.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+
   registerForm: any;
 
   constructor(

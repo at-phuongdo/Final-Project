@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
     render json: @users, status: :ok
   end
 
-  # GET /users/1
+  # GET user by token
   def show
     if params[:id]
       @user = User.find_by(confirm_token: params[:id])

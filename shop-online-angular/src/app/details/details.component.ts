@@ -1,7 +1,7 @@
-import { Element } from '@angular/compiler';
 import { ActivatedRoute } from '@angular/router';
 import { ItemService } from '../service/item/item.service';
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {CartService} from '../service/cart/cart.service';
 
 @Component({
   selector: 'app-details',
@@ -19,8 +19,9 @@ export class DetailsComponent implements OnInit {
 
   constructor(
     private itemService: ItemService,
-    private route: ActivatedRoute
-  ) { 
+    private route: ActivatedRoute,
+    private cartService: CartService
+  ) {
     this.detail = {};
     this.images_items = [];
   }
@@ -29,9 +30,9 @@ export class DetailsComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       this.getDetail(this.id);
-      this.getImages(this.id); 
+      this.getImages(this.id);
       window.scrollTo(0, 0);
-    }); 
+    });
   }
   getDetail(id: number) {
     this.itemService.getDetail(id).subscribe(data => {
@@ -45,5 +46,9 @@ export class DetailsComponent implements OnInit {
     this.itemService.getImages(id).subscribe(data => {
       this.images_items = data.image_items;
     });
+  }
+
+  addItemToCart(item: any) {
+    this.cartService.addItem(item);
   }
 }
