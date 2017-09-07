@@ -1,5 +1,21 @@
+<div class="products-right-grids animated wow slideInRight" data-wow-delay=".5s">
+  <div class="sorting">
+    <select id="country" (change)="sortBy(type.value)" class="frm-field required sect" #type>
+        <option value="{{url}}?order=name" >Sort by name</option>					
+        <option value="{{url}}?order=price" >Sort by price</option>
+        </select>
+  </div>
+  <div class="sorting-left">
+    <select id="country1" (change)="sortType(dir.value)" class="frm-field required sect" #dir> 
+        <option value="&dir=asc" >Sort Ascending</option>
+        <option value="&dir=desc">Sort Descending</option> 									
+          </select>
+  </div>
+  <div class="clearfix"> </div>
+</div>
 <div class="new-collections">
-  <div class="row"> <h3 class="animated wow zoomIn" data-wow-delay=".5s">Product</h3>
+  <div class="row">
+    <h3 class="animated wow zoomIn" data-wow-delay=".5s">Product</h3>
     <div class="new-collections-grids">
       <div class="col-md-4 new-collections-grid" *ngFor=" let item of listProduct; let i = index ">
         <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">

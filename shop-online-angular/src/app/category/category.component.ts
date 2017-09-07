@@ -10,14 +10,15 @@ export class CategoryComponent implements OnInit {
 
   listCategory: any;
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService) {
+   }
 
   ngOnInit() {
     this.getAllCategory();
   }
   getAllCategory(){
    this.categoryService.getAllCategory().subscribe(data => {
-    this.listCategory = data;
+    this.listCategory = data.categories;
    });
   }
 }

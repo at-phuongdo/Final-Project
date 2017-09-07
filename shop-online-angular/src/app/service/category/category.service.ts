@@ -23,4 +23,9 @@ export class CategoryService {
   getProductOverView(id){
     return this.http.get(this.url + id + "?check=overview").map(res => res.json());
   }
+
+  sortBy(type){
+    console.log(type);
+    return this.http.get("http://localhost:3000/api/v1/"+type).map(res => res.json());
+  }
 }
