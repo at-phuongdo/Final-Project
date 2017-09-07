@@ -6,4 +6,8 @@ class Item < ApplicationRecord
   has_many :order_items
   belongs_to :unit
   belongs_to :shop
+
+  def self.sort(order, dir, ids)
+    Item.order("#{order} #{dir}").find(ids)
+  end
 end
