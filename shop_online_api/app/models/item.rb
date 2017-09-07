@@ -6,4 +6,8 @@ class Item < ApplicationRecord
   has_many :order_items
   belongs_to :unit
   belongs_to :shop
+
+  def self.paging page, per_page
+    limit(per_page).offset((page - 1) * per_page)
+  end
 end

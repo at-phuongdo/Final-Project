@@ -28,5 +28,7 @@ Rails.application.routes.draw do
     resources :orders
 
     resources :categories, only: [:index, :show]
+
+    resources :searches, only: [:index]
   end
 end

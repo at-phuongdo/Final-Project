@@ -12,7 +12,7 @@ class Api::V1::ItemsController < ApplicationController
     if @items
       render json: @items, status: :ok
     else
-      render json: { message: 'errors', status: :found }
+      render json: { message: 'errors', status: :no_content }
     end
   end
 end
