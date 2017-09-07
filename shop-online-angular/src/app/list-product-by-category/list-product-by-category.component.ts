@@ -22,7 +22,7 @@ export class ListProductByCategoryComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) { 
-    this.dir = "&dir=asc";
+    this.dir = "";
   }
 
   ngOnInit() {
