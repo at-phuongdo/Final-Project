@@ -1,0 +1,15 @@
+#country, #country1 {
+    color: #d8703f;
+    border: 1px solid #d8703f;
+    background-color: #ffffff ;
+}
+
+.sorting {
+    width: 20%;
+    float: left;
+}
+.sorting-left {
+    width: 20%;
+    float: left;
+    margin-left: 10px;
+}
