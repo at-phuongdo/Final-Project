@@ -7,7 +7,8 @@ class Item < ApplicationRecord
   belongs_to :unit
   belongs_to :shop
 
-  def self.sort(order, dir, ids)
-    Item.order("#{order} #{dir}").find(ids)
+  def self.sort(order, dir, items)
+    str = ActiveRecord::Base.send(:sanitize_sql_for_order,"#{order} #{dir}")
+    items.order(str)
   end
 end

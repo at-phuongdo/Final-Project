@@ -1,9 +1,7 @@
 class Api::V1::SearchesController < ApplicationController
   def show
-    item = ItemsCategory.where(category_id: params[:id])
-    item_id = item.map(&:item_id)
-    list_product = Item.sort(params[:order], params[:dir], item_id)
-
+    item = Category.find(params[:id]).items
+    list_product = Item.sort(params[:order], params[:dir], item)
     if list_product
       render json: { list_product: list_product, status: :ok }
     else
