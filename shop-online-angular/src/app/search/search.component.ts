@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemService } from '../service/item/item.service';
+import { CartService } from '../service/cart/cart.service';
 import {isUndefined} from "util";
 
 @Component({
@@ -20,32 +21,31 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private itemService: ItemService
+    private itemService: ItemService,
+    private cartService: CartService
     ) { }
 
   ngOnInit() {
-      this.route.queryParams.subscribe(querParams => {
-        if (querParams['key'] === undefined) {
-          this.key = '';
-        }else {
-          this.key = querParams['key'];
+    this.route.queryParams.subscribe(querParams => {
+      if (querParams['key'] === undefined) {
+        this.key = '';
+      }else {
+        this.key = querParams['key'];
+      }
+      this.page = +querParams['page'] || 1;
+      this.itemService.search(this.key.toString(), this.page, 9).subscribe((data: any) => {
+        this.total = data.meta['total'];
+        this.listResult = data.items;
+        this.totalpage = [];
+        this.current_page = this.getPager(this.total, this.page).currentPage;
+        for (let i = this.getPager(this.total, this.page).startPage; i <= this.getPager(this.total, this.page).endPage; i++) {
+          this.totalpage.push(i);
         }
-        this.page = +querParams['page'] || 1;
-        this.itemService.search(this.key.toString(), this.page, 9).subscribe((data: any) => {
-          this.total = data.meta['total'];
-          console.log(this.total);
-          // if (this.total )
-          this.listResult = data.items;
-          this.totalpage = [];
-          this.current_page = this.getPager(this.total, this.page).currentPage;
-          for (let i = this.getPager(this.total, this.page).startPage; i <= this.getPager(this.total, this.page).endPage; i++) {
-            this.totalpage.push(i);
-          }
-          window.scrollTo(0, 0);
-        }, error => {
-          console.error("Error");
-        });
+        window.scrollTo(0, 0);
+      }, error => {
+        console.error("Error");
       });
+    });
   }
 
   getPager(total: number, currentPage: number = 1) {
@@ -71,6 +71,10 @@ export class SearchComponent implements OnInit {
       startPage: startPage,
       endPage: endPage
     };
+  }
+
+  addItemToCart(item: any) {
+    this.cartService.addItem(item);
   }
 
 }

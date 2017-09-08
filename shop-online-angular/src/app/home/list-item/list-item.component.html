@@ -14,9 +14,9 @@
           <h4><a [routerLink]="['/detail', item.id]">{{item.name}}</a></h4>
           <div class="new-collections-grid1-left simpleCart_shelfItem">
             <p>
-              <i>{{item.price}}</i>
-              <span class="item_price">{{item.price}}</span>
-              <button class="item_add btn btn-default" style="color: #D8703F;" (click)="addItemToCart(item)">
+              <i>{{item.price | currency: "VND" }}</i>
+              <span class="item_price">{{item.price | currency: "VND" }}</span>
+              <button class="item_add btn btn-default" (click)="addItemToCart(item)">
                 <img src="/assets/images/bag.png" alt="" /> Add to cart
               </button>
             </p>
@@ -45,9 +45,9 @@
           <h4><a [routerLink]="['/detail', item.id]">{{item.name}}</a></h4>
           <div class="new-collections-grid1-left simpleCart_shelfItem">
             <p>
-              <i>{{item.price}}</i>
-              <span class="item_price">{{item.price}}</span>
-              <button class="item_add btn btn-default" style="color: #D8703F;" (click)="addItemToCart(item)">
+              <i>{{item.price | currency: "VND" }}</i>
+              <span class="item_price">{{item.price | currency: "VND" }}</span>
+              <button class="item_add btn btn-default" (click)="addItemToCart(item)">
                 <img src="/assets/images/bag.png" alt="" /> Add to cart
               </button>
             </p>

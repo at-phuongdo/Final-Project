@@ -134,19 +134,18 @@
           <div class="search-box">
             <div class="form-search">
               <form ngNoForm [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)">
-                <input class="" placeholder="Enter your search term..." type="search" formControlName="key">
-                <button class="" type="submit">
+                <input class="search-input" placeholder="Enter your search..." type="search" formControlName="key">
+                <button class="search-submit btn btn-default" type="submit">
                  <span class="glyphicon glyphicon-search"></span>
                </button>
-             </form>
-           </div>
-         </div>
-       </div>
-       <div class="header-right">
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="header-right">
         <div class="cart box_1">
           <a [routerLink]="['/cart']">
             <h3> <div class="total">
-              <!-- (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div> -->
               ({{quantity}} items)</div>
               <img src="/assets/images/bag.png" alt="" />
             </h3>
