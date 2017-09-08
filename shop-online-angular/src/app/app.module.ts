@@ -25,6 +25,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { CategoryComponent } from './category/category.component';
 import { ListProductByCategoryComponent } from './list-product-by-category/list-product-by-category.component';
 import { OverviewComponent } from './category/overview/overview.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { OverviewComponent } from './category/overview/overview.component';
     PaymentComponent,
     CategoryComponent,
     ListProductByCategoryComponent,
-    OverviewComponent
+    OverviewComponent,
+    CommentComponent
   ],
   imports: [
     LocalStorageModule.withConfig({

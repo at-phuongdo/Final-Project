@@ -1,3 +1,4 @@
+import { CommentComponent } from './comment/comment.component';
 import { ListItemComponent } from './home/list-item/list-item.component';
 import { CategoryComponent } from './category/category.component';
 import { Component, ModuleWithProviders } from '@angular/core';
@@ -21,7 +22,11 @@ const routes = [
   { path: 'resetPassword', component: ResetPasswordComponent},
   { path: 'updatePassword/:id', component: UpdatePasswordComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'detail/:id', component: DetailsComponent},
+  { path: 'detail/:id', component: DetailsComponent,
+    children: [
+      { path: 'comment', component: CommentComponent}
+    ]
+  },
   { path: 'logout', component: LogoutComponent },
   { path: 'cart', component: CartComponent },
   { path: 'payment', component: PaymentComponent },

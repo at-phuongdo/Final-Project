@@ -25,7 +25,8 @@
       <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Description</a></li>
-          <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Reviews(2)</a></li>
+          <!-- <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Reviews(2)</a></li> -->
+          <li role="presentation"><a [routerLink]="['/detail',detail.id,'comment']">Reviews</a></li>
           <li role="presentation" class="dropdown">
             <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Information <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
@@ -113,7 +114,7 @@
             </div>
             <h4><a [routerLink]="['/detail', item.id]">{{item.name}}</a></h4>
             <div class="new-collections-grid1-left simpleCart_shelfItem">
-              <p><i>{{item.price}}</i> <span class="item_price">{{item.price}}</span></p>
+              <p><i>{{item.price | currency: "VND"}}</i> <span class="item_price">{{item.price | currency: "VND"}}</span></p>
             </div>
           </div>
           <div class="clearfix"> </div>
