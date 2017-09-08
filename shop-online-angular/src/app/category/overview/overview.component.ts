@@ -29,10 +29,12 @@ export class OverviewComponent implements OnInit {
   getSubCategory() {
     this.categoryService.getSubCategory().subscribe(data => {
       this.ids = data.sub_cate; 
+      console.log(this.ids);
       for(let sub_cate of this.ids){
         this.categoryService.getProductOverView(sub_cate.id).subscribe(data => {
           this.listSubCate.push(sub_cate);
-          this.listProduct.push(data.list_product);
+          this.listProduct.push(data.items);
+          console.log(this.listProduct);
         });
       }
     });

@@ -11,15 +11,17 @@ class Api::V1::CategoriesController < ApplicationController
       end
     else
       cate = Category.where(parent_id: 0)
-      render json: cate, adapter: :json, each_serializer: CategorySerializer, meta: { status: :ok, message: 'Completed'}
+      render json: cate, adapter: :json, each_serializer: CategorySerializer, meta: { status: :ok, message: 'Completed' }
     end
   end
 
   def show
     if params[:check] == 'all'
-      item = ItemsCategory.where(category_id: params[:id])
-      item_id = item.map(&:item_id)
-      list_product = Item.find(item_id)
+      list_product = Category.find(params[:id]).items
+      page = params[:page].to_i
+      per_page = params[:per_page].to_i
+      total_page = (list_product.length - 1) / per_page + 1
+      list_product = list_product.paging(page, per_page)
     else
       item = ItemsCategory.where(category_id: params[:id])
       item_id = item.map(&:item_id)
@@ -27,7 +29,7 @@ class Api::V1::CategoriesController < ApplicationController
     end
 
     if list_product
-      render json: { message: 'complete', status: :ok, list_product: list_product }
+      render json: list_product, adapter: :json, each_serializer: ItemSerializer, meta: { status: :ok, total: total_page }
     else
       render json: { message: 'errors', status: :no_content }
     end

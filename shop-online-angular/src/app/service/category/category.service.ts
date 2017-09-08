@@ -16,8 +16,8 @@ export class CategoryService {
     return this.http.get(this.url + "?check=sub").map(res => res.json());
   }
 
-  getAllProductByCategory(id) {
-    return this.http.get(this.url + id + "?check=all").map(res => res.json());
+  getAllProductByCategory(id, page) {
+    return this.http.get(this.url + id + "?check=all&per_page=6&page=" + page).map(res => res.json());
   }
   
   getProductOverView(id){
@@ -26,6 +26,6 @@ export class CategoryService {
 
   sortBy(type){
     console.log(type);
-    return this.http.get("http://localhost:3000/api/v1/"+type).map(res => res.json());
+    return this.http.get("http://localhost:3000/api/v1/" + type + "&per_page=6").map(res => res.json());
   }
 }

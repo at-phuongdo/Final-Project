@@ -34,4 +34,23 @@
       </div>
     </div>
   </div>
+  <div class="">
+    <nav class="numbering animated wow slideInRight" data-wow-delay=".5s">
+      <ul class="pagination paging" *ngIf=" total > 0 ">
+        <li>
+          <a  aria-label="Previous" [routerLink]="['/category',id]" [queryParams]="{page: page > 1 ? (page - 1) : page } ">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li [ngClass]="{'active': i == page}" *ngFor=" let i of totalpage ">
+          <a [routerLink]="['/category',id]" [queryParams]="{page:i}">{{i}}</a>
+        </li>
+        <li>
+          <a aria-label="Next" [routerLink]="['/category',id]" [queryParams]="{page: page < total ? (page + 1) : page }" >
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>
