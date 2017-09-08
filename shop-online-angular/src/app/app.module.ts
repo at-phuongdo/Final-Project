@@ -1,5 +1,4 @@
 import { CategoryService } from './service/category/category.service';
-import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -9,7 +8,6 @@ import { UserService } from './service/user/user.service';
 import { ItemService } from './service/item/item.service';
 import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import { Location } from '@angular/common';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
@@ -25,6 +23,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { CategoryComponent } from './category/category.component';
 import { ListProductByCategoryComponent } from './list-product-by-category/list-product-by-category.component';
 import { OverviewComponent } from './category/overview/overview.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +40,8 @@ import { OverviewComponent } from './category/overview/overview.component';
     PaymentComponent,
     CategoryComponent,
     ListProductByCategoryComponent,
-    OverviewComponent
+    OverviewComponent,
+    SearchComponent
   ],
   imports: [
     LocalStorageModule.withConfig({
