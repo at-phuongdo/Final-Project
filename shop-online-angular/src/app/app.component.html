@@ -53,7 +53,7 @@
                   <ul class="dropdown-menu multi-column columns-2">
                     <div class="category">
                       <ul class="multi-column-dropdown">
-                        <h6>All Product</h6>
+                        <a [routerLink]="['/category']"><h6>All Product</h6></a>
                         <li  *ngFor="let item of listCategory"><a [routerLink]="['/category',item.id]">{{item.name}}</a></li>
                       </ul>
                       <div class="clearfix"></div>
