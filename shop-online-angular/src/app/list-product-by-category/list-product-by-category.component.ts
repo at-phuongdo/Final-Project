@@ -2,6 +2,7 @@ import { AppService } from '../service/app.service';
 import { CategoryService } from '../service/category/category.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from '../service/cart/cart.service';
 
 @Component({
   selector: 'app-list-product-by-category',
@@ -15,6 +16,7 @@ export class ListProductByCategoryComponent implements OnInit {
   sub: any;
   url: any;
   location: any;
+  order: any;
   dir: string;
   type: string;
   page: any;
@@ -27,31 +29,40 @@ export class ListProductByCategoryComponent implements OnInit {
     private categoryService: CategoryService,
     private appService: AppService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) { 
-    this.dir = "&dir=asc";
+    this.dir = 'asc';
   }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       this.route.queryParams.subscribe(queryParams => {
+        this.type = queryParams['order'];
+        this.dir = queryParams['dir'] || 'asc';
         this.page = +queryParams['page'] || 1;
       })
-      this.listProductByCategory(this.id, this.page);
-      this.url = "/searches/"+this.id;
+      this.sortBy(this.type, this.page);
     });
     this.route.queryParams.subscribe(queryParams => {
       this.page = +queryParams['page'] || 1;
-       this.route.params.subscribe(params => {
-        this.listProductByCategory(this.id, this.page);
-        this.url = "/searches/"+this.id;
+      this.type = queryParams['order'];
+      this.dir = queryParams['dir'] || 'asc';
+      this.route.params.subscribe(params => {
+        this.sortBy(this.type, this.page);
        });
     });
   }
 
-  listProductByCategory(id: any, page) {
-    this.categoryService.getAllProductByCategory(id,page).subscribe(data => {
+  sortBy(type: any, page) {
+    page = page || 1;
+    this.page = page;
+    this.type = type ;
+    if (this.type == undefined) {
+      this.type = 'name';
+    }
+    this.categoryService.sortBy(this.id+'?order='+this.type+'&dir='+this.dir, page).subscribe(data => {
       this.listProduct = data.items;
       this.total = data.meta['total'];
       this.totalpage = [];
@@ -63,19 +74,14 @@ export class ListProductByCategoryComponent implements OnInit {
     })
   }
 
-  sortBy(type: any) {
-    this.type = type ;
-    if (this.type == undefined) {
-      this.type = this.url+'?order=name';
-    }
-    this.categoryService.sortBy(this.type+this.dir).subscribe(data => {
-      this.listProduct = data.list_product;
-    })
-  }
-
   sortType(dir) {
     this.dir = dir;
-    this.sortBy(this.type);
+    this.page = 1;
+    this.sortBy(this.type, this.page);
+  }
+
+  addItemToCart(item: any) {
+    this.cartService.addItem(item);
   }
 
   ngOnDestroy() {

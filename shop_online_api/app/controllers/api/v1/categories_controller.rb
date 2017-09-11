@@ -22,10 +22,17 @@ class Api::V1::CategoriesController < ApplicationController
       per_page = params[:per_page].to_i
       total_page = (list_product.length - 1) / per_page + 1
       list_product = list_product.paging(page, per_page)
-    else
+    elsif params[:check] == 'overview'
       item = ItemsCategory.where(category_id: params[:id])
       item_id = item.map(&:item_id)
       list_product = Item.where(id: item_id).limit(4)
+    else
+      item = Category.find(params[:id]).items
+      list_product = Item.sort(params[:order] || 'name', params[:dir] || 'asc', item)
+      page = params[:page].to_i
+      per_page = params[:per_page].to_i
+      total_page = (list_product.length - 1) / per_page + 1
+      list_product = list_product.paging(page, per_page)
     end
 
     if list_product
