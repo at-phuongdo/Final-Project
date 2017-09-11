@@ -16,7 +16,6 @@ export class ListProductByCategoryComponent implements OnInit {
   sub: any;
   url: any;
   location: any;
-  order: any;
   dir: string;
   type: string;
   page: any;
@@ -24,6 +23,7 @@ export class ListProductByCategoryComponent implements OnInit {
   totalpage: any;
   startPage: number;
   endPage: number;
+  categoryName: any;
 
   constructor(
     private categoryService: CategoryService,
@@ -64,6 +64,7 @@ export class ListProductByCategoryComponent implements OnInit {
     }
     this.categoryService.sortBy(this.id+'?order='+this.type+'&dir='+this.dir, page).subscribe(data => {
       this.listProduct = data.items;
+      this.categoryName = data.meta['categoryName'];
       this.total = data.meta['total'];
       this.totalpage = [];
       this.startPage = this.appService.getPager(this.total, this.page).startPage;

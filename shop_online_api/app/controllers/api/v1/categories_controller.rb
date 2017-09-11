@@ -16,27 +16,27 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def show
-    if params[:check] == 'all'
-      list_product = Category.find(params[:id]).items
-      page = params[:page].to_i
-      per_page = params[:per_page].to_i
-      total_page = (list_product.length - 1) / per_page + 1
-      list_product = list_product.paging(page, per_page)
-    elsif params[:check] == 'overview'
+    categoryName = Category.find(params[:id]).name
+    page = params[:page].to_i
+    per_page = params[:per_page].to_i
+
+    if params[:check] == 'overview'
       item = ItemsCategory.where(category_id: params[:id])
       item_id = item.map(&:item_id)
       list_product = Item.where(id: item_id).limit(4)
+    elsif params[:check] == 'all'
+      list_product = Category.find(params[:id]).items
+      list_product = list_product.paging(page, per_page)
     else
       item = Category.find(params[:id]).items
       list_product = Item.sort(params[:order] || 'name', params[:dir] || 'asc', item)
-      page = params[:page].to_i
-      per_page = params[:per_page].to_i
-      total_page = (list_product.length - 1) / per_page + 1
       list_product = list_product.paging(page, per_page)
     end
 
+    total_page = (list_product.length - 1) / per_page + 1
+
     if list_product
-      render json: list_product, adapter: :json, each_serializer: ItemSerializer, meta: { status: :ok, total: total_page }
+      render json: list_product, adapter: :json, each_serializer: ShowItemSerializer, meta: { status: :ok, total: total_page, categoryName: categoryName }
     else
       render json: { message: 'errors', status: :no_content }
     end

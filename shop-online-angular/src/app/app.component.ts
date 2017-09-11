@@ -3,6 +3,7 @@ import { UserService } from './service/user/user.service';
 import { CartService } from './service/cart/cart.service';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CategoryService } from './service/category/category.service';
 
 @Component({
   selector: 'app-root',
@@ -18,9 +19,12 @@ export class AppComponent implements OnInit, OnDestroy{
   carts: any[];
   sub: any;
   searchForm: any;
+  listCategory: any;
+  subCategory: any;
 
   constructor(private userService: UserService,
               private cartService: CartService,
+              private categoryService: CategoryService,
               private _fb: FormBuilder,
               private router: Router) {
     this.quantity = 0;
@@ -41,6 +45,7 @@ export class AppComponent implements OnInit, OnDestroy{
     this.searchForm = this._fb.group({
       key: new FormControl('')
     });
+    this.getAllCategory();
   }
 
   logout() {
@@ -52,6 +57,12 @@ export class AppComponent implements OnInit, OnDestroy{
 
   search(key: string) {
     this.router.navigate(['search'], { queryParams: { key: key['key'] } });
+  }
+
+  getAllCategory(){
+    this.categoryService.getAllCategory().subscribe(data => {
+     this.listCategory = data.categories;
+    })
   }
 
   ngOnDestroy() {

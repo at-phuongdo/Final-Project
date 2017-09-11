@@ -25,6 +25,6 @@ export class CategoryService {
   }
 
   sortBy(type, page){
-    return this.http.get(this.url + type + "&per_page=6&page=" + page).map(res => res.json());
+    return this.http.get(this.url + type + "&per_page=9&page=" + page).map(res => res.json());
   }
 }
