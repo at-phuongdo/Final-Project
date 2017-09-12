@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Rx';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user/user.service';
 
@@ -12,11 +12,13 @@ import { UserService } from '../service/user/user.service';
 export class SignUpComponent implements OnInit {
 
   registerForm: any;
+  status: any;
 
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
-    private _fb: FormBuilder
+    private _fb: FormBuilder,
+    private router: Router
   ) {
     this.registerForm = this._fb.group({
       firstname: new FormControl(''),
@@ -33,7 +35,14 @@ export class SignUpComponent implements OnInit {
   register(user) {
     this.userService.registerUser(user).subscribe(
       data => {
-        return true;
+        this.status = data.status;
+        if ( this.status === 'created') {
+          alert('Please check you email to active your account!');
+          this.router.navigate(['']);
+        }
+         
+        else
+          alert('Please try again!');
       },
       error => {
         console.error("Error");
