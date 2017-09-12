@@ -13,3 +13,14 @@
     float: left;
     margin-left: 10px;
 }
+
+.content {
+    padding-left: 2em;
+    padding-right: 1em;
+}
+
+.item_add {
+    color: #D8703F;
+    right: 0.8em;
+    position: absolute;
+  }
