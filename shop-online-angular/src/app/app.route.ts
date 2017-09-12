@@ -8,11 +8,15 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { DetailsComponent } from './details/details.component';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
-import {CartComponent} from './cart/cart.component';
-import {PaymentComponent} from './payment/payment.component';
+import { CartComponent} from './cart/cart.component';
+import { PaymentComponent} from './payment/payment.component';
 import { ListProductByCategoryComponent } from './list-product-by-category/list-product-by-category.component';
 import { OverviewComponent } from './category/overview/overview.component';
 import { SearchComponent} from './search/search.component';
+import { ProfileComponent } from './profile/profile.component';
+import { HistoryOrderComponent } from './history-order/history-order.component';
+import { ShowInfoComponent } from './profile/show-info/show-info.component';
+import { UpdateInfoComponent } from './profile/update-info/update-info.component';
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -30,7 +34,14 @@ const routes = [
       { path: ':id', component: ListProductByCategoryComponent}
     ]
   },
-  { path: 'search', component: SearchComponent}
+  { path: 'search', component: SearchComponent},
+  { path: 'profile', component: ProfileComponent,
+    children: [
+    { path: '', component: ShowInfoComponent},
+    { path: 'edit', component: UpdateInfoComponent}
+    ]
+  },
+  { path: 'history-orders', component: HistoryOrderComponent}
 ]
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

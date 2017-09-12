@@ -31,4 +31,8 @@ export class ItemService {
   search(key, page, per_page) {
     return this.http.get(this.url + 'searches?key='+ key + '&page=' + page + '&per_page=' + per_page).map(res => res.json());
   }
+
+  getItemById(id: number) {
+    return this.http.get(this.url + 'items/' + id).map(res => res.json());
+  }
 }

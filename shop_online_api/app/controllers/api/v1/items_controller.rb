@@ -15,4 +15,13 @@ class Api::V1::ItemsController < ApplicationController
       render json: { message: 'errors', status: :no_content }
     end
   end
+
+  def show
+    item = Item.find_by(id: params[:id])
+    if item
+      render json: item, each_serializer: ShowItemSerializer, status: :ok
+    else
+      render json: { message: 'ID incorrect', status: :unprocessable_entity }
+    end
+  end
 end
