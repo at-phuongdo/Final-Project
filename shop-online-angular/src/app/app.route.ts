@@ -15,6 +15,7 @@ import { OverviewComponent } from './category/overview/overview.component';
 import { SearchComponent} from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HistoryOrderComponent } from './history-order/history-order.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { ShowInfoComponent } from './profile/show-info/show-info.component';
 import { UpdateInfoComponent } from './profile/update-info/update-info.component';
 
@@ -41,7 +42,8 @@ const routes = [
     { path: 'edit', component: UpdateInfoComponent}
     ]
   },
-  { path: 'history-orders', component: HistoryOrderComponent}
+  { path: 'history-orders', component: HistoryOrderComponent},
+  { path: 'order-detail/:id', component: OrderDetailComponent},
 ]
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

@@ -1,12 +1,23 @@
 class Api::V1::OrdersController < ApplicationController
   def index
-    @orders = Order.all
-    render json: @orders, status: :ok
+    user = User.find_by(confirm_token: params[:confirm_token])
+    page = params[:page] || Common::Com::Order::PAGE_DEFAULT
+    per_page = params[:per_page] || Common::Com::Order::PER_PAGE
+    if user
+      render json: user.orders.paging(page, per_page), status: :ok
+    else
+      render json: { msg: 'Not found User by Token', status: :unprocessable_entity }
+    end
   end
 
   def show
-    @user = User.find(params[:id])
-    render json: @user
+    order = Order.find_by(id: params[:id])
+    if order
+      order_items = order.order_items
+      render json: order_items, status: :ok
+    else
+      render json: { msg: 'Order not found, status: :unprocessable_entity'}
+    end
   end
 
   def create

@@ -16,7 +16,7 @@ export class UpdateInfoComponent implements OnInit {
   constructor(private userService: UserService,
     private _fb: FormBuilder,
     private router: Router) {
-    this.genderArr = ['male', 'female', 'orther'];
+    this.genderArr = ['male', 'female', 'other'];
      }
 
   ngOnInit() {

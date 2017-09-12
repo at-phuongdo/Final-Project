@@ -26,6 +26,5 @@ export class ProfileComponent implements OnInit {
 
   showHistoryOrder() {
     this.router.navigate(['history-orders']);
-
   }
 }

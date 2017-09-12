@@ -14,8 +14,8 @@
           <th>Remove</th>
         </tr>
         </thead>
-        <tr class="rem1" *ngFor=" let cart of carts">
-          <td class="invert">1</td>
+        <tr class="rem1" *ngFor=" let cart of carts; let i = index ">
+          <td class="invert">{{i+1}}</td>
           <td class="invert-image"><a [routerLink]="['/detail', cart.id]"><img src="{{cart.avatar}}" alt=" " class="img-responsive" /></a></td>
           <td class="invert">
             <div class="quantity">
