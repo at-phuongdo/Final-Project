@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ItemService } from '../service/item/item.service';
 import { CartService } from '../service/cart/cart.service';
 import {isUndefined} from "util";
+import { AppService } from '../service/app.service';
 
 @Component({
   selector: 'app-search',
@@ -22,7 +23,8 @@ export class SearchComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private itemService: ItemService,
-    private cartService: CartService
+    private cartService: CartService, 
+    private appService: AppService
     ) { }
 
   ngOnInit() {
@@ -37,8 +39,8 @@ export class SearchComponent implements OnInit {
         this.total = data.meta['total'];
         this.listResult = data.items;
         this.totalpage = [];
-        this.current_page = this.getPager(this.total, this.page).currentPage;
-        for (let i = this.getPager(this.total, this.page).startPage; i <= this.getPager(this.total, this.page).endPage; i++) {
+        this.current_page = this.appService.getPager(this.total, this.page).currentPage;
+        for (let i = this.appService.getPager(this.total, this.page).startPage; i <= this.appService.getPager(this.total, this.page).endPage; i++) {
           this.totalpage.push(i);
         }
         window.scrollTo(0, 0);
@@ -46,31 +48,6 @@ export class SearchComponent implements OnInit {
         console.error("Error");
       });
     });
-  }
-
-  getPager(total: number, currentPage: number = 1) {
-    let startPage: number, endPage: number;
-    if (total <= 10) {
-      startPage = 1;
-      endPage = total;
-    } else {
-      if (currentPage <= 6) {
-        startPage = 1;
-        endPage = 10;
-      } else if (currentPage + 4 >= total) {
-        startPage = total - 9;
-        endPage = total;
-      } else {
-        startPage = currentPage - 5;
-        endPage = currentPage + 4;
-      }
-    }
-    return {
-      currentPage: currentPage,
-      total: total,
-      startPage: startPage,
-      endPage: endPage
-    };
   }
 
   addItemToCart(item: any) {

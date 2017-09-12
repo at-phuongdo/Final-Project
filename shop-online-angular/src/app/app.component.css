@@ -44,3 +44,11 @@
   z-index: 90;
   background: #fff url(/assets/images/img-sp.png) no-repeat 7px -91px;
 }
+
+.columns-2 {
+  min-width: 200px;
+}
+
+.category h6, li {
+  margin: 10px 20px;
+}

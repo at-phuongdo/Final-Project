@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title></title>
 </head>
+
 <body>
   <div class="header">
     <div class="container">
@@ -48,40 +50,12 @@
                 <!-- Mega Menu -->
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-                  <ul class="dropdown-menu multi-column columns-3">
-                    <div class="row">
-                      <div class="col-sm-4">
-                        <ul class="multi-column-dropdown">
-                          <h6>Men's Wear</h6>
-                          <li><a href="products.html">Clothing</a></li>
-                          <li><a href="products.html">Wallets</a></li>
-                          <li><a href="products.html">Shoes</a></li>
-                          <li><a href="products.html">Watches</a></li>
-                          <li><a href="products.html">Accessories</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-sm-4">
-                        <ul class="multi-column-dropdown">
-                          <h6>Women's Wear</h6>
-                          <li><a href="products.html">Clothing</a></li>
-                          <li><a href="products.html">Wallets,Bags</a></li>
-                          <li><a href="products.html">Footwear</a></li>
-                          <li><a href="products.html">Watches</a></li>
-                          <li><a href="products.html">Accessories</a></li>
-                          <li><a href="products.html">Jewellery</a></li>
-                          <li><a href="products.html">Beauty & Grooming</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-sm-4">
-                        <ul class="multi-column-dropdown">
-                          <h6>Kid's Wear</h6>
-                          <li><a href="products.html">Kids Home Fashion</a></li>
-                          <li><a href="products.html">Boy's Clothing</a></li>
-                          <li><a href="products.html">Girl's Clothing</a></li>
-                          <li><a href="products.html">Shoes</a></li>
-                          <li><a href="products.html">Brand Stores</a></li>
-                        </ul>
-                      </div>
+                  <ul class="dropdown-menu multi-column columns-2">
+                    <div class="category">
+                      <ul class="multi-column-dropdown">
+                        <a [routerLink]="['/category']"><h6>All Product</h6></a>
+                        <li  *ngFor="let item of listCategory"><a [routerLink]="['/category',item.id]">{{item.name}}</a></li>
+                      </ul>
                       <div class="clearfix"></div>
                     </div>
                   </ul>
@@ -138,34 +112,35 @@
                 <button class="search-submit btn btn-default" type="submit">
                  <span class="glyphicon glyphicon-search"></span>
                </button>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="header-right">
-        <div class="cart box_1">
-          <a [routerLink]="['/cart']">
-            <h3> <div class="total">
-              ({{quantity}} items)</div>
-              <img src="/assets/images/bag.png" alt="" />
-            </h3>
-          </a>
-          <div class="clearfix"> </div>
+        <div class="header-right">
+          <div class="cart box_1">
+            <a [routerLink]="['/cart']">
+              <h3>
+                <div class="total">
+                  ({{quantity}} items)</div>
+                <img src="/assets/images/bag.png" alt="" />
+              </h3>
+            </a>
+            <div class="clearfix"> </div>
+          </div>
         </div>
+        <div class="clearfix"> </div>
       </div>
-      <div class="clearfix"> </div>
     </div>
   </div>
-</div>
-<!-- ================================= -->
-<router-outlet></router-outlet>
-<!-- ================================ -->
-<div class="footer">
-  <div class="container">
-    <div class="footer-grids">
-      <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
-        <h3>About Us</h3>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.<span>Excepteur sint occaecat cupidatat
+  <!-- ================================= -->
+  <router-outlet></router-outlet>
+  <!-- ================================ -->
+  <div class="footer">
+    <div class="container">
+      <div class="footer-grids">
+        <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
+          <h3>About Us</h3>
+          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.<span>Excepteur sint occaecat cupidatat
           non proident, sunt in culpa qui officia deserunt mollit.</span></p>
         </div>
         <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
@@ -251,5 +226,5 @@
   </div>
 
 </body>
-</html>
 
+</html>

@@ -1,3 +1,4 @@
+import { AppService } from './service/app.service';
 import { CategoryService } from './service/category/category.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -68,7 +69,8 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     ItemService,
     CartService,
     OrderService,
-    CategoryService
+    CategoryService,
+    AppService
   ],
   bootstrap: [AppComponent]
 })
