@@ -8,3 +8,27 @@
 .comment-line{
     margin: 1em 0;
 }
+
+.user-name {
+    color: black;
+    text-transform: capitalize;
+}
+
+.comment-left {
+    float: left;
+    width: 200px;
+}
+
+.img-responsive {
+    margin: 0 auto;
+}
+
+.img-circle {
+    width: 40%;
+    height: 50%;
+}
+
+.content {
+    word-wrap: break-word;
+}
+

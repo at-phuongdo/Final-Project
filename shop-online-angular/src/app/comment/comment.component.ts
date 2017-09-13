@@ -15,6 +15,12 @@ export class CommentComponent implements OnInit {
   sub: any;
   currentUser: any;
   comments: any;
+  content: any;
+  page: any;
+  total: any;
+  totalpage: any;
+  startPage: any;
+  endPage: any;
   
 
   constructor(
@@ -30,7 +36,7 @@ export class CommentComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
       this.currentUser = localStorage.getItem("currentUser");
-      this.getAllComment(this.id);
+      this.getAllComment(this.id, this.page);
     })
   }
 
@@ -46,9 +52,13 @@ export class CommentComponent implements OnInit {
     this.commentForm.controls['content'].setValue('');
   }
 
-  getAllComment(id){
-    this.commentService.getAllComment(id).subscribe(data => {
-      this.comments = data;
+  getAllComment(id, page){
+    page = page || 1;
+    this.page = page;
+    this.commentService.getAllComment(id, page).subscribe(data => {
+      this.comments = data.comments;
+      this.total = data.meta['total'];
+      console.log(this.total);
     })
   }
 

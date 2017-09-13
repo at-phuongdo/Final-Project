@@ -1,0 +1,36 @@
+<div class="new-collections">
+  <div class="container">
+    <!-- <h1>DETAIL USER
+      <small>user's profile and orders history</small>
+      <a href="route('users.index" class="pull-right"><span
+        class="fa fa-arrow-left btn btn-primary"></span></a>
+      </h1> -->
+      <div class="panel-body inf-content">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box box-primary">
+              <div class="box-header text-center">
+                <h3 class="box-title animated wow slideInUp" data-wow-delay=".5s">User Information</h3>
+              </div>
+              <div class="box-body animated wow zoomIn" data-wow-delay=".5s">
+                <div class="col-md-4">
+                  <div class="col-md-12">
+                    <img alt="" title="" class="img-circle img-thumbnail isTooltip"
+                    src="/assets/images/13.jpg"
+                    data-original-title="Usuario" *ngIf="false">
+                    <img alt="" style="width:90%;margin: 5%;" title="" class="img-circle img-thumbnail isTooltip"
+                    src="/assets/images/13.jpg" data-original-title="Usuario">
+                  </div>
+                  
+                  <div class="col-md-12 box-bottom">
+                    <button class="btn-profile btn btn-default col-md-5" (click)="editProfile()">Edit Profile</button>
+                    <button class="btn-profile btn btn-default col-md-5" (click)="showHistoryOrder()">History Orders</button>
+                  </div>
+                </div>
+                <router-outlet></router-outlet>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>

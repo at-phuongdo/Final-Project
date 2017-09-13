@@ -25,8 +25,8 @@ export class CommentService {
     return this.http.post(this.url, body, this.options).map((res: Response) => res.json());
   }
 
-  getAllComment(id){
-    return this.http.get(this.url+ '?item='+ id).map((res: Response) => res.json());
+  getAllComment(id, page){
+    return this.http.get(this.url+ '?item='+ id + '&page=' +page).map((res: Response) => res.json());
   }
 
 }

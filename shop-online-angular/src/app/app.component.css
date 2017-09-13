@@ -49,6 +49,6 @@
   min-width: 200px;
 }
 
-.category h6, li {
+.category h6, .category li {
   margin: 10px 20px;
 }

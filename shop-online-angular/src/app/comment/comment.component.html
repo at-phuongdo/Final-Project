@@ -2,24 +2,34 @@
   <div class="comment">
     <hr>
     <div class="comment-line" *ngFor="let item of comments">
-      <div class="bootstrap-tab-text-grid-left">
-        <img src="{{item.user.avatar}}" alt=" " class="img-responsive" />
+      <div class="comment-left">
+        <img src="{{item.user.avatar}}" class="img-circle img-responsive" />
+        <p class="user-name text-center">{{item.user.firstname}} {{item.user.lastname}}</p>
       </div>
       <div class="bootstrap-tab-text-grid-right">
-        <ul>
-          <li>{{item.user.firstname}}</li>
-        </ul>
-        <p>{{item.content}}</p>
+        <p class="content">{{item.content}}</p>
       </div>
       <div class="clearfix"> </div>
       <hr>
     </div>
   </div>
-  <div class="add-review" *ngIf="currentUser">
-    <h4>add a review</h4>
-    <form ngNoForm [formGroup]="commentForm" (ngSubmit)="comment(commentForm.value)">
-      <textarea type="text" required="" formControlName="content" placeholder="Message..."></textarea>
-      <input type="submit" value="Send">
-    </form>
+  <div class="">
+    <nav class="numbering animated wow slideInRight" data-wow-delay=".5s">
+      <ul class="pagination paging" *ngIf=" total > 0 ">
+        <li>
+          <button class="btn btn-default" style="color: #D8703F" (click)="getAllComment(id, page>1?page-1:page)">Previous</button>
+        </li>
+        <li>
+          <button class="btn btn-default" style="color: #D8703F" (click)="getAllComment(id, page<total?page+1:page)">Next</button>
+        </li>
+      </ul>
+    </nav>
   </div>
+  <div class="add-review" *ngIf="currentUser">
+      <h4>add a review</h4>
+      <form ngNoForm [formGroup]="commentForm" (ngSubmit)="comment(commentForm.value)">
+        <textarea type="text" required="" formControlName="content" placeholder="Message..."></textarea>
+        <input type="submit" value="Send">
+      </form>
+    </div>
 </div>
