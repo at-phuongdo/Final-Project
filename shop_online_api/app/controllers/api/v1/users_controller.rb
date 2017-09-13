@@ -31,7 +31,7 @@ class Api::V1::UsersController < ApplicationController
     confirm_token = request.headers['Access-token']
     if @user.confirm_token == confirm_token
       if @user.update(user_update)
-        render json: @user
+        render json: @user, status: :ok
       else
         render json: @user.errors, status: :unprocessable_entity
       end

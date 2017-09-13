@@ -11,6 +11,7 @@ export class ListItemComponent implements OnInit {
 
   listNewItems: any;
   listBestItems: any;
+  carts: any;
 
   constructor(private itemService: ItemService, private cartService: CartService) { }
 
@@ -24,6 +25,6 @@ export class ListItemComponent implements OnInit {
     });
   }
   addItemToCart(item: any) {
-    this.cartService.addItem(item);
+    this.cartService.checkQuantity(item);
   }
 }

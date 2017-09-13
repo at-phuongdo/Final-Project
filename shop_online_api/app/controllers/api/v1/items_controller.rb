@@ -3,7 +3,7 @@ class Api::V1::ItemsController < ApplicationController
     if params[:check] == 'new'
       @items = Item.last(8)
     elsif params[:check] == 'best'
-      order = OrderItem.select(:item_id, 'COUNT(item_id) as sl').group(:item_id).order('sl DESC')
+      order = OrderItem.select(:item_id, 'COUNT(item_id) as sl').group(:item_id).order('sl DESC').limit(8)
       ids = order.map(&:item_id)
       @items = Item.find(ids)
     else
