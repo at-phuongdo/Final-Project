@@ -1,3 +1,4 @@
+<div class="new-collections">
   <div class="container">
     <div class="row">
       <div class="col-md-9">
@@ -24,12 +25,13 @@
           </tr>
         </table>
       </div>
-      <div class="col-md-3 checkout-left-basket animated wow slideInRight" data-wow-delay=".5s">
+      <div class="col-md-3 checkout-left-basket animated wow slideInRight" data-wow-delay=".5s" style="background-color: white">
         <h4>Continue to basket</h4>
         <ul>
           <li *ngFor="let order_item of orderItems">{{order_item.item.name}}<span>{{order_item.price * order_item.quantity}}</span></li>
-          <li class="total">Total<i>-</i><span>{{total}}</span></li>
+          <li style="color: black; border-top: 1px solid #b1a8a8; padding: 5px 0px; font-size: 18px">Total<i>-</i><span>{{total}}</span></li>
         </ul>
       </div>
     </div>
   </div>
+</div>

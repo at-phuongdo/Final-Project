@@ -17,7 +17,7 @@ export class OrderDetailComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.total = 0;
+    this.total =0;
     this.sub = this.route.params.subscribe( params => {
       this.orderService.getDetailOrder(params['id']).subscribe( data => {
         this.orderItems = data;
@@ -27,7 +27,6 @@ export class OrderDetailComponent implements OnInit {
         }
       });
     });
-    
   }
 
   ngOnDestroy() {

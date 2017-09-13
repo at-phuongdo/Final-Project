@@ -41,7 +41,7 @@
         <h4>Continue to basket</h4>
         <ul>
           <li *ngFor="let cart of carts">{{cart.name}}<i>-</i> <span>{{cart.price * cart.quantity}}</span></li>
-          <li>Total <i>-</i> <span>{{total}}</span></li>
+          <li style="color: black; border-top: 1px solid #b1a8a8; padding: 5px 0px; font-size: 18px">Total <i>-</i> <span>{{total}}</span></li>
         </ul>
       </div>
       <div class="checkout-right-basket animated wow slideInRight btn-primary" data-wow-delay=".5s" >

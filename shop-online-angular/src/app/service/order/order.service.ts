@@ -29,8 +29,8 @@ export class OrderService {
       return this.http.post(this.url + 'orders',body, this.options ).map((res: Response) => res.json());
   }
 
-  getOrderByUser(user_token) {
-    return this.http.get(this.url + 'orders?confirm_token=' + user_token).map((res: Response) => res.json());
+  getOrderByUser(user_token, page) {
+    return this.http.get(this.url + 'orders?confirm_token=' + user_token + '&page=' +page).map((res: Response) => res.json());
   }
 
   getDetailOrder(order_id) {
