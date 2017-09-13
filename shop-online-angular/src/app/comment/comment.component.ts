@@ -43,10 +43,11 @@ export class CommentComponent implements OnInit {
   comment(comment: any) {
     let body = { 'item_id': this.id, comment };
     this.commentService.sendComment(body).subscribe(data => {
-      if (data.status == 'no_content') {
+      if (data.message == 'Not yet buy it') {
         alert('You have to buy this product to review!');
       }
       else
+        this.comments.pop();
         this.comments.push(data);
     });
     this.commentForm.controls['content'].setValue('');
