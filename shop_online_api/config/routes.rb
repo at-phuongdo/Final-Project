@@ -30,5 +30,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :show]
 
     resources :searches, only: [:index, :show]
+
+    resources :comments
   end
 end

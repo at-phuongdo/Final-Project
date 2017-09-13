@@ -2,6 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ItemService } from '../service/item/item.service';
 import { Component, OnInit } from '@angular/core';
 import {CartService} from '../service/cart/cart.service';
+import { FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
@@ -20,7 +21,7 @@ export class DetailsComponent implements OnInit {
   constructor(
     private itemService: ItemService,
     private route: ActivatedRoute,
-    private cartService: CartService
+    private cartService: CartService,
   ) {
     this.detail = {};
     this.images_items = [];
@@ -34,6 +35,7 @@ export class DetailsComponent implements OnInit {
       window.scrollTo(0, 0);
     });
   }
+
   getDetail(id: number) {
     this.itemService.getDetail(id).subscribe(data => {
       this.detail = data.item;

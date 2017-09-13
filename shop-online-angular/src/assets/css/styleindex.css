@@ -116,7 +116,7 @@ ul.social-icons li a.instagram:hover{
   font-size: .2em;
   line-height: 0;
   text-transform: uppercase;
-  letter-spacing: 12px;
+  letter-spacing: 10px;
   color: #222222;
   padding-left: .3em;
 }
@@ -637,6 +637,7 @@ figure.effect-julia:hover p {
   background: #D5D5D5;
   content: '';
 }
+
 .new-collections h3:before,.single-related-products h3:before{
 	left:17%;
 }

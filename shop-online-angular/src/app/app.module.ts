@@ -1,5 +1,6 @@
+import { CommentService } from './service/comment/comment.service';
+import { AppService } from './service/app.service';
 import { CategoryService } from './service/category/category.service';
-import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -9,7 +10,6 @@ import { UserService } from './service/user/user.service';
 import { ItemService } from './service/item/item.service';
 import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import { Location } from '@angular/common';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
@@ -26,6 +26,7 @@ import { CategoryComponent } from './category/category.component';
 import { ListProductByCategoryComponent } from './list-product-by-category/list-product-by-category.component';
 import { OverviewComponent } from './category/overview/overview.component';
 import { CommentComponent } from './comment/comment.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CommentComponent } from './comment/comment.component';
     CategoryComponent,
     ListProductByCategoryComponent,
     OverviewComponent,
-    CommentComponent
+    CommentComponent,
+    SearchComponent
   ],
   imports: [
     LocalStorageModule.withConfig({
@@ -60,7 +62,9 @@ import { CommentComponent } from './comment/comment.component';
     ItemService,
     CartService,
     OrderService,
-    CategoryService
+    CategoryService,
+    AppService,
+    CommentService
   ],
   bootstrap: [AppComponent]
 })

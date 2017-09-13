@@ -28,4 +28,7 @@ export class ItemService {
     return this.http.get(this.url + 'items?check=best').map(res => res.json());
   }
 
+  search(key, page, per_page) {
+    return this.http.get(this.url + 'searches?key='+ key + '&page=' + page + '&per_page=' + per_page).map(res => res.json());
+  }
 }

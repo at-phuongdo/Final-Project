@@ -5,8 +5,8 @@ class Api::V1::DetailsController < ApplicationController
       id_cate = ItemsCategory.find_by(item_id: params[:id]).category_id
       id_item = ItemsCategory.where(category_id: id_cate).map(&:item_id)
       id_item.delete(params[:id].to_i)
-      relativeItem = Item.find(id_item)
-      render json: { item: @item, relativeItem: relativeItem, status: :ok }
+      relative_item = Item.where(id: id_item)
+      render json: { item: @item, relativeItem: relative_item, status: :ok }
     else
       render json: { message: 'Cannot found this product!', status: :no_content }
     end

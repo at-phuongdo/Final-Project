@@ -14,7 +14,7 @@ export class SignUpComponent implements OnInit {
   registerForm: any;
 
   constructor(
-    private userService: UserService, 
+    private userService: UserService,
     private route: ActivatedRoute,
     private _fb: FormBuilder
   ) {
@@ -31,7 +31,6 @@ export class SignUpComponent implements OnInit {
   }
 
   register(user) {
-    console.log(user);
     this.userService.registerUser(user).subscribe(
       data => {
         return true;

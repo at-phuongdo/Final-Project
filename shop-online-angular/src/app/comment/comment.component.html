@@ -1,3 +1,25 @@
-<p>
-  comment works!
-</p>
+<div class="bootstrap-tab-text-grids">
+  <div class="comment">
+    <hr>
+    <div class="comment-line" *ngFor="let item of comments">
+      <div class="bootstrap-tab-text-grid-left">
+        <img src="{{item.user.avatar}}" alt=" " class="img-responsive" />
+      </div>
+      <div class="bootstrap-tab-text-grid-right">
+        <ul>
+          <li>{{item.user.firstname}}</li>
+        </ul>
+        <p>{{item.content}}</p>
+      </div>
+      <div class="clearfix"> </div>
+      <hr>
+    </div>
+  </div>
+  <div class="add-review" *ngIf="currentUser">
+    <h4>add a review</h4>
+    <form ngNoForm [formGroup]="commentForm" (ngSubmit)="comment(commentForm.value)">
+      <textarea type="text" required="" formControlName="content" placeholder="Message..."></textarea>
+      <input type="submit" value="Send">
+    </form>
+  </div>
+</div>

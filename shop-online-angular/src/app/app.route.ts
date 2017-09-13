@@ -3,7 +3,6 @@ import { ListItemComponent } from './home/list-item/list-item.component';
 import { CategoryComponent } from './category/category.component';
 import { Component, ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
@@ -15,9 +14,10 @@ import {CartComponent} from './cart/cart.component';
 import {PaymentComponent} from './payment/payment.component';
 import { ListProductByCategoryComponent } from './list-product-by-category/list-product-by-category.component';
 import { OverviewComponent } from './category/overview/overview.component';
+import { SearchComponent} from './search/search.component';
 
 const routes = [
-  { path: '', component: HomeComponent  },
+  { path: '', component: HomeComponent },
   { path: 'register', component: SignUpComponent },
   { path: 'resetPassword', component: ResetPasswordComponent},
   { path: 'updatePassword/:id', component: UpdatePasswordComponent},
@@ -35,7 +35,8 @@ const routes = [
       { path: '', component: OverviewComponent },
       { path: ':id', component: ListProductByCategoryComponent}
     ]
-  }
+  },
+  { path: 'search', component: SearchComponent}
 ]
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

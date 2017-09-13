@@ -16,16 +16,15 @@ export class CategoryService {
     return this.http.get(this.url + "?check=sub").map(res => res.json());
   }
 
-  getAllProductByCategory(id) {
-    return this.http.get(this.url + id + "?check=all").map(res => res.json());
+  getAllProductByCategory(id, page) {
+    return this.http.get(this.url + id + "?check=all&per_page=6&page=" + page).map(res => res.json());
   }
   
   getProductOverView(id){
     return this.http.get(this.url + id + "?check=overview").map(res => res.json());
   }
 
-  sortBy(type){
-    console.log(type);
-    return this.http.get("http://localhost:3000/api/v1/"+type).map(res => res.json());
+  sortBy(type, page){
+    return this.http.get(this.url + type + "&per_page=9&page=" + page).map(res => res.json());
   }
 }
