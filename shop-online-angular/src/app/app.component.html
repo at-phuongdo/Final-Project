@@ -15,7 +15,7 @@
             <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a [routerLink]="['/register']">Register</a></li>
           </ul>
           <ul *ngIf="checkLogin">
-            <li><i class="glyphicon glyphicon-hello" aria-hidden="true"></i><a [routerLink]="['/']">Hello {{firstName}}</a></li>
+            <li><i class="glyphicon glyphicon-hello" aria-hidden="true"></i><a [routerLink]="['/profile']">Hello {{firstName}}</a></li>
             <li><i class="glyphicon glyphicon-log-out" aria-hidden="true"></i><a [routerLink]="['/logout']">Logout</a></li>
           </ul>
         </div>

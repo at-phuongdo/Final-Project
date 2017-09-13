@@ -28,10 +28,15 @@ class Api::V1::UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
-      render json: @user
+    confirm_token = request.headers['Access-token']
+    if @user.confirm_token == confirm_token
+      if @user.update(user_update)
+        render json: @user
+      else
+        render json: @user.errors, status: :unprocessable_entity
+      end
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: { msg: 'Token invalid', status: :unprocessable_entity }
     end
   end
 
@@ -48,5 +53,9 @@ class Api::V1::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:firstname, :lastname, :email, :password)
+  end
+
+  def user_update
+    params.require(:user).permit(:firstname, :lastname, :email, :gender, :birthday, :address, :phone)
   end
 end

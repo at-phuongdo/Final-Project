@@ -25,6 +25,11 @@ import { CategoryComponent } from './category/category.component';
 import { ListProductByCategoryComponent } from './list-product-by-category/list-product-by-category.component';
 import { OverviewComponent } from './category/overview/overview.component';
 import { SearchComponent } from './search/search.component';
+import { ProfileComponent } from './profile/profile.component';
+import { HistoryOrderComponent } from './history-order/history-order.component';
+import { ShowInfoComponent } from './profile/show-info/show-info.component';
+import { UpdateInfoComponent } from './profile/update-info/update-info.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +47,12 @@ import { SearchComponent } from './search/search.component';
     CategoryComponent,
     ListProductByCategoryComponent,
     OverviewComponent,
-    SearchComponent
+    SearchComponent,
+    ProfileComponent,
+    HistoryOrderComponent,
+    ShowInfoComponent,
+    UpdateInfoComponent,
+    OrderDetailComponent
   ],
   imports: [
     LocalStorageModule.withConfig({
