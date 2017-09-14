@@ -3,9 +3,9 @@ class Api::V1::OrdersController < ApplicationController
     user = User.find_by(confirm_token: params[:confirm_token])
     page = params[:page].to_i || Common::Com::Order::PAGE_DEFAULT
     per_page = Common::Com::Order::PER_PAGE
-    orders = user.orders
-    total = (orders.length - 1) / per_page + 1
     if user
+      orders = user.orders
+      total = (orders.length - 1) / per_page + 1
       render json: orders.paging(page, per_page), adapter: :json, meta: { total: total, status: :ok }
     else
       render json: { msg: 'Not found User by Token', status: :unprocessable_entity }
