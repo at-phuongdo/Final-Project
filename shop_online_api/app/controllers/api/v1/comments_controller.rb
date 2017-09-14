@@ -14,10 +14,9 @@ class Api::V1::CommentsController < ApplicationController
   def create
     confirm_token = request.headers['Access-token']
     user = User.find_by(confirm_token: confirm_token)
-    order_items = User.joins(orders: :order_items).select('order_items.id').where("users.confirm_token = '#{confirm_token}'")
+    order_items = User.joins(orders: :order_items).where("users.confirm_token = '#{confirm_token}'").pluck("order_items.item_id")
     if order_items
-      ids = order_items.map(&:id)
-      if ids.include?(params[:item_id].to_i)
+      if order_items.include?(params[:item_id].to_i)
         comment = Comment.new(user_id: user.id, item_id: params[:item_id], content: params[:comment][:content])
         if comment.save
           render json: comment, status: :ok
