@@ -60,8 +60,6 @@ export class CommentComponent implements OnInit {
     this.commentService.getAllComment(id, page).subscribe(data => {
       this.comments = data.comments;
       this.total = data.meta['total'];
-      console.log(this.comments);
-      console.log(this.total);
     })
   }
 
