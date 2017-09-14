@@ -33,6 +33,12 @@ class Api::V1::OrdersController < ApplicationController
         ActiveRecord::Base.transaction do
           order_items.each do |order_item|
             OrderItem.create(price: order_item[:price], quantity: order_item[:quantity], item_id: order_item[:id], order_id: @order.id)
+            item = Item.find_by(id: order_item[:id])
+            if item[:quantity] >= order_item[:quantity]
+              item.update(quantity: item[:quantity] - order_item[:quantity])
+            else
+              render json: { msg: 'Quantity not enough, status: :bad_request' }
+            end
           end
         end
         render json: @order, status: :created

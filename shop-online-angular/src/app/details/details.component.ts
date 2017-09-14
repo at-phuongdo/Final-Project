@@ -49,6 +49,13 @@ export class DetailsComponent implements OnInit {
   }
 
   addItemToCart(item: any) {
-    this.cartService.addItem(item);
+    this.itemService.getItemById(item.id).subscribe( data => {
+      if (data.quantity > item.quantity) {
+        this.cartService.addItem(item);
+        alert('Add to cart , Complete!');
+      } else {
+        alert('Quantity not enough');
+      }
+    });
   }
 }

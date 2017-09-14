@@ -36,9 +36,6 @@ export class AppComponent implements OnInit, OnDestroy{
       this.userService.getUserByToken(localStorage.getItem('currentUser')).subscribe((user: any) => {
         this.firstName = user.firstname;
       });
-      setTimeout(() => {
-        this.quantity = this.cartService.getQuantity();
-      });
     } else {
       this.checkLogin = false;
     }
@@ -46,6 +43,9 @@ export class AppComponent implements OnInit, OnDestroy{
       key: new FormControl('')
     });
     this.getAllCategory();
+    setTimeout(() => {
+        this.quantity = this.cartService.getQuantity();
+      });
   }
 
   logout() {

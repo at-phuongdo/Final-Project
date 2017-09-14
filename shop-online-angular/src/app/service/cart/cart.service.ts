@@ -87,4 +87,29 @@ export class CartService implements OnDestroy {
     console.log('Destroy');
     localStorage.setItem('cart', this.carts.toString());
   }
+
+  checkQuantity(item) {
+    this.carts = this.carts;
+    let check = false;
+    let itemCart;
+    for (let obj of this.carts) {
+      if (item.id === obj.id) {
+        itemCart = obj;
+        check = true;
+        break;
+      }
+      check = false;
+    }
+    if (check == true ){
+      if (item.quantity > itemCart.quantity) {
+        this.addItem(item);
+        alert('Add to cart , Complete!');
+      } else {
+        alert('Quantity not enough');
+      }
+    } else {
+      this.addItem(item);
+      alert('Add to cart , Complete!'); 
+    }
+  }
 }
