@@ -24,6 +24,11 @@ avatar = ['https://vn-live-02.slatic.net/p/2/apple-iphone-7-plus-128gb-do-hang-n
 # end
 # dv = ['chai', 'kilogam', 'gam', 'cái', 'lit', 'mililit', 'hộp']
 # syntax = ['chai', 'kg', 'g', 'cái', 'l', 'ml', 'hộp']
+
+#   item = Item.new(name: "item#{i + 1}", price: rand(10000), avatar: 'https://vcdn.tikicdn.com/assets/media/tuyen-tap-dien-thoai.jpg',
+#     status: 'Còn hàng', quantity: rand(100), shop_id: rand(9), unit_id: rand(9))
+#   item.save
+# end
 # 10.times do |i|
 #   unit = Unit.new(name: dv[i], syntax: syntax[i])
 #   unit.save
