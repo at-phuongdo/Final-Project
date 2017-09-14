@@ -1,0 +1,61 @@
+<div class="products-right-grids animated wow slideInRight" data-wow-delay=".5s">
+  <div class="sorting">
+    <select id="country" (change)="sortBy(type.value)" class="frm-field required sect" #type>
+        <option value="name" >Sort by name</option>					
+        <option value="price" >Sort by price</option>
+    </select>
+  </div>
+  <div class="sorting-left">
+    <select id="country1" (change)="sortType(dir.value)" class="frm-field required sect" #dir> 
+      <option value="asc" >Sort Ascending</option>
+      <option value="desc">Sort Descending</option> 									
+    </select>
+  </div>
+  <div class="clearfix"> </div>
+</div>
+<div class="new-collections content">
+  <div class="row ">
+    <h3 class="animated wow zoomIn" data-wow-delay=".5s">{{categoryName}}</h3>
+    <div class="new-collections-grids">
+      <div class="col-md-4 new-collections-grid" *ngFor=" let item of listProduct; let i = index ">
+        <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+          <div class="new-collections-grid1-image">
+            <a [routerLink]="['/detail', item.id]" class="product-image"><img src="{{item.avatar}}" alt=" " class="img-responsive" style="height: 200px" /></a>
+            <div class="new-collections-grid1-image-pos">
+              <a [routerLink]="['/detail', item.id]">Quick View</a>
+            </div>
+          </div>
+          <h4><a [routerLink]="['/detail', item.id]">{{item.name}}</a></h4>
+          <div class="new-collections-grid1-left simpleCart_shelfItem">
+            <p>
+              <span class="item_price">{{item.price | currency: "VND"}}</span>
+              <button class="item_add btn btn-default" (click)="addItemToCart(item)">
+                  <img src="/assets/images/bag.png" alt="" /> Add to cart
+              </button>
+            </p>
+          </div>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <nav class="numbering animated wow slideInRight" data-wow-delay=".5s">
+      <ul class="pagination paging" *ngIf=" total > 0 ">
+        <li>
+          <a aria-label="Previous" [routerLink]="['/category',id]" [queryParams]="{order: type.value, dir: dir.value, page: page > 1 ? (page - 1) : page } ">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li [ngClass]="{'active': i == page}" *ngFor=" let i of totalpage ">
+          <a [routerLink]="['/category',id]" [queryParams]="{order: type.value, dir: dir.value, page:i}">{{i}}</a>
+        </li>
+        <li>
+          <a aria-label="Next" [routerLink]="['/category',id]" [queryParams]="{order: type.value, dir: dir.value, page: page < total ? (page + 1) : page }">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
