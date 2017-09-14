@@ -1,3 +1,4 @@
+import { CommentService } from './service/comment/comment.service';
 import { AppService } from './service/app.service';
 import { CategoryService } from './service/category/category.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,6 +25,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { CategoryComponent } from './category/category.component';
 import { ListProductByCategoryComponent } from './list-product-by-category/list-product-by-category.component';
 import { OverviewComponent } from './category/overview/overview.component';
+import { CommentComponent } from './comment/comment.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HistoryOrderComponent } from './history-order/history-order.component';
@@ -47,6 +49,7 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     CategoryComponent,
     ListProductByCategoryComponent,
     OverviewComponent,
+    CommentComponent,
     SearchComponent,
     ProfileComponent,
     HistoryOrderComponent,
@@ -70,7 +73,8 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     CartService,
     OrderService,
     CategoryService,
-    AppService
+    AppService,
+    CommentService
   ],
   bootstrap: [AppComponent]
 })

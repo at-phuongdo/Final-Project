@@ -1,5 +1,4 @@
 class Api::V1::DetailsController < ApplicationController
-
   def show
     @item = Item.find_by(id: params[:id])
     if @item
