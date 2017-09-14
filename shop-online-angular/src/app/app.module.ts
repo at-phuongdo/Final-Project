@@ -32,6 +32,7 @@ import { HistoryOrderComponent } from './history-order/history-order.component';
 import { ShowInfoComponent } from './profile/show-info/show-info.component';
 import { UpdateInfoComponent } from './profile/update-info/update-info.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { ShopComponent } from './shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     HistoryOrderComponent,
     ShowInfoComponent,
     UpdateInfoComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    ShopComponent
   ],
   imports: [
     LocalStorageModule.withConfig({
