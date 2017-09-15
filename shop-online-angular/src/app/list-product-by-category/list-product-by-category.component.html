@@ -1,4 +1,4 @@
-<div class="products-right-grids animated wow slideInRight" data-wow-delay=".5s">
+<div class="products-right-grids animated wow slideInRight" data-wow-delay=".5s" *ngIf="listProduct" >
   <div class="sorting">
     <select id="country" (change)="sortBy(type.value)" class="frm-field required sect" #type>
         <option value="name" >Sort by name</option>					
@@ -13,7 +13,7 @@
   </div>
   <div class="clearfix"> </div>
 </div>
-<div class="new-collections content">
+<div class="new-collections content" *ngIf="listProduct">
   <div class="row ">
     <h3 class="animated wow zoomIn" data-wow-delay=".5s">{{categoryName}}</h3>
     <div class="new-collections-grids">
@@ -59,3 +59,8 @@
     </nav>
   </div>
 </div>
+<div *ngIf="!detail">
+    <div class="new-collections">
+      <h1 class="text-center error">Sorry, we cannot found this product!</h1>
+    </div>
+  </div>

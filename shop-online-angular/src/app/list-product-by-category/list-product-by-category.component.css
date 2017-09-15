@@ -23,4 +23,8 @@
     color: #D8703F;
     right: 0.8em;
     position: absolute;
-  }
+}
+
+.error {
+    color: red;
+}
