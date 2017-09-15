@@ -1,4 +1,4 @@
-<div class="new-collections">
+<div class="new-collections" *ngIf="detail">
   <div class="container">
     <div class="col-md-5 single-right-left animated wow slideInUp clearfix" data-wow-delay=".5s">
       <div class="flexslider">
@@ -61,5 +61,10 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div *ngIf="!detail">
+  <div class="new-collections">
+    <h1 class="text-center error">Sorry, we cannot found this product!</h1>
   </div>
 </div>
