@@ -25,7 +25,14 @@ class Api::V1::CategoriesController < ApplicationController
       item_id = item.map(&:item_id)
       list_product = Item.where(id: item_id).limit(4)
     else
-      item = Category.find(params[:id]).items
+      sub_cate = Category.where(parent_id: params[:id])
+      if sub_cate != []
+        ids = sub_cate.map(&:id)
+        item_id = ItemsCategory.where(category_id: ids).map(&:item_id)
+        item = Item.where(id: item_id)
+      else
+        item = Category.find(params[:id]).items
+      end
       list_product = Item.sort(params[:order] || 'name', params[:dir] || 'asc', item)
       list_product = list_product.paging(page, per_page)
       total_page = (list_product.length - 1) / per_page + 1
