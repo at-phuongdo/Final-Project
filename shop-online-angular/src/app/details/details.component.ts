@@ -33,6 +33,7 @@ export class DetailsComponent implements OnInit {
       this.getDetail(this.id);
       this.getImages(this.id);
       window.scrollTo(0, 0);
+
     });
   }
 

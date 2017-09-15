@@ -33,7 +33,6 @@ export class PaymentComponent implements OnInit {
     this.orderItems = this.cartService.carts;
     if (!this.orderItems[0]) {
       this.router.navigate(['/cart']);
-      console.log("rong");
     }
     if(!localStorage.getItem('currentUser')) {
       alert('You have to login!');
@@ -55,6 +54,7 @@ export class PaymentComponent implements OnInit {
     this.orderService.createOrder(data).subscribe((a: any) => {
         this.cartService.removeCart();
         alert('Order success!');
+        this.router.navigate(['category']);
       }, (err: any) => {
         alert( 'Fail!');
       });

@@ -27,7 +27,7 @@ class Api::V1::OrdersController < ApplicationController
     user = User.find_by(confirm_token: confirm_token)
     if user
       @order = Order.new(order_params)
-      @order.update(user_id: user.id)
+      @order.update(user_id: user.id, status: 'Waiting')
       order_items = params[:orderItems]
       if order_items && @order.save
         ActiveRecord::Base.transaction do

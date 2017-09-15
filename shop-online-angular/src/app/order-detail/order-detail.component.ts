@@ -13,12 +13,14 @@ export class OrderDetailComponent implements OnInit {
   orderItems: Array<any> = [];
   sub: any;
   total: number;
+  idOrder: number;
   constructor(private orderService: OrderService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.total =0;
     this.sub = this.route.params.subscribe( params => {
+      this.idOrder = params['id']
       this.orderService.getDetailOrder(params['id']).subscribe( data => {
         this.orderItems = data;
         console.log(this.orderItems[0]);

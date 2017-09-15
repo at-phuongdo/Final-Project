@@ -1,12 +1,13 @@
 <div class="new-collections">
   <div class="container">
+    <h3 class="animated wow slideInDown title" data-wow-delay=".5s">Order {{idOrder}} </h3>
     <div class="row">
       <div class="col-md-9">
         <table class=" timetable_sub animated wow slideInUp" data-wow-delay=".5s">
           <thead>
             <tr>
               <th>No.</th>
-              <th>Product</th>
+              <th style="width: 30%">Product</th>
               <th>Name</th>
               <th>Quality</th>
               <th>Price</th>
@@ -20,8 +21,8 @@
               </a>
             </td>
             <td class="invert">{{order_item.item.name}}</td>
-            <td class="invert">{{order_item.quantity}}</td>
-            <td class="invert">{{order_item.price}}</td>
+            <td class="invert">{{order_item.quantity }}</td>
+            <td class="invert">{{order_item.price | currency: "VND" }}</td>
           </tr>
         </table>
       </div>
