@@ -35,7 +35,7 @@ export class SearchComponent implements OnInit {
         this.key = querParams['key'];
       }
       this.page = +querParams['page'] || 1;
-      this.itemService.search(this.key.toString(), this.page, 9).subscribe((data: any) => {
+      this.itemService.search(this.key.toString(), this.page, 12).subscribe((data: any) => {
         this.total = data.meta['total'];
         this.listResult = data.items;
         this.totalpage = [];

@@ -43,9 +43,10 @@ export class AppComponent implements OnInit, OnDestroy{
       key: new FormControl('')
     });
     this.getAllCategory();
-    setTimeout(() => {
-        this.quantity = this.cartService.getQuantity();
-      });
+  }
+
+  ngDoCheck() {
+    this.quantity = this.cartService.getQuantity();
   }
 
   logout() {

@@ -1,4 +1,22 @@
+.tabble-detail {
+  width: 80%;
+  margin: auto 10%;
+}
+
+.table-title {
+  color: black;
+}
+
+.relativeItem {
+  margin-top: 1em;
+}
+
 .error {
     color: red;
     height: 500px;
+}
+
+.div-description {
+  background: white;
+    padding: 1em 2em;
 }

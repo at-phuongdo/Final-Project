@@ -30,7 +30,7 @@
             <div class="new-collections-grid1-left simpleCart_shelfItem">
               <p>
                 <span class="item_price">{{item.price | currency: "VND"}}</span>
-                <button class="item_add btn btn-default" (click)="addItemToCart(item)">
+                <button class="btn btn-default item_add" (click)="addItemToCart(item)">
                   <img src="/assets/images/bag.png" alt="" /> Add to cart
               </button>
               </p>
@@ -61,7 +61,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="!detail">
+<div *ngIf="!listProduct">
   <div class="new-collections">
     <h1 class="text-center error">Sorry, we cannot found this product!</h1>
   </div>

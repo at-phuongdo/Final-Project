@@ -1,6 +1,6 @@
 <div class="new-collections">
-  <div class="group" *ngFor=" let items of listSubCate; let i = index ">
-    <div class="row">
+  <div class="group" *ngFor=" let items of listSubCate; let i = index " >
+    <div class="row" *ngIf="i<5">
       <h3 class="animated wow zoomIn title-category" data-wow-delay=".5s">{{items.name}}</h3>
       <div class="new-collections-grids">
         <div class="content">
