@@ -16,7 +16,8 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def show
-    category_name = Category.find(params[:id]).name
+    category = Category.find(params[:id])
+    category_name = category.name
     page = params[:page].to_i
     per_page = params[:per_page].to_i
 
@@ -25,15 +26,19 @@ class Api::V1::CategoriesController < ApplicationController
       item_id = item.map(&:item_id)
       list_product = Item.where(id: item_id).limit(4)
     else
-      sub_cate = Category.where(parent_id: params[:id])
-      if sub_cate != []
-        ids = sub_cate.map(&:id)
-        item_id = ItemsCategory.where(category_id: ids).map(&:item_id)
-        item = Item.where(id: item_id)
+      if category.parent_id == 0
+        sub_cate = category.child
+        item_ids = []
+        if sub_cate.present?
+          sub_cate.each do |i|
+            item_ids = item_ids | i.items.map(&:id)
+          end
+        end
+        items = Item.where(id: item_ids)
       else
-        item = Category.find(params[:id]).items
+        items = category.items
       end
-      list_product = Item.sort(params[:order] || 'name', params[:dir] || 'asc', item)
+      list_product = Item.sort(params[:order] || 'name', params[:dir] || 'asc', items)
       list_product = list_product.paging(page, per_page)
       total_page = (list_product.length - 1) / per_page + 1
     end
