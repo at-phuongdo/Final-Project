@@ -40,19 +40,19 @@ avatar = ['https://vn-live-02.slatic.net/p/2/apple-iphone-7-plus-128gb-do-hang-n
 # end
 
 
-# 15.times do 
-#   images_items = ImagesItem.create(image: avatar[rand(9)], item_id: rand(8)+8)
-# end
+30.times do 
+  images_items = ImagesItem.create(image: "", item_id: 41)
+end
 
 # 10.times do |i|
 #   orderItem = OrderItem.new(price: 123456, item_id: rand(9), quantity:rand(5), order_id: 1)
 #   orderItem.save
 # end
 
-8.times do |i|
-  binding.pry
-  ItemsCategory.create(item_id: 36+i, category_id: 10)
-end
+# 8.times do |i|
+#   binding.pry
+#   ItemsCategory.create(item_id: 36+i, category_id: 10)
+# end
 
 # name = ['Jeans', 'T-Shirt', 'Shoes']
 # 3.times do |i|

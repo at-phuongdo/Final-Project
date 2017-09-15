@@ -26,13 +26,13 @@
         </tr>
         <tr>
           <td><h4 class="table-title">Store</h4></td>
-          <td>
-            <!-- <h4>{{detail.shop["name"]}}</h4> -->
+          <td *ngIf="detail.shop">
+            <h4>{{detail.shop["name"]}}</h4>
           </td>
         </tr>
         <tr><div class="occasion-cart">
-        <button class="item_add btn btn-default" style="color: #D8703F;" (click)="addItemToCart(detail)"><img src="/assets/images/bag.png" alt="" /> Add to cart </button>
-      </div></tr>
+          <button class="item_add btn btn-default" style="color: #D8703F;" (click)="addItemToCart(detail)"><img src="/assets/images/bag.png" alt="" /> Add to cart </button>
+        </div></tr>
       </table>
     </div>
     <div class="clearfix"> </div>
@@ -42,8 +42,8 @@
           <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Description</a></li>
           <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Reviews</a></li>
         </ul>
-        <div id="myTabContent" class="tab-content">
-          <div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home" aria-labelledby="home-tab">
+        <div id="myTabContent" class="tab-content div-description">
+          <div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text " id="home" aria-labelledby="home-tab">
             <!-- <h5>Product Brief Description</h5> -->
             <div [innerHTML]="detail.description"></div>
           </div>
@@ -55,7 +55,7 @@
         </div>
       </div>
     </div>
-    <div class="relativeItem">
+    <div class="relativeItem" *ngIf="relativeItem">
       <h3 class="animated wow zoomIn" data-wow-delay=".5s">RELATIVE PRODUCT</h3>
       <div class="new-collections-grids">
         <div class="col-md-3 new-collections-grid" *ngFor=" let item of relativeItem; let i = index ">
@@ -69,12 +69,19 @@
             <h4><a [routerLink]="['/detail', item.id]">{{item.name}}</a></h4>
             <div class="new-collections-grid1-left simpleCart_shelfItem">
               <p>
-                <span class="item_price">{{item.price | currency: "VND"}}</span></p>
-              </div>
+                <span class="item_price">{{item.price | currency: "VND"}}</span>
+              </p>
             </div>
-            <div class="clearfix"> </div>
           </div>
+          <div class="clearfix"> </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="!detail">
+  <div class="new-collections">
+    <h1 class="text-center error">Sorry, we cannot found this product!</h1>
+  </div>
+</div>

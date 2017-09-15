@@ -40,7 +40,7 @@ export class DetailsComponent implements OnInit {
   getDetail(id: number) {
     this.itemService.getDetail(id).subscribe(data => {
       this.detail = data.item;
-      this.relativeItem = data.relativeItem;
+      this.relativeItem = data.meta['relativeItem'];
       this.errors = data.message;
     });
   }
