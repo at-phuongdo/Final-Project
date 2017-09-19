@@ -11,4 +11,8 @@ export class ShopService {
   getShopById(id: number) {
     return this.http.get(this.url + 'shops/' + id).map(res => res.json());
   }
+
+  getAll() {
+    return this.http.get(this.url + 'shops').map(res => res.json());
+  }
 }

@@ -45,7 +45,9 @@
                 <ul class="dropdown-menu multi-column columns-2">
                   <div class="category">
                     <ul class="multi-column-dropdown">
-                      <a [routerLink]="['/category']"><h6>All Product</h6></a>
+                      <a [routerLink]="['/category']">
+                        <h6>All Product</h6>
+                      </a>
                       <li  *ngFor="let item of listCategory"><a [routerLink]="['/category',item.id]">{{item.name}}</a></li>
                     </ul>
                     <div class="clearfix"></div>
@@ -54,8 +56,17 @@
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Store <b class="caret"></b></a>
-                <ul class="dropdown-menu multi-column columns-3">
-                  <div class="row">
+                <ul class="dropdown-menu multi-column columns-2">
+                  <div class="category">
+                    <ul class="multi-column-dropdown">
+                      <a [routerLink]="['/shop']">
+                        <h6>All Store</h6>
+                      </a>
+                      <li  *ngFor="let shop of listShops;" ><a [routerLink]="['/shop',shop.id]">{{shop.name}}</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                 <!--  <div class="row">
                     <div class="col-sm-4">
                       <ul class="multi-column-dropdown">
                         <h6>Home Collection</h6>
@@ -85,9 +96,10 @@
                         <li><a href="furniture.html">Lighting</a></li>
                         <li><a href="furniture.html">Top Brands</a></li>
                       </ul>
-                    </div>
+                    </div> -->
+                   <!--  
                     <div class="clearfix"></div>
-                  </div>
+                  </div> -->
                 </ul>
               </li>
               <li><a href="mail.html">Mail Us</a></li>
