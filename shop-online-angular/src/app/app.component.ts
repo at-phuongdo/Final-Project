@@ -4,6 +4,7 @@ import { CartService } from './service/cart/cart.service';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryService } from './service/category/category.service';
+import { ShopService } from './service/shop/shop.service';
 
 @Component({
   selector: 'app-root',
@@ -21,12 +22,14 @@ export class AppComponent implements OnInit, OnDestroy{
   searchForm: any;
   listCategory: any;
   subCategory: any;
+  listShops: any;
 
   constructor(private userService: UserService,
               private cartService: CartService,
               private categoryService: CategoryService,
               private _fb: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private shopService: ShopService) {
     this.quantity = 0;
   }
 
@@ -43,6 +46,7 @@ export class AppComponent implements OnInit, OnDestroy{
       key: new FormControl('')
     });
     this.getAllCategory();
+    this.getAllShops();
   }
 
   ngDoCheck() {
@@ -66,6 +70,11 @@ export class AppComponent implements OnInit, OnDestroy{
     })
   }
 
+getAllShops() {
+  this.shopService.getAll().subscribe( data => {
+    this.listShops = data.slice(0,6);
+  });
+}
   ngOnDestroy() {
 
   }

@@ -13,4 +13,9 @@ module Common::Com
     PAGE_DEFAULT = 1
     PER_PAGE = 5
   end
+
+  module Shop
+    PAGE_DEFAULT = 1
+    PER_PAGE = 12
+  end
 end
