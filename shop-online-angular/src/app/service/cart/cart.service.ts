@@ -78,7 +78,7 @@ export class CartService implements OnDestroy {
   getQuantity() {
     let quantity = 0;
     this.carts.forEach(function (item) {
-      quantity += item.quantity;
+      quantity += 1;
     });
     return quantity;
   }
