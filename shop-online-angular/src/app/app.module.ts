@@ -18,8 +18,9 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { routing } from './app.route';
 import { DetailsComponent } from './details/details.component';
 import { LogoutComponent } from './logout/logout.component';
-import {CartService} from './service/cart/cart.service';
-import {OrderService} from './service/order/order.service';
+import { CartService} from './service/cart/cart.service';
+import { OrderService} from './service/order/order.service';
+import { ShopService} from './service/shop/shop.service';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './payment/payment.component';
 import { CategoryComponent } from './category/category.component';
@@ -33,6 +34,7 @@ import { ShowInfoComponent } from './profile/show-info/show-info.component';
 import { UpdateInfoComponent } from './profile/update-info/update-info.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { ShopComponent } from './shop/shop.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,9 @@ import { ShopComponent } from './shop/shop.component';
     HttpModule,
     ReactiveFormsModule,
     FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCU4_2oEZLntxCkfUVU7MfqLTwWppNYYec'
+    })
   ],
   providers: [UserService,
     ItemService,
@@ -76,7 +81,8 @@ import { ShopComponent } from './shop/shop.component';
     OrderService,
     CategoryService,
     AppService,
-    CommentService
+    CommentService,
+    ShopService
   ],
   bootstrap: [AppComponent]
 })

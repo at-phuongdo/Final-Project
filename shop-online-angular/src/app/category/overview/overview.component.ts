@@ -18,7 +18,7 @@ export class OverviewComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private route: ActivatedRoute,
-    private cartService: CartService
+    private cartService: CartService,
   ) { 
     this.listProduct = [];
     this.listSubCate = [];
@@ -41,6 +41,6 @@ export class OverviewComponent implements OnInit {
   }
 
   addItemToCart(item: any) {
-    this.cartService.addItem(item);
+    this.cartService.checkQuantity(item);
   }
 }
