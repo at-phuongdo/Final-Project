@@ -53,15 +53,17 @@
                   <ul class="dropdown-menu multi-column columns-2">
                     <div class="category">
                       <ul class="multi-column-dropdown">
-                        <a [routerLink]="['/category']"><h6>All Product</h6></a>
-                        <li  *ngFor="let item of listCategory"><a [routerLink]="['/category',item.id]">{{item.name}}</a></li>
+                        <a [routerLink]="['/category']">
+                          <h6>All Product</h6>
+                        </a>
+                        <li *ngFor="let item of listCategory"><a [routerLink]="['/category',item.id]">{{item.name}}</a></li>
                       </ul>
                       <div class="clearfix"></div>
                     </div>
                   </ul>
                 </li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Store <b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Furniture <b class="caret"></b></a>
                   <ul class="dropdown-menu multi-column columns-3">
                     <div class="row">
                       <div class="col-sm-4">
@@ -98,6 +100,7 @@
                     </div>
                   </ul>
                 </li>
+                <li><a href="short-codes.html">Short Codes</a></li>
                 <li><a href="mail.html">Mail Us</a></li>
               </ul>
             </div>
@@ -137,60 +140,37 @@
   <div class="footer">
     <div class="container">
       <div class="footer-grids">
-        <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
+        <div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
           <h3>About Us</h3>
-          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.<span>Excepteur sint occaecat cupidatat
-          non proident, sunt in culpa qui officia deserunt mollit.</span></p>
+          <p>
+              <b> Dole </b> is a website that makes online shopping easier. 
+              Now you can experience the online shopping delight <b> Dole</b> brings with just a click. 
+              <span>Whether you're a busy manager or a housekeeper with a long list of work to be done, 
+              you'll love the shopping experience at <b> Dole</b></span>
+          </p>
         </div>
-        <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
+        <div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
           <h3>Contact Info</h3>
           <ul>
-            <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
-            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
+            <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Le Duan <span>Da Nang City.</span></li>
+            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">dole@gmail.com</a></li>
             <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
           </ul>
         </div>
-        <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
-          <h3>Flickr Posts</h3>
+        <div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
+          <h3>Payment</h3>
           <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/13.jpg" alt=" " class="img-responsive" /></a>
+            <a href="single.html"><img src="/assets/images/MasterCard.png" alt=" " class="img-responsive" /></a>
           </div>
           <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/14.jpg" alt=" " class="img-responsive" /></a>
+            <a href="single.html"><img src="/assets/images/visa-logo-2.png" alt=" " class="img-responsive" /></a>
           </div>
           <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/15.jpg" alt=" " class="img-responsive" /></a>
-          </div>
-          <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/16.jpg" alt=" " class="img-responsive" /></a>
-          </div>
-          <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/13.jpg" alt=" " class="img-responsive" /></a>
-          </div>
-          <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/14.jpg" alt=" " class="img-responsive" /></a>
-          </div>
-          <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/15.jpg" alt=" " class="img-responsive" /></a>
-          </div>
-          <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/16.jpg" alt=" " class="img-responsive" /></a>
-          </div>
-          <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/13.jpg" alt=" " class="img-responsive" /></a>
-          </div>
-          <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/14.jpg" alt=" " class="img-responsive" /></a>
-          </div>
-          <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/15.jpg" alt=" " class="img-responsive" /></a>
-          </div>
-          <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/16.jpg" alt=" " class="img-responsive" /></a>
+            <a href="single.html"><img src="/assets/images/cashondelivery.png" alt=" " class="img-responsive" /></a>
           </div>
           <div class="clearfix"> </div>
         </div>
-        <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
+        <!-- <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
           <h3>Blog Posts</h3>
           <div class="footer-grid-sub-grids">
             <div class="footer-grid-sub-grid-left">
@@ -212,14 +192,14 @@
             </div>
             <div class="clearfix"> </div>
           </div>
-        </div>
+        </div> -->
         <div class="clearfix"> </div>
       </div>
       <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
         <h2><a href="index.html">Dole <span>shop anywhere</span></a></h2>
       </div>
       <div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
-        <p>&copy 2017 Dole. All rights reserved | Design by Dole</p>
+        <p>2017 Dole. All rights reserved | Design by Dole</p>
       </div>
     </div>
   </div>
