@@ -2,6 +2,7 @@ import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/Rx';
 import { LocalStorageModule } from 'angular-2-local-storage';
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class UserService {
@@ -9,6 +10,7 @@ export class UserService {
   private url = 'http://localhost:3000/api/v1/';
   private headers: any;
   private options: any;
+  avatar: Subject<any> = new Subject<any>();
 
   constructor(private http: Http, private localStorage: LocalStorageModule) {
     this.headers = new Headers({ 'Content-Type': 'application/json' });

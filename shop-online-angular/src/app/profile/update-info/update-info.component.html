@@ -97,7 +97,8 @@
               </strong>
             </td>
             <td class="text-primary">
-              <input type="file" formControlName="avatar">
+              <input type="hidden" formControlName="avatar" [(ngModel)]="avatar" value="{{avatar}}">
+              <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera">
             </td>
           </tr>
         </tbody>
