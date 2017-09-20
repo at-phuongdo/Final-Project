@@ -33,6 +33,7 @@ export class ListProductByCategoryComponent implements OnInit {
     private router: Router,
     private cartService: CartService,
     private itemService: ItemService
+
   ) { 
     this.dir = 'asc';
   }
@@ -84,14 +85,7 @@ export class ListProductByCategoryComponent implements OnInit {
   }
 
   addItemToCart(item: any) {
-    this.itemService.getItemById(item.id).subscribe( data => {
-      if (data.quantity >= item.quantity) {
-        this.cartService.addItem(item);
-        alert('Add to cart , Complete!');
-      } else {
-        alert('Quantity not enough');
-      }
-    });
+    this.cartService.checkQuantity(item);
   }
 
   ngOnDestroy() {

@@ -1,3 +1,4 @@
+import { ToasterService } from 'angular2-toaster';
 import {Injectable, OnDestroy} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Http, RequestOptions, Headers, Response} from '@angular/http';
@@ -8,7 +9,9 @@ export class CartService implements OnDestroy {
   carts: any;
   private url = 'http://localhost:3000/api/v1/';
 
-  constructor(private http: Http) {
+  constructor(
+    private http: Http,
+    private toasterService: ToasterService) {
     let carts;
     carts = localStorage.getItem('cart');
     this.carts = carts !== null ? JSON.parse(carts) : [];
@@ -89,7 +92,6 @@ export class CartService implements OnDestroy {
   }
 
   checkQuantity(item) {
-    this.carts = this.carts;
     let check = false;
     let itemCart;
     for (let obj of this.carts) {
@@ -98,18 +100,17 @@ export class CartService implements OnDestroy {
         check = true;
         break;
       }
-      check = false;
     }
     if (check == true ){
       if (item.quantity > itemCart.quantity) {
         this.addItem(item);
-        alert('Add to cart , Complete!');
+        this.toasterService.pop('success', 'Add to cart , Complete!');
       } else {
-        alert('Quantity not enough');
+        this.toasterService.pop('warning', 'Quantity not enough');
       }
     } else {
       this.addItem(item);
-      alert('Add to cart , Complete!'); 
+      this.toasterService.pop('success', 'Add to cart , Complete');
     }
   }
 }

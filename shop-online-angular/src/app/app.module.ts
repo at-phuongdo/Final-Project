@@ -33,6 +33,8 @@ import { ShowInfoComponent } from './profile/show-info/show-info.component';
 import { UpdateInfoComponent } from './profile/update-info/update-info.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { ShopComponent } from './shop/shop.component';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import { ShopComponent } from './shop/shop.component';
     HttpModule,
     ReactiveFormsModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToasterModule
   ],
   providers: [UserService,
     ItemService,
@@ -76,7 +80,8 @@ import { ShopComponent } from './shop/shop.component';
     OrderService,
     CategoryService,
     AppService,
-    CommentService
+    CommentService,
+    ToasterService
   ],
   bootstrap: [AppComponent]
 })

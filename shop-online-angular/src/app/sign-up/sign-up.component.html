@@ -9,6 +9,9 @@
 </div>
 <!-- //breadcrumbs -->
 <!-- register -->
+<div class="alert alert-success" *ngIf="info" >
+    <strong>Success!</strong> {{info}}
+  </div>
 <div class="register">
   <div class="container">
     <h3 class="animated wow zoomIn" data-wow-delay=".5s">Register Here</h3>
@@ -25,6 +28,8 @@
           <input type="email" placeholder="Email Address" required=" " formControlName="email">
           <input type="password" placeholder="Password" required=" " formControlName="password">
           <input type="password" placeholder="Password Confirmation" required=" " formControlName="password_confirm">
+          {{registerForm.controls.password_confirm.error?.MatchPassword}}
+          <div class="alert alert-danger" *ngIf="registerForm.controls.password_confirm.error?.MatchPassword">Password not match</div>
           <div class="register-check-box">
             <div class="check">
               <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>

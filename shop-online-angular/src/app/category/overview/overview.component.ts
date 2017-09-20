@@ -41,6 +41,6 @@ export class OverviewComponent implements OnInit {
   }
 
   addItemToCart(item: any) {
-    this.cartService.addItem(item);
+    this.cartService.checkQuantity(item);
   }
 }

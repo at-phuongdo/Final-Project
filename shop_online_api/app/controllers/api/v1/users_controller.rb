@@ -28,7 +28,6 @@ class Api::V1::UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    confirm_token = request.headers['Access-token']
     if @user.confirm_token == confirm_token
       if @user.update(user_update)
         render json: @user, status: :ok

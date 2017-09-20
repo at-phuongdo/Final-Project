@@ -13,7 +13,9 @@ export class ListItemComponent implements OnInit {
   listBestItems: any;
   carts: any;
 
-  constructor(private itemService: ItemService, private cartService: CartService) { }
+  constructor(
+    private itemService: ItemService, 
+    private cartService: CartService) { }
 
   ngOnInit() {
     this.itemService.getNewItems().subscribe((data: any) => {
