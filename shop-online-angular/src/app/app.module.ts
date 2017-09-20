@@ -35,6 +35,9 @@ import { UpdateInfoComponent } from './profile/update-info/update-info.component
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { ShopComponent } from './shop/shop.component';
 import { AgmCoreModule } from '@agm/core';
+import { FileUploadModule } from 'ng2-file-upload';
+import { Ng2CloudinaryModule } from 'ng2-cloudinary';
+
 
 @NgModule({
   declarations: [
@@ -73,7 +76,9 @@ import { AgmCoreModule } from '@agm/core';
     FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCU4_2oEZLntxCkfUVU7MfqLTwWppNYYec'
-    })
+    }),
+    Ng2CloudinaryModule,
+    FileUploadModule
   ],
   providers: [UserService,
     ItemService,
