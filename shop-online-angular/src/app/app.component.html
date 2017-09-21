@@ -1,210 +1,175 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title></title>
-</head>
-
-<body>
-  <div class="header">
-    <div class="container">
-      <div class="header-grid">
-        <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
-          <ul *ngIf="!checkLogin">
-            <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a [routerLink]="['/login']">Login</a></li>
-            <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a [routerLink]="['/register']">Register</a></li>
-          </ul>
-          <ul *ngIf="checkLogin">
-            <li><i class="glyphicon glyphicon-hello" aria-hidden="true"></i><a [routerLink]="['/profile']">Hello {{firstName}}</a></li>
-            <li><i class="glyphicon glyphicon-log-out" aria-hidden="true"></i><a [routerLink]="['/logout']">Logout</a></li>
-          </ul>
-        </div>
-        <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
-          <ul class="social-icons">
-            <li><a [routerLink]="['/login']" class="facebook"></a></li>
-            <li><a href="#" class="twitter"></a></li>
-            <li><a href="#" class="g"></a></li>
-            <li><a href="#" class="instagram"></a></li>
-          </ul>
-        </div>
-        <div class="clearfix"> </div>
+<div class="header">
+  <div class="container">
+    <div class="header-grid">
+      <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
+        <ul *ngIf="!checkLogin">
+          <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a [routerLink]="['/login']">Login</a></li>
+          <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a [routerLink]="['/register']">Register</a></li>
+        </ul>
+        <ul *ngIf="checkLogin">
+          <li><i class="glyphicon glyphicon-hello" aria-hidden="true"></i><a [routerLink]="['/profile']">Hello {{firstName}}</a></li>
+          <li><i class="glyphicon glyphicon-log-out" aria-hidden="true"></i><a [routerLink]="['/logout']">Logout</a></li>
+        </ul>
       </div>
-      <div class="logo-nav">
-        <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
-          <h1><a href="index.html">Dole <span>Shop anywhere</span></a></h1>
-        </div>
-        <div class="logo-nav-left1">
-          <nav class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header nav_2">
-              <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+      <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
+        <ul class="social-icons">
+          <li><a [routerLink]="['/login']" class="facebook"></a></li>
+          <li><a href="#" class="twitter"></a></li>
+          <li><a href="#" class="g"></a></li>
+          <li><a href="#" class="instagram"></a></li>
+        </ul>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+    <div class="logo-nav">
+      <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
+        <h1><a href="index.html">Dole <span>Shop anywhere</span></a></h1>
+      </div>
+      <div class="logo-nav-left1">
+        <nav class="navbar navbar-default">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header nav_2">
+            <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html" class="act">Home</a></li>
-                <!-- Mega Menu -->
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-                  <ul class="dropdown-menu multi-column columns-2">
-                    <div class="category">
+          </div>
+          <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html" class="act">Home</a></li>
+              <!-- Mega Menu -->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
+                <ul class="dropdown-menu multi-column columns-2">
+                  <div class="category">
+                    <ul class="multi-column-dropdown">
+                      <a [routerLink]="['/category']">
+                        <h6>All Product</h6>
+                      </a>
+                      <li *ngFor="let item of listCategory"><a [routerLink]="['/category',item.id]">{{item.name}}</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Furniture <b class="caret"></b></a>
+                <ul class="dropdown-menu multi-column columns-3">
+                  <div class="row">
+                    <div class="col-sm-4">
                       <ul class="multi-column-dropdown">
-                        <a [routerLink]="['/category']">
-                          <h6>All Product</h6>
-                        </a>
-                        <li *ngFor="let item of listCategory"><a [routerLink]="['/category',item.id]">{{item.name}}</a></li>
+                        <h6>Home Collection</h6>
+                        <li><a href="furniture.html">Cookware</a></li>
+                        <li><a href="furniture.html">Sofas</a></li>
+                        <li><a href="furniture.html">Dining Tables</a></li>
+                        <li><a href="furniture.html">Shoe Racks</a></li>
+                        <li><a href="furniture.html">Home Decor</a></li>
                       </ul>
-                      <div class="clearfix"></div>
                     </div>
-                  </ul>
-                </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Furniture <b class="caret"></b></a>
-                  <ul class="dropdown-menu multi-column columns-3">
-                    <div class="row">
-                      <div class="col-sm-4">
-                        <ul class="multi-column-dropdown">
-                          <h6>Home Collection</h6>
-                          <li><a href="furniture.html">Cookware</a></li>
-                          <li><a href="furniture.html">Sofas</a></li>
-                          <li><a href="furniture.html">Dining Tables</a></li>
-                          <li><a href="furniture.html">Shoe Racks</a></li>
-                          <li><a href="furniture.html">Home Decor</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-sm-4">
-                        <ul class="multi-column-dropdown">
-                          <h6>Office Collection</h6>
-                          <li><a href="furniture.html">Carpets</a></li>
-                          <li><a href="furniture.html">Tables</a></li>
-                          <li><a href="furniture.html">Sofas</a></li>
-                          <li><a href="furniture.html">Shoe Racks</a></li>
-                          <li><a href="furniture.html">Sockets</a></li>
-                          <li><a href="furniture.html">Electrical Machines</a></li>
-                        </ul>
-                      </div>
-                      <div class="col-sm-4">
-                        <ul class="multi-column-dropdown">
-                          <h6>Decorations</h6>
-                          <li><a href="furniture.html">Toys</a></li>
-                          <li><a href="furniture.html">Wall Clock</a></li>
-                          <li><a href="furniture.html">Lighting</a></li>
-                          <li><a href="furniture.html">Top Brands</a></li>
-                        </ul>
-                      </div>
-                      <div class="clearfix"></div>
+                    <div class="col-sm-4">
+                      <ul class="multi-column-dropdown">
+                        <h6>Office Collection</h6>
+                        <li><a href="furniture.html">Carpets</a></li>
+                        <li><a href="furniture.html">Tables</a></li>
+                        <li><a href="furniture.html">Sofas</a></li>
+                        <li><a href="furniture.html">Shoe Racks</a></li>
+                        <li><a href="furniture.html">Sockets</a></li>
+                        <li><a href="furniture.html">Electrical Machines</a></li>
+                      </ul>
                     </div>
-                  </ul>
-                </li>
-                <li><a href="short-codes.html">Short Codes</a></li>
-                <li><a href="mail.html">Mail Us</a></li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-        <div class="logo-nav-right">
-          <div class="search-box">
-            <div class="form-search">
-              <form ngNoForm [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)">
-                <input class="search-input" placeholder="Enter your search..." type="search" formControlName="key">
-                <button class="search-submit btn btn-default" type="submit">
+                    <div class="col-sm-4">
+                      <ul class="multi-column-dropdown">
+                        <h6>Decorations</h6>
+                        <li><a href="furniture.html">Toys</a></li>
+                        <li><a href="furniture.html">Wall Clock</a></li>
+                        <li><a href="furniture.html">Lighting</a></li>
+                        <li><a href="furniture.html">Top Brands</a></li>
+                      </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </ul>
+              </li>
+              <li><a href="short-codes.html">Short Codes</a></li>
+              <li><a href="mail.html">Mail Us</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="logo-nav-right">
+        <div class="search-box">
+          <div class="form-search">
+            <form ngNoForm [formGroup]="searchForm" (ngSubmit)="search(searchForm.value)">
+              <input class="search-input" placeholder="Enter your search..." type="search" formControlName="key">
+              <button class="search-submit btn btn-default" type="submit">
                  <span class="glyphicon glyphicon-search"></span>
                </button>
-              </form>
-            </div>
+            </form>
           </div>
         </div>
-        <div class="header-right">
-          <div class="cart box_1">
-            <a [routerLink]="['/cart']">
-              <h3>
-                <div class="total">
-                  ({{quantity}} items)</div>
-                <img src="/assets/images/bag.png" alt="" />
-              </h3>
-            </a>
-            <div class="clearfix"> </div>
-          </div>
-        </div>
-        <div class="clearfix"> </div>
       </div>
-    </div>
-  </div>
-  <!-- ================================= -->
-  <toaster-container></toaster-container>
-  <router-outlet></router-outlet>
-  <!-- ================================ -->
-  <div class="footer">
-    <div class="container">
-      <div class="footer-grids">
-        <div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
-          <h3>About Us</h3>
-          <p>
-              <b> Dole </b> is a website that makes online shopping easier. 
-              Now you can experience the online shopping delight <b> Dole</b> brings with just a click. 
-              <span>Whether you're a busy manager or a housekeeper with a long list of work to be done, 
-              you'll love the shopping experience at <b> Dole</b></span>
-          </p>
-        </div>
-        <div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
-          <h3>Contact Info</h3>
-          <ul>
-            <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Le Duan <span>Da Nang City.</span></li>
-            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">dole@gmail.com</a></li>
-            <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
-          </ul>
-        </div>
-        <div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
-          <h3>Payment</h3>
-          <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/MasterCard.png" alt=" " class="img-responsive" /></a>
-          </div>
-          <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/visa-logo-2.png" alt=" " class="img-responsive" /></a>
-          </div>
-          <div class="footer-grid-left">
-            <a href="single.html"><img src="/assets/images/cashondelivery.png" alt=" " class="img-responsive" /></a>
-          </div>
+      <div class="header-right">
+        <div class="cart box_1">
+          <a [routerLink]="['/cart']">
+            <h3>
+              <div class="total">
+                ({{quantity}} items)</div>
+              <img src="/assets/images/bag.png" alt="" />
+            </h3>
+          </a>
           <div class="clearfix"> </div>
         </div>
-        <!-- <div class="col-md-3 footer-grid animated wow slideInLeft" data-wow-delay=".8s">
-          <h3>Blog Posts</h3>
-          <div class="footer-grid-sub-grids">
-            <div class="footer-grid-sub-grid-left">
-              <a href="single.html"><img src="/assets/images/9.jpg" alt=" " class="img-responsive" /></a>
-            </div>
-            <div class="footer-grid-sub-grid-right">
-              <h4><a href="single.html">culpa qui officia deserunt</a></h4>
-              <p>Posted On 25/3/2016</p>
-            </div>
-            <div class="clearfix"> </div>
-          </div>
-          <div class="footer-grid-sub-grids">
-            <div class="footer-grid-sub-grid-left">
-              <a href="single.html"><img src="/assets/images/10.jpg" alt=" " class="img-responsive" /></a>
-            </div>
-            <div class="footer-grid-sub-grid-right">
-              <h4><a href="single.html">Quis autem vel eum iure</a></h4>
-              <p>Posted On 25/3/2016</p>
-            </div>
-            <div class="clearfix"> </div>
-          </div>
-        </div> -->
-        <div class="clearfix"> </div>
       </div>
-      <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
-        <h2><a href="index.html">Dole <span>shop anywhere</span></a></h2>
-      </div>
-      <div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
-        <p>2017 Dole. All rights reserved | Design by Dole</p>
-      </div>
+      <div class="clearfix"> </div>
     </div>
   </div>
-
-</body>
-
-</html>
+</div>
+<!-- ================================= -->
+<toaster-container></toaster-container>
+<router-outlet></router-outlet>
+<!-- ================================ -->
+<div class="footer">
+  <div class="container">
+    <div class="footer-grids">
+      <div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".5s">
+        <h3>About Us</h3>
+        <p>
+          <b> Dole </b> is a website that makes online shopping easier. Now you can experience the online shopping delight
+          <b> Dole</b> brings with just a click.
+          <span>Whether you're a busy manager or a housekeeper with a long list of work to be done, 
+              you'll love the shopping experience at <b> Dole</b></span>
+        </p>
+      </div>
+      <div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".6s">
+        <h3>Contact Info</h3>
+        <ul>
+          <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Le Duan <span>Da Nang City.</span></li>
+          <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">dole@gmail.com</a></li>
+          <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-grid animated wow slideInLeft" data-wow-delay=".7s">
+        <h3>Payment</h3>
+        <div class="footer-grid-left">
+          <a href="single.html"><img src="/assets/images/MasterCard.png" alt=" " class="img-responsive" /></a>
+        </div>
+        <div class="footer-grid-left">
+          <a href="single.html"><img src="/assets/images/visa-logo-2.png" alt=" " class="img-responsive" /></a>
+        </div>
+        <div class="footer-grid-left">
+          <a href="single.html"><img src="/assets/images/cashondelivery.png" alt=" " class="img-responsive" /></a>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+    <div class="footer-logo animated wow slideInUp" data-wow-delay=".5s">
+      <h2><a href="index.html">Dole <span>shop anywhere</span></a></h2>
+    </div>
+    <div class="copy-right animated wow slideInUp" data-wow-delay=".5s">
+      <p>2017 Dole. All rights reserved | Design by Dole</p>
+    </div>
+  </div>
+</div>
