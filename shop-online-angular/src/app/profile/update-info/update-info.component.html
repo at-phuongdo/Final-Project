@@ -97,13 +97,14 @@
               </strong>
             </td>
             <td class="text-primary">
-              <input type="file" formControlName="avatar">
+              <input type="hidden" formControlName="avatar" [(ngModel)]="avatar" value="{{avatar}}">
+              <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera">
             </td>
           </tr>
         </tbody>
       </table>
-      <button type="submit"> Update</button>
-      <button (click)="cancel()">Cancel</button>
+      <button class="item-add btn btn-default" type="submit"> Update</button>
+      <button class="item-add btn btn-default" (click)="cancel()">Cancel</button>
     </form>
   </div>
 </div>

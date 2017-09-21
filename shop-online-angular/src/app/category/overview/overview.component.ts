@@ -18,7 +18,7 @@ export class OverviewComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private route: ActivatedRoute,
-    private cartService: CartService
+    private cartService: CartService,
   ) { 
     this.listProduct = [];
     this.listSubCate = [];

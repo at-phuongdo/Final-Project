@@ -27,7 +27,9 @@
         <tr>
           <td><h4 class="table-title">Store</h4></td>
           <td *ngIf="detail.shop">
-            <h4>{{detail.shop["name"]}}</h4>
+            <h4>
+            <a [routerLink]="['/shop', detail.shop['id']]" >{{detail.shop["name"]}}</a>
+            </h4>
           </td>
         </tr>
         <tr><div class="occasion-cart">

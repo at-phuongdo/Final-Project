@@ -18,8 +18,9 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { routing } from './app.route';
 import { DetailsComponent } from './details/details.component';
 import { LogoutComponent } from './logout/logout.component';
-import {CartService} from './service/cart/cart.service';
-import {OrderService} from './service/order/order.service';
+import { CartService} from './service/cart/cart.service';
+import { OrderService} from './service/order/order.service';
+import { ShopService} from './service/shop/shop.service';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './payment/payment.component';
 import { CategoryComponent } from './category/category.component';
@@ -35,6 +36,10 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { ShopComponent } from './shop/shop.component';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AgmCoreModule } from '@agm/core';
+import { FileUploadModule } from 'ng2-file-upload';
+import { Ng2CloudinaryModule } from 'ng2-cloudinary';
+
 
 @NgModule({
   declarations: [
@@ -72,7 +77,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToasterModule
+    ToasterModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCU4_2oEZLntxCkfUVU7MfqLTwWppNYYec'
+    }),
+    Ng2CloudinaryModule,
+    FileUploadModule
   ],
   providers: [UserService,
     ItemService,
@@ -81,7 +91,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CategoryService,
     AppService,
     CommentService,
-    ToasterService
+    ToasterService,
+    ShopService
   ],
   bootstrap: [AppComponent]
 })
