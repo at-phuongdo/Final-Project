@@ -1,16 +1,26 @@
 import { ToasterService } from 'angular2-toaster';
 import { Observable } from 'rxjs/Rx';
-import { FormBuilder, FormControl, FormGroup, Validator, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user/user.service';
+import { AbstractControl } from '@angular/forms';
 import { PasswordValidation } from './password-validation';
+
+function passwordConfirming(c: AbstractControl) {
+  if (c.get('password').value === c.get('password_confirm').value) {
+    return {areEqual: true};
+  }
+  else 
+    return null;
+}
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
+
 export class SignUpComponent implements OnInit {
 
   registerForm: any;
@@ -26,15 +36,16 @@ export class SignUpComponent implements OnInit {
     private toasterService: ToasterService
   ) {
     this.registerForm = this._fb.group({
-      firstname: [''],
-      lastname: [''],
-      email: [''],
-      password: [''],
-      password_confirm: []
-    },
-      {
-        validator: PasswordValidation.MatchPassword
-      });
+      firstname: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15)] ),
+      lastname: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15)] ),
+      email: new FormControl('', [Validators.required,  Validators.pattern("[^ @]*@[^ @]*")]),
+      password: new FormControl('', [Validators.required, 
+                                    Validators.minLength(5), 
+                                    Validators.maxLength(20),
+                                  ]),
+      password_confirm: new FormControl('')
+      },
+      {validator: PasswordValidation.MatchPassword});
   }
 
   ngOnInit() {
