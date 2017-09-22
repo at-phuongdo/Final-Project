@@ -33,6 +33,7 @@ export class ListProductByCategoryComponent implements OnInit {
     private router: Router,
     private cartService: CartService,
     private itemService: ItemService
+
   ) { 
     this.dir = 'asc';
   }

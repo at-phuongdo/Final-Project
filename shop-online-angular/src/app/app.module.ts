@@ -34,6 +34,8 @@ import { ShowInfoComponent } from './profile/show-info/show-info.component';
 import { UpdateInfoComponent } from './profile/update-info/update-info.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { ShopComponent } from './shop/shop.component';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
 import { FileUploadModule } from 'ng2-file-upload';
 import { Ng2CloudinaryModule } from 'ng2-cloudinary';
@@ -74,6 +76,8 @@ import { Ng2CloudinaryModule } from 'ng2-cloudinary';
     HttpModule,
     ReactiveFormsModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToasterModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCU4_2oEZLntxCkfUVU7MfqLTwWppNYYec'
     }),
@@ -87,6 +91,7 @@ import { Ng2CloudinaryModule } from 'ng2-cloudinary';
     CategoryService,
     AppService,
     CommentService,
+    ToasterService,
     ShopService
   ],
   bootstrap: [AppComponent]

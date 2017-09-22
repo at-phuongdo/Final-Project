@@ -1,3 +1,4 @@
+import { ToasterService } from 'angular2-toaster';
 import { ActivatedRoute } from '@angular/router';
 import { ItemService } from '../service/item/item.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,6 +23,7 @@ export class DetailsComponent implements OnInit {
     private itemService: ItemService,
     private route: ActivatedRoute,
     private cartService: CartService,
+    private toasterService: ToasterService
   ) {
     this.detail = {};
     this.images_items = [];

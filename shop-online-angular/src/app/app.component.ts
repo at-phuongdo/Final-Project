@@ -1,3 +1,4 @@
+import { ToasterService, ToasterConfig } from 'angular2-toaster';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from './service/user/user.service';
 import { CartService } from './service/cart/cart.service';
@@ -29,9 +30,21 @@ export class AppComponent implements OnInit, OnDestroy{
               private categoryService: CategoryService,
               private _fb: FormBuilder,
               private router: Router,
+              private toasterSevice: ToasterService,
               private shopService: ShopService) {
     this.quantity = 0;
   }
+
+    public toasterconfig : ToasterConfig = 
+      new ToasterConfig({
+          animation: 'fade',
+          showCloseButton: { 'warning': true, 'error': false },
+          tapToDismiss: true, 
+          timeout: 2000,
+          limit: 5,
+          closeHtml: '<button>Close</button>',
+          positionClass: 'toast-bottom-left'
+    });
 
   ngOnInit() {
     if (localStorage.getItem('currentUser')) {
