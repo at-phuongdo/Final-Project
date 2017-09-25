@@ -9,4 +9,12 @@ class UserMailer < ApplicationMailer
     @user = user
     mail(to: user.email, subject: 'Reset Password')
   end
+
+  def email_order(user, order, order_items)
+    binding.pry
+    @user = user
+    @order = order
+    @order_items = order_items
+    mail(to: user.email, subject: 'Your order')
+  end
 end

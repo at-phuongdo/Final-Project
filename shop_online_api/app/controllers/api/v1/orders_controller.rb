@@ -42,6 +42,7 @@ class Api::V1::OrdersController < ApplicationController
           end
         end
         render json: @order, status: :created
+        user.send_order(@order, order_items)
       else
         render json: @order.errors, status: :unprocessable_entity
       end

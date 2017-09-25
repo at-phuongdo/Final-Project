@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<style type="text/css">
+  th {
+    background-color: #D8703F;
+  }
+</style>
+<body>
+  <div class="container">
+    <div class="row">
+      <table class=" table table-responsive">
+        <thead>
+          <tr>
+            %th color: red>No.
+            <th>Name</th>
+            <th>Quality</th>
+            <th>Price</th>
+            <th>Temporary sum</th>
+          </tr>
+        </thead>
+        <% @order_items.each do |item|%>
+        <tr>
+          <td class="invert"><%= 2*3%></td>
+          <td class="invert"><%= item[:name]%></td>
+          <td class="invert"><%= item[:quantity]%></td>
+          <td class="invert"><%= item[:price]%></td>
+          <td class="invert"><%= item[:price].to_i * item[:quantity].to_i%></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
