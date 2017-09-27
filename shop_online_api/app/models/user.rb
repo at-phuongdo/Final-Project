@@ -41,7 +41,7 @@ class User < ApplicationRecord
     UserMailer.email_resetPassword(self).deliver_now
   end
 
-  def send_order(order, order_items)
-    UserMailer.email_order(self, order, order_items).deliver_now
+  def send_order(order, order_items, sum)
+    UserMailer.email_order(self, order, order_items, sum).deliver_now
   end
 end
