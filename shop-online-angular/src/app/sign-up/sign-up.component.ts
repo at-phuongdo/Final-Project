@@ -58,7 +58,7 @@ export class SignUpComponent implements OnInit {
         data => {
           this.status = data.status;
           if (this.status === 'created') {
-            this.info = 'Please check you email to active your account!';
+            this.toasterService.pop('success', 'Success! Please check you email to active your account!');
           }
           else
             this.toasterService.pop('warning', 'Try again');
