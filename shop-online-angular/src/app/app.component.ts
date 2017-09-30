@@ -43,7 +43,6 @@ export class AppComponent implements OnInit, OnDestroy{
           timeout: 2000,
           limit: 5,
           closeHtml: '<button>Close</button>',
-          positionClass: 'toast-bottom-left'
     });
 
   ngOnInit() {

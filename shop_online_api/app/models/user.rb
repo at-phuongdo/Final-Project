@@ -40,4 +40,8 @@ class User < ApplicationRecord
   def send_reset_password_email
     UserMailer.email_resetPassword(self).deliver_now
   end
+
+  def send_order(order, order_items, sum)
+    UserMailer.email_order(self, order, order_items, sum).deliver_now
+  end
 end

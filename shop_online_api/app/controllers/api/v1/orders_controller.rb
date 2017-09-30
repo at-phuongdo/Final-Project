@@ -25,6 +25,7 @@ class Api::V1::OrdersController < ApplicationController
   def create
     confirm_token = request.headers['Access-token']
     user = User.find_by(confirm_token: confirm_token)
+    sum  = 0
     if user
       @order = Order.new(order_params)
       @order.update(user_id: user.id, status: 'Waiting')
@@ -34,14 +35,12 @@ class Api::V1::OrdersController < ApplicationController
           order_items.each do |order_item|
             OrderItem.create(price: order_item[:price], quantity: order_item[:quantity], item_id: order_item[:id], order_id: @order.id)
             item = Item.find_by(id: order_item[:id])
-            if item[:quantity] >= order_item[:quantity]
-              item.update(quantity: item[:quantity] - order_item[:quantity])
-            else
-              render json: { msg: 'Quantity not enough, status: :bad_request' }
-            end
+            item.update(quantity: item[:quantity] - order_item[:quantity])
+            sum += order_item[:quantity] * order_item[:price]
           end
         end
         render json: @order, status: :created
+        user.send_order(@order, order_items, sum)
       else
         render json: @order.errors, status: :unprocessable_entity
       end

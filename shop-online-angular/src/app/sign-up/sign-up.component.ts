@@ -36,11 +36,11 @@ export class SignUpComponent implements OnInit {
     private toasterService: ToasterService
   ) {
     this.registerForm = this._fb.group({
-      firstname: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15)] ),
-      lastname: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15)] ),
+      firstname: new FormControl('', [Validators.required,Validators.maxLength(20)] ),
+      lastname: new FormControl('', [Validators.required,Validators.maxLength(20)] ),
       email: new FormControl('', [Validators.required,  Validators.pattern("[^ @]*@[^ @]*")]),
       password: new FormControl('', [Validators.required, 
-                                    Validators.minLength(5), 
+                                    Validators.minLength(6), 
                                     Validators.maxLength(20),
                                   ]),
       password_confirm: new FormControl('')
@@ -58,7 +58,7 @@ export class SignUpComponent implements OnInit {
         data => {
           this.status = data.status;
           if (this.status === 'created') {
-            this.info = 'Please check you email to active your account!';
+            this.toasterService.pop('success', 'Success! Please check you email to active your account!');
           }
           else
             this.toasterService.pop('warning', 'Try again');
