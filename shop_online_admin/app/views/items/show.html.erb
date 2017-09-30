@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<h2>Information</h2>
 <table class="table table-bordered">
   <tr>
     <td><strong>Name:</strong></td>
@@ -44,5 +43,5 @@
 
 
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<%= link_to 'Edit', edit_item_path(@item), :class => 'btn btn-warning' %> |
+<%= link_to 'Back', items_path, :class => 'btn btn-primary' %>

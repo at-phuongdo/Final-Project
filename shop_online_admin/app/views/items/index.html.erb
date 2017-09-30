@@ -1,6 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Items</h1>
+<%= link_to 'New Item', new_item_path , :class => 'btn btn-primary'%>
 
 <table class="table table-responsive">
   <thead>
@@ -17,21 +16,17 @@
 
   <tbody>
     <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.price %></td>
-        <td><%= image_tag(item.avatar, size: "40x40")%></td>
-        <td><%= item.status %></td>
-        <td><%= item.quantity %></td>
-        <td><%= Shop.find(item.shop_id).name %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+      <td><%= image_tag(item.avatar, size: "40x40")%></td>
+      <td><%= item.status %></td>
+      <td><%= item.quantity %></td>
+      <td><%= Shop.find(item.shop_id).name %></td>
+      <td><%= link_to 'Show', item, :class => 'btn btn-primary' %></td>
+      <td><%= link_to 'Edit', edit_item_path(item), :class => 'btn btn-warning' %></td>
+      <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger'%></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Item', new_item_path %>
