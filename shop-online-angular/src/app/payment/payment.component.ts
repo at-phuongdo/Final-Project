@@ -1,3 +1,4 @@
+import { ToasterService } from 'angular2-toaster';
 import { Observable } from 'rxjs/Rx';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,6 +22,7 @@ export class PaymentComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private _fb: FormBuilder,
+    private toasterService: ToasterService
   ) {
     this.paymentForm = this._fb.group({
       name: new FormControl(''),
@@ -53,10 +55,10 @@ export class PaymentComponent implements OnInit {
     }
     this.orderService.createOrder(data).subscribe((a: any) => {
         this.cartService.removeCart();
-        alert('Order success!');
+        this.toasterService.pop('success','Order success!');
         this.router.navigate(['category']);
       }, (err: any) => {
-        alert( 'Fail!');
+        this.toasterService.pop('warning','Fail');
       });
   }
 }
