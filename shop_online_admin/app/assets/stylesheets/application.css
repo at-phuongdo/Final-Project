@@ -15,7 +15,8 @@
  *= require bootstrap.min
  *= require animate.min
  *= require custom
- *= require maps/jquery-jvectormap-2.0.3
- *= require icheck/flat/green
- *= require floatexamples
+ *= require css/maps/jquery-jvectormap-2.0.3
+ *= require css/icheck/flat/green
+ *= require css/floatexamples
+ *= require fonts/css/font-awesome
 */

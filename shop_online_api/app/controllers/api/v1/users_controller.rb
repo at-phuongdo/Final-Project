@@ -3,6 +3,7 @@ class Api::V1::UsersController < ApplicationController
 
   # GET /users
   def index
+    binding.pry
     @users = User.all
     render json: @users, status: :ok
   end
