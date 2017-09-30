@@ -1,74 +1,45 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
-  <strong>Firstname:</strong>
-  <%= @user.firstname %>
-</p>
-
-<p>
-  <strong>Lastname:</strong>
-  <%= @user.lastname %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @user.gender %>
-</p>
-
-<p>
-  <strong>Birthday:</strong>
-  <%= @user.birthday %>
-</p>
-
-<p>
-  <strong>Avatar:</strong>
-  <%= @user.avatar %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
-
-<p>
-  <strong>Confirm token:</strong>
-  <%= @user.confirm_token %>
-</p>
-
-<p>
-  <strong>Confirm at:</strong>
-  <%= @user.confirm_at %>
-</p>
-
-<p>
-  <strong>Confirm send:</strong>
-  <%= @user.confirm_send %>
-</p>
-
-<p>
-  <strong>Reset password token:</strong>
-  <%= @user.reset_password_token %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="container-fluid">
+  <h2>User detail</h2>
+  <p id="notice"><%= notice %></p>
+  <table class="table table-bordered col-md-12">
+    <tr>
+      <td><strong>Email:</strong></td>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td><strong>Firstname:</strong></td>
+      <td><%= @user.firstname %></td>
+    </tr>
+    <tr>
+      <td><strong>Lastname:</strong></td>
+      <td><%= @user.lastname %></td>
+    </tr>
+    <tr>
+      <td><strong>Phone:</strong></td>
+      <td><%= @user.phone %></td>
+    </tr>
+    <tr>
+      <td><strong>Address:</strong></td>
+      <td><%= @user.address %></td>
+    </tr>
+    <tr>
+      <td><strong>Gender:</strong></td>
+      <td><%= @user.gender %></td>
+    </tr>
+    <tr>
+      <td><strong>Birthday:</strong></td>
+      <td><%= @user.birthday %></td>
+    </tr>
+    <tr>
+      <td><strong>Role:</strong></td>
+      <td><%= @user.role %></td>
+    </tr>
+<!--     <tr>
+      <td><strong>Avatar:</strong></td>
+      <td><img src="<%= @user.avatar %>"</td>
+    </tr>
+ -->
+  </table>
+  <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-primary' %> 
+  <%= link_to 'Back', users_path, :class => 'btn btn-warning' %>
+</div>

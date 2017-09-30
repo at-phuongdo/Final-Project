@@ -1,39 +1,60 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div>
+    <h1 class="title col-md-12">Users</h1>
+    <div class="col-md-12">
+      <%= link_to 'New User', new_user_path,:class => 'btn btn-primary ' %>
+    </div>
+  </div>
+  <div>
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Gender</th>
+          <th>Birthday</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<h1>Users</h1>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.firstname %></td>
+          <td><%= user.lastname %></td>
+          <td><%= user.email %></td>
+          <td><%= user.phone %></td>
+          <td><%= user.address %></td>
+          <td><%= user.gender %></td>
+          <td><%= user.birthday %></td>
+          <td><%= link_to 'Show', user ,:class => 'btn btn-primary'%></td>
+          <td><%= link_to 'Edit', edit_user_path(user) ,:class => 'btn btn-warning'%></td>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-danger'%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<table class="table table-responsive">
-  <thead>
-    <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Address</th>
-      <th>Gender</th>
-      <th>Birthday</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.firstname %></td>
-        <td><%= user.lastname %></td>
-        <td><%= user.email %></td>
-        <td><%= user.phone %></td>
-        <td><%= user.address %></td>
-        <td><%= user.gender %></td>
-        <td><%= user.birthday %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
+    <br>
+  </div>
+  <div class="box-footer clearfix">
+    <ul class="pagination pagination-sm no-margin pull-right">
+      <li>
+        <%= link_to users_path(:page => params[:page].to_i-1 < 1 ? 1 : params[:page].to_i-1) do %>
+        <span>&laquo;</span>
+        <% end %>
+      </li>
+      <% for i in (@start_page..@end_page)%>
+      <li> <%=link_to i, users_path(:page => i)%></li>
+      <% end %>
+      <li>
+        <%= link_to users_path(:page => (params[:page].to_i+1>@page_numbers ? @page_numbers : params[:page].to_i+1)) do %>
+        <span>&raquo;</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
