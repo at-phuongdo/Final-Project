@@ -10,12 +10,16 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require font-awesome.min
+ *= require font-awesome
+ *= require ionicons.min
+ *= require AdminLTE.min
+ *= require _all-skins.min
+ *= require bootstrap-datepicker.min
  *= require bootstrap.min
- *= require animate.min
- *= require custom
- *= require maps/jquery-jvectormap-2.0.3
- *= require icheck/flat/green
- *= require floatexamples
-*/
+ *= require bootstrap3-wysihtml5.min
+ *= require daterangepicker
+ *= require jquery-jvectormap
+ *= require morris.css
+ */
