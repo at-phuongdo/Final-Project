@@ -2,23 +2,16 @@
 
 <h1>Users</h1>
 
-<table>
+<table class="table table-responsive">
   <thead>
     <tr>
-      <th>Email</th>
-      <th>Password digest</th>
       <th>Firstname</th>
       <th>Lastname</th>
+      <th>Email</th>
       <th>Phone</th>
       <th>Address</th>
       <th>Gender</th>
       <th>Birthday</th>
-      <th>Avatar</th>
-      <th>Role</th>
-      <th>Confirm token</th>
-      <th>Confirm at</th>
-      <th>Confirm send</th>
-      <th>Reset password token</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,20 +19,13 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.email %></td>
-        <td><%= user.password_digest %></td>
         <td><%= user.firstname %></td>
         <td><%= user.lastname %></td>
+        <td><%= user.email %></td>
         <td><%= user.phone %></td>
         <td><%= user.address %></td>
         <td><%= user.gender %></td>
         <td><%= user.birthday %></td>
-        <td><%= user.avatar %></td>
-        <td><%= user.role %></td>
-        <td><%= user.confirm_token %></td>
-        <td><%= user.confirm_at %></td>
-        <td><%= user.confirm_send %></td>
-        <td><%= user.reset_password_token %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
