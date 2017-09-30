@@ -2,7 +2,7 @@
 
 <h1>Items</h1>
 
-<table>
+<table class="table table-responsive">
   <thead>
     <tr>
       <th>Name</th>
@@ -10,8 +10,6 @@
       <th>Avatar</th>
       <th>Status</th>
       <th>Quantity</th>
-      <th>Description</th>
-      <th>Unit</th>
       <th>Shop</th>
       <th colspan="3"></th>
     </tr>
@@ -22,12 +20,10 @@
       <tr>
         <td><%= item.name %></td>
         <td><%= item.price %></td>
-        <td><%= item.avatar %></td>
+        <td><%= image_tag(item.avatar, size: "40x40")%></td>
         <td><%= item.status %></td>
         <td><%= item.quantity %></td>
-        <td><%= item.description %></td>
-        <td><%= item.unit %></td>
-        <td><%= item.shop %></td>
+        <td><%= Shop.find(item.shop_id).name %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
