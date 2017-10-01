@@ -34,22 +34,22 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="">
+          <li>
             <%= link_to users_path do %>
-            <i class="fa fa-users" aria-hidden="true"></i>
-            <span>Users</span>
-            <% end %>
-          </li>
-          <li class="">
-            <%= link_to orders_path do %>
-            <i class="fa fa-users" aria-hidden="true"></i>
-            <span>Orders</span>
+              <i class="fa fa-circle-o" aria-hidden="true"></i>
+              <span>Users</span>
             <% end %>
           </li>
           <li>
             <%= link_to items_path do %>
             <i class="fa fa-circle-o" aria-hidden="true"></i>
             <span>Items</span>
+            <% end %>
+          </li>
+           <li>
+            <%= link_to categories_path do %>
+              <i class="fa fa-circle-o" aria-hidden="true"></i>
+              <span>Categories</span>
             <% end %>
           </li>
           <li>
@@ -85,7 +85,7 @@
       </li>
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-pie-chart"></i>
+          <i class="fa fa-edit"></i>
           <span>Charts</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>

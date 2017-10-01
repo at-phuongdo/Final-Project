@@ -1,19 +1,19 @@
-<p id="notice"><%= notice %></p>
+<h2>Category</h2>
+<table class="table table-bordered">
+  <tr>
+    <td><strong>Name:</strong></td>
+    <td><%= @category.name %></td>
+  </table-bordered>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+  <tr>
+    <td><strong>Description:</strong></td>
+    <td><%= @category.description %></td>
+  </tr>
 
-<p>
-  <strong>Description:</strong>
-  <%= @category.description %>
-</p>
-
-<p>
-  <strong>Parent:</strong>
-  <%= @category.parent %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+  <tr>
+    <td><strong>Parent:</strong></td>
+    <td><%= @parent_name %></td>
+  </tr>
+</table>
+<%= link_to 'Edit', edit_category_path(@category), :class => 'btn btn-warning' %> |
+<%= link_to 'Back', categories_path, :class => 'btn btn-primary' %>
