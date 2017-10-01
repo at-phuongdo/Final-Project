@@ -50,7 +50,6 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
-      binding.pry
       if @item.update(item_params)
         @items_category.update(category_id: params[:item][:category_id])
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
