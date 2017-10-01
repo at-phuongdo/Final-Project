@@ -17,7 +17,7 @@
           <input type="text" placeholder="Full Name..." required=" " formControlName="name">
           <input type="text" placeholder="Phone..." required=" " formControlName="phone" pattern="[0-9]+">
           <input type="text" placeholder="Address..." required=" " formControlName="address">
-          <input type="submit" value="Order">
+          <input type="submit" value="Order" [disabled] = " !checkPaypal ">
         </div>
       </form>
       <div id="paypal-button-container"></div>
