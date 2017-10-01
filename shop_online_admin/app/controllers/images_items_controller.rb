@@ -1,5 +1,6 @@
 class ImagesItemsController < ApplicationController
   before_action :set_images_item, only: [:show, :edit, :update, :destroy]
+  before_action :logged
 
   # GET /images_items
   # GET /images_items.json

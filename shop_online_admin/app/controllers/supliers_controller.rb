@@ -1,5 +1,6 @@
 class SupliersController < ApplicationController
   before_action :set_suplier, only: [:show, :edit, :update, :destroy]
+  before_action :logged
 
   # GET /supliers
   # GET /supliers.json

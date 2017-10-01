@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged
 
   # GET /users
   # GET /users.json
@@ -7,19 +8,7 @@ class UsersController < ApplicationController
     @page_numbers = (User.all.count / 10).ceil + 1
     page = params[:page].to_i > 0 ? params[:page].to_i : 1
     @users = User.all.limit(10).offset((page - 1) * 10)
-    if @page_numbers <= 10
-      @start_page = 1
-      @end_page = @page_numbers
-    elsif page <= 6
-      @start_page = 1
-      @end_page = 10
-    elsif page + 4 >= @page_numbers
-      @start_page = @page_numbers - 9
-      @end_page = @page_numbers
-    else
-      @start_page = page - 5
-      @end_page = page + 4
-    end
+    paginate(@page_numbers, page)
   end
 
   # GET /users/1
