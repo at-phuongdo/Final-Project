@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     @page_numbers = (Item.all.count / 10).ceil + 1
     page = params[:page].to_i > 0 ? params[:page].to_i : 1
     @items = Item.all.limit(10).offset((page - 1) * 10)
-    paginate @page_numbers
+    paginate( @page_numbers, page)
   end
 
   # GET /items/1

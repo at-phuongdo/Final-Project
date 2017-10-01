@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
+<h2>Unit</h2>
+<table class="table table-bordered">
+  <tr>
+    <td><strong>Name:</strong></td>
+    <td><%= @unit.name %></td>
+  </tr>
 
-<p>
-  <strong>Name:</strong>
-  <%= @unit.name %>
-</p>
+  <tr>
+    <td><strong>Syntax:</strong></td>
+    <td><%= @unit.syntax %></td>
+  </tr>
+</table>
 
-<p>
-  <strong>Syntax:</strong>
-  <%= @unit.syntax %>
-</p>
-
-<%= link_to 'Edit', edit_unit_path(@unit) %> |
-<%= link_to 'Back', units_path %>
+<%= link_to 'Edit', edit_unit_path(@unit), :class => 'btn btn-warning' %> 
+<%= link_to 'Back', units_path, :class => 'btn btn-primary'  %>

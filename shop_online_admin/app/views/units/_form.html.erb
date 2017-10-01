@@ -11,14 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :unit_name %>
+    <%= form.text_field :name, id: :unit_name , :class => 'form-control'%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :syntax %>
-    <%= form.text_field :syntax, id: :unit_syntax %>
+    <%= form.text_field :syntax, id: :unit_syntax, :class => 'form-control' %>
   </div>
 
   <div class="actions">

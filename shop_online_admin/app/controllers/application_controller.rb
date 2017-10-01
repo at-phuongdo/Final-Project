@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  def paginate page_numbers
+  def paginate(page_numbers, page)
     if page_numbers <= 10
       @start_page = 1
       @end_page = page_numbers
