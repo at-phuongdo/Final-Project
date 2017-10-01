@@ -4,12 +4,17 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @page_numbers = (Category.all.count / 10).ceil + 1
+    page = params[:page].to_i > 0 ? params[:page].to_i : 1
+    @categories = Category.all.limit(10).offset((page - 1) * 10)
+    paginate(@page_numbers, page)
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
+    parent = Category.find_by(id: @category.parent_id)
+    @parent_name = parent ? Category.find_by(id: @category.parent_id).name : 'This is parent category'
   end
 
   # GET /categories/new
@@ -25,7 +30,6 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
-
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
