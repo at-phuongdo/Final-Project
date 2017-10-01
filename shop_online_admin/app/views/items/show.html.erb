@@ -43,7 +43,7 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @item.description.html_safe %>
+  <%= @item.description.html_safe if @item.description? %>
 </p>
 
 

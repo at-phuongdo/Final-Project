@@ -5,13 +5,10 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
-    @page = (Item.all.count - 1) / 10 + 1
-      if params[:page].present? == false
-        redirect_to items_path(page: 1)
-      else
-        @items = Item.all.limit(10).offset((params[:page].to_i - 1) * 10)
-      end
+    @page_numbers = (Item.all.count / 10).ceil + 1
+    page = params[:page].to_i > 0 ? params[:page].to_i : 1
+    @items = Item.all.limit(10).offset((page - 1) * 10)
+    paginate @page_numbers
   end
 
   # GET /items/1

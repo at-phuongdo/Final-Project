@@ -30,10 +30,21 @@
     <% end %>
   </tbody>
 </table>
-<ul class="pagination">
-<li><%= link_to 'Previous', params[:page].to_i>1 ? items_path(page: (params[:page].to_i-1)) : items_path(page: 1)%></li>
-  <%for i in 1..@page%>
-  <li class="page-link"><a href="<%= items_path(page: i)%>" %><%= i%></a></li>
-  <%end%>
-  <li><%= link_to 'NextPage', params[:page].to_i<@page ? items_path(page: (params[:page].to_i+1)) : items_path(page: @page)%></li> 
-</ul>
+
+<div class="box-footer clearfix">
+ <ul class="pagination pagination-sm no-margin pull-right">
+   <li>
+     <%= link_to items_path(page: params[:page].to_i-1 < 1 ? 1 : params[:page].to_i-1) do %>
+     <span>&laquo;</span>
+     <% end %>
+   </li>
+   <% for i in (@start_page..@end_page)%>
+   <li> <%=link_to i, items_path(:page => i)%></li>
+   <% end %>
+   <li>
+     <%= link_to items_path(page: (params[:page].to_i>@page_numbers ? @page_numbers : params[:page].to_i)) do %>
+     <span>&raquo;</span>
+     <% end %>
+   </li>
+ </ul>
+</div>
