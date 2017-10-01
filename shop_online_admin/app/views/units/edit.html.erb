@@ -1,6 +1,7 @@
 <h1>Editing Unit</h1>
 
 <%= render 'form', unit: @unit %>
+<br>
 
-<%= link_to 'Show', @unit %> |
-<%= link_to 'Back', units_path %>
+<%= link_to 'Show', @unit, :class => 'btn btn-warning' %> 
+<%= link_to 'Back', units_path, :class => 'btn btn-primary' %>
