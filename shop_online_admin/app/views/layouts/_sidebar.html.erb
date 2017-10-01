@@ -28,23 +28,34 @@
       <li class="header">MAIN NAVIGATION</li>
       <li class="active treeview">
         <a href="#">
-          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          <i class="fa fa-dashboard"></i> <span>Manage</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard</a></li>
-          <li>
-            <%= link_to items_path do %>
-              <i class="fa fa-circle-o" aria-hidden="true"></i>
-              <span>Items</span>
+          <li class="">
+            <%= link_to users_path do %>
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <span>Users</span>
             <% end %>
           </li>
-           <li>
+          <li class="">
+            <%= link_to orders_path do %>
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <span>Orders</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to items_path do %>
+            <i class="fa fa-circle-o" aria-hidden="true"></i>
+            <span>Items</span>
+            <% end %>
+          </li>
+          <li>
             <%= link_to units_path do %>
-              <i class="fa fa-circle-o" aria-hidden="true"></i>
-              <span>Units</span>
+            <i class="fa fa-circle-o" aria-hidden="true"></i>
+            <span>Units</span>
             <% end %>
           </li>
         </ul>

@@ -41,6 +41,7 @@ GEM
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (8.0.0)
+    bcrypt (3.1.11)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (9.0.6)
@@ -102,6 +103,8 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+<<<<<<< HEAD
+=======
     orm_adapter (0.5.0)
     paperclip (5.1.0)
       activemodel (>= 4.2.0)
@@ -109,6 +112,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
+>>>>>>> c56bb82a856c17d669363c01828714b3f9716af8
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -201,6 +205,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   byebug
   capybara (~> 2.13)
   ckeditor
@@ -209,7 +214,10 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.3.18, < 0.5)
+<<<<<<< HEAD
+=======
   paperclip
+>>>>>>> c56bb82a856c17d669363c01828714b3f9716af8
   pry
   puma (~> 3.7)
   rails (~> 5.1.3)
