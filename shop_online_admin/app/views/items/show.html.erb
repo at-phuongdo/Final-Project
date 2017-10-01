@@ -31,6 +31,11 @@
   </tr>
 
   <tr>
+    <td><strong>Category:</strong></td>
+    <td><%= Category.find(ItemsCategory.find_by(item_id: @item.id).category_id).name %></td>
+  </tr>
+
+  <tr>
     <td><strong>Shop:</strong></td>
     <td><%= Shop.find(@item.shop_id).name %></td>
   </tr>

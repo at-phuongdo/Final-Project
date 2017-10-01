@@ -33,7 +33,11 @@
   </tr>
   <tr>
     <td> <%= form.label :unit_id %></td>
-    <td> <%= form.select :unit_id, options_from_collection_for_select(Unit.all, 'id', 'name')%></td>
+    <td> <%= form.select :unit_id, options_from_collection_for_select(Unit.all, 'id', 'name',form.object.unit_id)%></td>
+  </tr>
+  <tr>
+    <td> <%= form.label :category_id %></td>
+    <td> <%= form.select :category_id, options_from_collection_for_select(Category.all, 'id', 'name', form.object.categorys.first.id)%></td>
   </tr>
   <tr>
     <td><%= form.label :shop_id %></td>
