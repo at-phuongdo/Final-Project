@@ -1,44 +1,52 @@
-<p id="notice"><%= notice %></p>
+<h2>Information</h2>
+<table class="table table-bordered">
+  <tr>
+    <td><strong>Name:</strong></td>
+    <td><%= @item.name %></td>
+  </tr>
 
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
-</p>
+  <tr>
+    <td><strong>Price:</strong></td>
+    <td><%= @item.price %></td>
+  </tr>
 
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
+  <tr>
+    <td><strong>Avatar:</strong></td>
+    <td> <%= image_tag(@item.avatar, size: "100") %></td>
+  </tr>
 
-<p>
-  <strong>Avatar:</strong>
-  <%= @item.avatar %>
-</p>
+  <tr>
+    <td><strong>Status:</strong></td>
+    <td><%= @item.status %></td>
+  </tr>
 
-<p>
-  <strong>Status:</strong>
-  <%= @item.status %>
-</p>
+  <tr>
+    <td><strong>Quantity:</strong></td>
+    <td><%= @item.quantity %></td>
+  </tr>
 
-<p>
-  <strong>Quantity:</strong>
-  <%= @item.quantity %>
-</p>
+  <tr>
+    <td> <strong>Unit:</strong></td>
+    <td><%= Unit.find(@item.unit_id).name%></td>
+  </tr>
+
+  <tr>
+    <td><strong>Category:</strong></td>
+    <td><%= Category.find(ItemsCategory.find_by(item_id: @item.id).category_id).name %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Shop:</strong></td>
+    <td><%= Shop.find(@item.shop_id).name %></td>
+  </tr>
+</table>
 
 <p>
   <strong>Description:</strong>
-  <%= @item.description %>
+  <%= @item.description.html_safe if @item.description? %>
 </p>
 
-<p>
-  <strong>Unit:</strong>
-  <%= @item.unit %>
-</p>
 
-<p>
-  <strong>Shop:</strong>
-  <%= @item.shop %>
-</p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<%= link_to 'Edit', edit_item_path(@item), :class => 'btn btn-warning' %> |
+<%= link_to 'Back', items_path, :class => 'btn btn-primary' %>

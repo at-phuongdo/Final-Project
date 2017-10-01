@@ -5,10 +5,19 @@
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'ckeditor/ckeditor.js' %>
+  <script type="text/javascript">$(document).ready(function() {
+    if ($('textarea').length > 0) {
+      var data = $('textarea');
+      $.each(data, function(i) {
+        CKEDITOR.replace(data[i].id);
+      });
+    }
+  });</script>
 </head>
 <body>
   <div><%= render 'layouts/header' %></div>
   <div"><%= render 'layouts/sidebar' %></div>
-  <div style="width: 80%; float: right;"><%= yield %></div>
+  <div style="width: 80%; float: right"><%= yield %></div>
 </body>
 </html>

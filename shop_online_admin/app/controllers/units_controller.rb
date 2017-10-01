@@ -4,7 +4,10 @@ class UnitsController < ApplicationController
   # GET /units
   # GET /units.json
   def index
-    @units = Unit.all
+    @page_numbers = (Unit.all.count / 10).ceil + 1
+    page = params[:page].to_i > 0 ? params[:page].to_i : 1
+    @units = Unit.all.limit(10).offset((page - 1) * 10)
+    paginate(@page_numbers, page)
   end
 
   # GET /units/1
