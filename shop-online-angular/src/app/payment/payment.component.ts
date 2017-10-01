@@ -56,7 +56,7 @@ export class PaymentComponent implements OnInit {
     this.orderService.createOrder(data).subscribe((a: any) => {
         this.cartService.removeCart();
         this.toasterService.pop('success','Order success!');
-        this.router.navigate(['category']);
+        this.router.navigate(['history-orders']);
       }, (err: any) => {
         this.toasterService.pop('warning','Fail');
       });
