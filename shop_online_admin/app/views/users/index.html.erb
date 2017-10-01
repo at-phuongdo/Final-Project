@@ -43,7 +43,7 @@
   <div class="box-footer clearfix">
     <ul class="pagination pagination-sm no-margin pull-right">
       <li>
-        <%= link_to users_path(:page => params[:page].to_i-1 < 1 ? 1 : params[:page].to_i-1) do %>
+        <%= link_to users_path(page: params[:page].to_i-1 < 1 ? 1 : params[:page].to_i-1) do %>
         <span>&laquo;</span>
         <% end %>
       </li>
@@ -51,7 +51,7 @@
       <li> <%=link_to i, users_path(:page => i)%></li>
       <% end %>
       <li>
-        <%= link_to users_path(:page => (params[:page].to_i+1>@page_numbers ? @page_numbers : params[:page].to_i+1)) do %>
+        <%= link_to users_path(page: (params[:page].to_i+1>@page_numbers ? @page_numbers : params[:page].to_i+1)) do %>
         <span>&raquo;</span>
         <% end %>
       </li>
