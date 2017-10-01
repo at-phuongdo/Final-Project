@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     @page_numbers = (Item.all.count / 10).ceil + 1
     page = params[:page].to_i > 0 ? params[:page].to_i : 1
     @items = Item.all.limit(10).offset((page - 1) * 10)
-    paginate( @page_numbers, page)
+    paginate(@page_numbers, page)
   end
 
   # GET /items/1
@@ -32,8 +32,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.save
         id = @item.id
-        @item_category = ItemsCategory.new(category_id: params[:item][:category_id], item_id: id)
-        @item_category.save
+        ItemsCategory.create(category_id: params[:item][:category_id], item_id: id)
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else

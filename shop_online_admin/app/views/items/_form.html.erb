@@ -38,7 +38,7 @@
     </tr>
     <tr>
       <td><%= form.label :category_id %></td>
-      <td><%= form.select :category_id, options_from_collection_for_select(Category.all, 'id', 'name', form.object.categorys.first.id), :class => 'form-control'%></td>
+      <td><%= form.select :category_id, options_from_collection_for_select(Category.all, 'id', 'name'), :class => 'form-control'%></td>
     </tr>
     <tr>
      <td><%= form.label :shop_id %></td>
