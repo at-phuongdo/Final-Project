@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :email, :password_digest, presence: true
   # validates :firstname, :lastname, presence: true, except: create
-  enum gender: %w[male female other]
+  enum gender: %w[female male other]
   enum role: %w[member admin]
 
   def self.new_token

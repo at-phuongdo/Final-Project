@@ -4,7 +4,22 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @page_numbers = (User.all.count / 10).ceil + 1
+    page = params[:page].to_i > 0 ? params[:page].to_i : 1
+    @users = User.all.limit(10).offset((page - 1) * 10)
+    if @page_numbers <= 10
+      @start_page = 1
+      @end_page = @page_numbers
+    elsif page <= 6
+      @start_page = 1
+      @end_page = 10
+    elsif page + 4 >= @page_numbers
+      @start_page = @page_numbers - 9
+      @end_page = @page_numbers
+    else
+      @start_page = page - 5
+      @end_page = page + 4
+    end
   end
 
   # GET /users/1
@@ -69,6 +84,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password_digest, :firstname, :lastname, :phone, :address, :gender, :birthday, :avatar, :role, :confirm_token, :confirm_at, :confirm_send, :reset_password_token)
+      params.require(:user).permit(:email, :password_digest, :firstname, :lastname, :phone, :address, :gender, :birthday, :avatar, :role, :password_confirmation)
     end
-end
+  end
