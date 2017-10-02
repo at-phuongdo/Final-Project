@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  include SessionsHelper
 
   def paginate(page_numbers, page)
     if page_numbers <= 10

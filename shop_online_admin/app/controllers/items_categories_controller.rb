@@ -1,5 +1,6 @@
 class ItemsCategoriesController < ApplicationController
   before_action :set_items_category, only: [:show, :edit, :update, :destroy]
+  before_action :logged
 
   # GET /items_categories
   # GET /items_categories.json

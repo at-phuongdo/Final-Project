@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   resources :images_items
   resources :comments
   resources :categories
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
