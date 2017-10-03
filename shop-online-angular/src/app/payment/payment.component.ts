@@ -5,8 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../service/order/order.service';
 import { CartService } from '../service/cart/cart.service';
+import { ApiService } from '../service/api/api.service';
 declare let paypal: any;
 declare let $: any;
+
 
 @Component({
   selector: 'app-payment',
@@ -19,6 +21,11 @@ export class PaymentComponent implements OnInit {
   orderItems: any;
   total: any;
   checkPaypal: boolean;
+  cityList: any;
+  districtList: any;
+  villageList: any;
+  address: any;
+
 
   constructor(
     private orderService: OrderService, 
@@ -26,17 +33,23 @@ export class PaymentComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private _fb: FormBuilder,
-    private toasterService: ToasterService
+    private toasterService: ToasterService,
+    private apiService: ApiService
     ) {
     this.paymentForm = this._fb.group({
       name: new FormControl(''),
       phone: new FormControl(''),
-      address: new FormControl('')
+      city: new FormControl(''),
+      district: new FormControl(''),
+      village: new FormControl('')
     });
     this.checkPaypal = false;
   }
 
   ngOnInit() {
+    this.apiService.getCity().subscribe(data => {
+     this.cityList = data.data;
+    })
     this.orderItems = this.cartService.carts;
     this.total = Math.floor(this.cartService.getTotal() / 21000);
     if (!this.orderItems[0]) {
@@ -77,6 +90,8 @@ export class PaymentComponent implements OnInit {
   }
 
   order(info) {
+    this.address= $('#village option:selected').text() +","+ $('#district option:selected').text() +","+ $('#city option:selected').text()
+    console.log(this.address);
     if (this.checkPaypal) {
       if (!localStorage.getItem('currentUser')) {
         alert('You need to login');
@@ -99,5 +114,17 @@ export class PaymentComponent implements OnInit {
     else {
       this.toasterService.pop('warning','You have to pay before order');
     }
+  }
+
+  getDistrict(id) {
+    this.apiService.getDistrict(id).subscribe(data => {
+      this.districtList = data.data;
+    });
+  }
+
+  getVillage(id){
+    this.apiService.getVillage(id).subscribe(data => {
+      this.villageList = data.data;
+    })
   }
 }
