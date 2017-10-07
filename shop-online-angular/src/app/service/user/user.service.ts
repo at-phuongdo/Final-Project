@@ -46,11 +46,11 @@ export class UserService {
     return this.http.get(this.url + 'users/' + token).map(res => res.json());
   }
 
-  update(body: any, id:number) {
+  update(body: any, id: number) {
     let headers = new Headers({'Content-Type': 'application/json',
       'Access-token': localStorage.getItem('currentUser')});
     let options = new RequestOptions({ headers : headers});
     body = JSON.stringify(body);
-    return this.http.put(this.url + 'users/' + id, body, options ).map((res: Response) => res.json());
+    return this.http.put(this.url + 'users', body, options ).map((res: Response) => res.json());
   }
 }

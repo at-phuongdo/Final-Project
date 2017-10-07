@@ -25,7 +25,7 @@ export class OrderDetailComponent implements OnInit {
         this.orderItems = data;
         console.log(this.orderItems[0]);
         for (let obj of this.orderItems) {
-          this.total += obj.quantity * obj.price; 
+          this.total += obj.quantity * obj.price;
         }
       });
     });
