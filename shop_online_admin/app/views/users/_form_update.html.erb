@@ -1,5 +1,5 @@
 <%= form_with(model: user, local: true) do |form| %>
-<div class="box-body col-md-8">
+<div class="box-body col-md-10">
   
 
   <div class="form-group">
@@ -35,6 +35,11 @@
   <div class="form-group">
     <%= form.label :birthday %>
     <%= form.date_field :birthday, id: :user_birthday,:class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :avatar %> 
+    <%= form.file_field :avatar, id: :user_avatar%>
   </div>
 
   <div class="form-group">

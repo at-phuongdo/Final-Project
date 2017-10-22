@@ -2,7 +2,6 @@
 <% if item.errors.any? %>
 <div id="error_explanation">
   <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
   <ul>
     <% item.errors.full_messages.each do |message| %>
     <li><%= message %></li>
@@ -10,7 +9,7 @@
   </ul>
 </div>
 <% end %>
-<div box-body col-md-8>
+<div class="box-body col-md-10">
   <div class="form-group">
     <%= form.label :name %>
     <%= form.text_field :name, id: :item_name, :class => 'form-control' %>
@@ -21,7 +20,11 @@
   </div>
   <div class="form-group">
     <%= form.label :avatar %> 
-    <%= form.text_field :avatar, id: :item_avatar, :class => 'form-control' %>
+    <%= form.file_field :avatar, id: :item_avatar%>
+  </div>
+  <div class="form-group">
+    <%= form.label :images %> 
+    <%= cl_image_upload_tag(:image_id, :html => { :multiple => true }) %>
   </div>
   <div class="form-group">
     <%= form.label :status %>
@@ -34,7 +37,7 @@
     </tr>
     <tr>
       <td><%= form.label :unit_id %></td>
-      <td><%= form.select :unit_id, options_from_collection_for_select(Unit.all, 'id', 'name',form.object.unit_id), :class => 'form-control'%></td>
+      <td><%= form.select :unit_id, options_for_select([['NULL', 'NULL']])+options_from_collection_for_select(Unit.all, 'id', 'name',form.object.unit_id), :class => 'form-control'%></td>
     </tr>
     <tr>
       <td><%= form.label :category_id %></td>
@@ -51,7 +54,7 @@
 </div>
 <br>
 <div class="actions">
-  <%= form.submit %>
+  <%= form.submit :class => 'btn btn-primary' %>
 </div>
 </div>
 
