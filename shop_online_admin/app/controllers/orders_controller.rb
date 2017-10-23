@@ -5,7 +5,10 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @page_numbers = (Order.all.count / 10).ceil + 1
+    page = params[:page].to_i > 0 ? params[:page].to_i : 1
+    @orders = Order.all.limit(10).offset((page - 1) * 10)
+    paginate(@page_numbers, page)
   end
 
   # GET /orders/1
@@ -72,4 +75,4 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:name, :address, :phone, :status, :trans_at, :user_id)
     end
-end
+  end
