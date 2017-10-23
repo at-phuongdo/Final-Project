@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= form.label :status %>
-    <%= form.select :gender, [['Waiting', "Waiting"], ['Ordered', "Ordered"], ['Done', "Done"]],{},{:class => 'form-control'} %>
+    <%= form.select :status, [['Waiting', "Waiting"], ['Ordered', "Ordered"], ['Done', "Done"]],{},{:class => 'form-control'} %>
   </div>
 
   <div class="form-group">
@@ -37,12 +37,11 @@
   </div>
   </div>
   <% if order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
+    <div id="error_explanation errors">
+      <h2><%= pluralize(order.errors.count, "error") %></h2>
       <ul>
       <% order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li class="btn-danger"><%= message %></li>
       <% end %>
       </ul>
     </div>
