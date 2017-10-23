@@ -50,7 +50,7 @@ export class HistoryOrderComponent implements OnInit {
   }
 
   detailOrder(order_id: number) {
-    this.router.navigate(['order-detail',order_id]);
+    this.router.navigate(['order-detail', order_id]);
   }
 
   ngOnDestroy() {

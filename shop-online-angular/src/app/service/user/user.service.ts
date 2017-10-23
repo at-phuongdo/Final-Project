@@ -46,7 +46,7 @@ export class UserService {
     return this.http.get(this.url + 'users/' + token).map(res => res.json());
   }
 
-  update(body: any, id:number) {
+  update(body: any, id: number) {
     let headers = new Headers({'Content-Type': 'application/json',
       'Access-token': localStorage.getItem('currentUser')});
     let options = new RequestOptions({ headers : headers});

@@ -17,11 +17,15 @@
           <input type="text" placeholder="Full Name..." required=" " formControlName="name">
           <input type="text" placeholder="Phone..." required=" " formControlName="phone" pattern="[0-9]+">
           <input type="text" placeholder="Address..." required=" " formControlName="address">
+          <select (change)="choosePayment(payment.value)" #payment>
+            <option value="cod">COD</option>
+            <option value="paypal">Paypal</option>
+          </select>
           <input type="submit" value="Order" [disabled] = " !checkPaypal ">
         </div>
       </form>
-      <div id="paypal-button-container"></div>
-      
+      <div id="paypal-button-container" *ngIf = "paypal"></div>
+      <!-- <div style="z-index: 1000"></div> -->
     </div>
     <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
       <a [routerLink]="['/cart']"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Come back Cart</a>
