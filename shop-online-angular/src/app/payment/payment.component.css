@@ -15,3 +15,12 @@ select {
   width: 100%;
   margin-top: 1em;
 }
+
+.input-order {
+  height: 120%;
+  color: #d8703f;
+}
+
+.street {
+  margin-top: 15px;
+}
