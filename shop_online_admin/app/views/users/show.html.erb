@@ -3,6 +3,10 @@
   <p id="notice"><%= notice %></p>
   <table class="table table-bordered col-md-12">
     <tr>
+      <td><strong>Avatar:</strong></td>
+      <td><img src="<%= @user.avatar %>" style="width: 100px; height: 100px" alt="user_image"></td>
+    </tr>
+    <tr>
       <td><strong>Email:</strong></td>
       <td><%= @user.email %></td>
     </tr>
@@ -30,15 +34,11 @@
       <td><strong>Birthday:</strong></td>
       <td><%= @user.birthday %></td>
     </tr>
+
     <tr>
       <td><strong>Role:</strong></td>
       <td><%= @user.role %></td>
     </tr>
-<!--     <tr>
-      <td><strong>Avatar:</strong></td>
-      <td><img src="<%= @user.avatar %>"</td>
-    </tr>
- -->
   </table>
   <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-primary' %> 
   <%= link_to 'Back', users_path, :class => 'btn btn-warning' %>

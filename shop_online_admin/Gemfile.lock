@@ -45,6 +45,9 @@ GEM
     bcrypt (3.1.11)
     bindex (0.5.0)
     builder (3.2.3)
+    bullet (5.6.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
     capybara (2.15.1)
       addressable
@@ -174,6 +177,8 @@ GEM
       tilt (>= 1.1, < 3)
     schema_to_scaffold (0.8.0)
       activesupport (>= 3.2.1)
+    select2-rails (4.0.3)
+      thor (~> 0.14)
     selenium-webdriver (3.5.1)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
@@ -203,6 +208,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
+    uniform_notifier (1.10.0)
     web-console (3.5.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -219,6 +225,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  bullet
   byebug
   capybara (~> 2.13)
   ckeditor
@@ -234,6 +241,7 @@ DEPENDENCIES
   rails (~> 5.1.3)
   sass-rails (~> 5.0)
   schema_to_scaffold
+  select2-rails
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)

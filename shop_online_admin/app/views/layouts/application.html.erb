@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ShopOnlineAdmin</title>
+  <title>Dole Admin</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -14,10 +14,24 @@
       });
     }
   });</script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+  <style type="text/css">
+    .clear-fix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .content {
+      margin-bottom: 50px;
+    }
+  </style>
 </head>
 <body>
   <div><%= render 'layouts/header' %></div>
-  <div"><%= render 'layouts/sidebar' %></div>
-  <div style="width: 80%; float: right"><%= yield %></div>
+  <div class="clear-fix content">
+    <div><%= render 'layouts/sidebar' %></div>
+    <div style="width: 80%; float: right"><%= yield %></div>
+  </div>
 </body>
 </html>

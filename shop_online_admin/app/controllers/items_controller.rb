@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_itemscategory, only: [:update]
+  before_action :set_itemscategory, only: [:update, :show]
   before_action :logged
 
   # GET /items
@@ -15,6 +15,12 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    unit = Unit.find_by(id: @item.unit_id)
+    @unit_name = unit ? unit.name : 'NULL'
+    ids = @items_category.map(&:category_id)
+    @category_name = Category.where(id: ids)
+    shop = Shop.find_by(id: @item.shop_id)
+    @shop_name = shop ? shop.name : 'NULL'
   end
 
   # GET /items/new
@@ -29,11 +35,17 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    if params[:item][:avatar]
+      image = Cloudinary::Uploader.upload(params[:item][:avatar])
+      params[:item][:avatar] = image['url']
+    end
     @item = Item.new(item_params)
     respond_to do |format|
       if @item.save
         id = @item.id
-        ItemsCategory.create(category_id: params[:item][:category_id], item_id: id)
+        params[:category_id].each do |id_item|
+          ItemsCategory.create(category_id: id_item, item_id: id)
+        end
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
@@ -46,10 +58,14 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+    if params[:item][:avatar]
+      image = Cloudinary::Uploader.upload(params[:item][:avatar])
+      params[:item][:avatar] = image['url']
+    end
     respond_to do |format|
       if @item.update(item_params)
-        @items_category.update(category_id: params[:item][:category_id])
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        Item.update_item(params[:id], @items_category, params[:category_id])
+        format.html { redirect_to @item, notice: 'Item was successfully updated'}
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -62,6 +78,7 @@ class ItemsController < ApplicationController
   # DELETE /items/1.json
   def destroy
     @item.destroy
+    ItemsCategory.where(id: params[:id]).destroy_all
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
@@ -75,11 +92,11 @@ class ItemsController < ApplicationController
     end
 
     def set_itemscategory
-      @items_category = ItemsCategory.find_by(item_id: @item.id)
+      @items_category = ItemsCategory.where(item_id: @item.id)
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def item_params
-      params.require(:item).permit(:name, :price, :avatar, :status, :quantity, :description, :unit_id, :shop_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def item_params
+    params.require(:item).permit(:name, :price, :avatar, :status, :quantity, :description, :unit_id, :shop_id)
+  end
 end
