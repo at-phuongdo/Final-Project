@@ -21,7 +21,18 @@
               </a>
             </td>
             <td class="invert">{{order_item.item.name}}</td>
-            <td class="invert">{{order_item.quantity }}</td>
+            <td class="invert">
+              <div class="quantity" *ngIf=" status ">
+                <div class="quantity-select">
+                  <button class="entry value-minus" (click)="removeQuantity(order_item)">&nbsp;</button>
+                  <div class="entry value"><span>{{order_item.quantity}}</span></div>
+                  <button class="entry value-plus active" (click)="addItemToCart(order_item)">&nbsp;</button>
+                </div>
+              </div>
+              <div *ngIf=" !status ">
+                {{order_item.quantity }}
+              </div>
+            </td>
             <td class="invert">{{order_item.price | currency: "VND" }}</td>
           </tr>
         </table>
@@ -32,6 +43,14 @@
           <li *ngFor="let order_item of orderItems">{{order_item.item.name}}<span>{{order_item.price * order_item.quantity}}</span></li>
           <li style="color: black; border-top: 1px solid #b1a8a8; padding: 5px 0px; font-size: 18px">Total<i>-</i><span>{{total}}</span></li>
         </ul>
+      </div>
+    </div>
+    <div *ngIf=" status ">
+      <div class="checkout-right-basket animated wow slideInRight btn-primary" data-wow-delay=".5s">
+        <button (click) = updateOrder() class=" btn-update">Update</button>
+      </div>
+      <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
+        <a [routerLink]="['/history-orders']">Cancel</a>
       </div>
     </div>
   </div>
