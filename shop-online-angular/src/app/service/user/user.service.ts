@@ -51,6 +51,6 @@ export class UserService {
       'Access-token': localStorage.getItem('currentUser')});
     let options = new RequestOptions({ headers : headers});
     body = JSON.stringify(body);
-    return this.http.put(this.url + 'users', body, options ).map((res: Response) => res.json());
+    return this.http.put(this.url + 'users/' + id, body, options ).map((res: Response) => res.json());
   }
 }

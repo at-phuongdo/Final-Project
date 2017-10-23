@@ -5,3 +5,12 @@ table {
 .title {
   margin-bottom: 2em;
 }
+
+.btn-update {
+  background-color: #c53333;
+  padding: 10px 30px;
+  color: #fff;
+  font-size: 1em;
+  margin-top: -10px;
+  border: none;
+}

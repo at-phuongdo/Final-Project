@@ -49,6 +49,30 @@ class Api::V1::OrdersController < ApplicationController
     end
   end
 
+  def update
+    order = Order.find_by(id: params[:id])
+    if order.status == 'Waiting'
+      sum = 0
+      new_order_items = params[:orderItems]
+      ActiveRecord::Base.transaction do
+        new_order_items.each do |order_item|
+          order_item1 = OrderItem.find_by(id: order_item[:id])
+          item = Item.find_by(id: order_item[:item][:id])
+          temp = order_item1.quantity - order_item[:quantity]
+          render json: { msg: "#{item.name} don't have enough quantity!", status: :unprocessable_entity } if item[:quantity] + temp < 0
+          order_item1.update(quantity: order_item[:quantity])
+          item.update(quantity: item[:quantity] - temp)
+          sum += order_item[:quantity] * order_item[:price]
+        end
+      end
+      render json: order, status: :ok
+    end
+  end
+
+  def destroy
+    order = Order.find_by(id: params[:id])
+    order.destroy
+  end
   private
 
   def order_params

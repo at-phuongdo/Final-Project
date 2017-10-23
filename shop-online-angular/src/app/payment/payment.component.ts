@@ -19,6 +19,7 @@ export class PaymentComponent implements OnInit {
   orderItems: any;
   total: any;
   checkPaypal: boolean;
+  paypal: boolean;
 
   constructor(
     private orderService: OrderService, 
@@ -33,7 +34,8 @@ export class PaymentComponent implements OnInit {
       phone: new FormControl(''),
       address: new FormControl('')
     });
-    this.checkPaypal = false;
+    this.checkPaypal = true;
+    this.paypal = false;
   }
 
   ngOnInit() {
@@ -44,8 +46,48 @@ export class PaymentComponent implements OnInit {
     }
     if(!localStorage.getItem('currentUser')) {
       alert('You have to login!');
-      this.router.navigate(['/cart']);
+      this.router.navigate(['/login']);
     }
+  }
+
+  order(info) {
+    if (this.checkPaypal) {
+      if (!localStorage.getItem('currentUser')) {
+        alert('You need to login');
+        return false;
+      }
+      let data = {
+        'name': info.name,
+        'phone': info.phone,
+        'address': info.address,
+        'orderItems': this.orderItems
+      }
+      this.orderService.createOrder(data).subscribe((a: any) => {
+        this.cartService.removeCart();
+        this.toasterService.pop('success','Order success!');
+        this.router.navigate(['history-orders']);
+      }, (err: any) => {
+        this.toasterService.pop('warning','Fail');
+      });
+    }
+    else {
+      this.toasterService.pop('warning','You have to pay before order');
+    }
+  }
+
+  choosePayment(value) {
+    console.log(value);
+    if (value == 'paypal') {
+      this.checkPaypal = false;
+      this.paypal = true;
+      this.initPaypal();
+    }
+    if (value == 'cod') {
+      this.paypal = false;
+    }
+  }
+
+  initPaypal() {
     $.getScript( 'https://www.paypalobjects.com/api/checkout.js', $.proxy (() => {
       var t = this.total;
       paypal.Button.render({
@@ -74,30 +116,5 @@ export class PaymentComponent implements OnInit {
         }
       }, '#paypal-button-container');
     }));
-  }
-
-  order(info) {
-    if (this.checkPaypal) {
-      if (!localStorage.getItem('currentUser')) {
-        alert('You need to login');
-        return false;
-      }
-      let data = {
-        'name': info.name,
-        'phone': info.phone,
-        'address': info.address,
-        'orderItems': this.orderItems
-      }
-      this.orderService.createOrder(data).subscribe((a: any) => {
-        this.cartService.removeCart();
-        this.toasterService.pop('success','Order success!');
-        this.router.navigate(['history-orders']);
-      }, (err: any) => {
-        this.toasterService.pop('warning','Fail');
-      });
-    }
-    else {
-      this.toasterService.pop('warning','You have to pay before order');
-    }
   }
 }
