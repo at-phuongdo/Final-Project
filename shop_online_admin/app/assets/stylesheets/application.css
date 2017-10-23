@@ -22,5 +22,6 @@
  *= require daterangepicker
  *= require jquery-jvectormap
  *= require morris.css
- *= rewuire dropdown
+ *= require dropdown
+ *= require select2-bootstrap
  */
