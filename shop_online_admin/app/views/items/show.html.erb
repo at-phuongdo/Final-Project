@@ -32,7 +32,10 @@
 
   <tr>
     <td><strong>Category:</strong></td>
-    <td><%= Category.find(ItemsCategory.find_by(item_id: @item.id).category_id).name %></td>
+    <td><% @category_name. each do |name|%>
+      <p><%= name.name %></p>
+      <%end%>
+    </td>
   </tr>
 
   <tr>

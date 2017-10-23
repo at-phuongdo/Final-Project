@@ -16,7 +16,7 @@
   </div>
   <div class="form-group">
     <%= form.label :price %>
-    <%= form.text_field :price, id: :item_price, :class => 'form-control' %>
+    <%= form.number_field :price, id: :item_price,min: 0,:class=> 'form-control' %>
   </div>
   <div class="form-group">
     <%= form.label :avatar %> 
@@ -28,26 +28,25 @@
   </div>
   <div class="form-group">
     <%= form.label :status %>
-    <%= form.text_field :status, id: :item_status, :class => 'form-control' %>
+    <%= form.select :status, [['Còn hàng', "Còn hàng"], ['Hết hàng', "Hết hàng"]],{},{:class => 'form-control'}  %>
   </div>
-  <table>
-    <tr>
-      <td><%= form.label :quantity %></td>
-      <td><%= form.number_field :quantity, id: :item_quantity, :class => 'form-control' %></td>
-    </tr>
-    <tr>
-      <td><%= form.label :unit_id %></td>
-      <td><%= form.select :unit_id, options_for_select([['NULL', 'NULL']])+options_from_collection_for_select(Unit.all, 'id', 'name',form.object.unit_id), :class => 'form-control'%></td>
-    </tr>
-    <tr>
-      <td><%= form.label :category_id %></td>
-      <td><%= form.select :category_id, options_from_collection_for_select(Category.all, 'id', 'name'), :class => 'form-control'%></td>
-    </tr>
-    <tr>
-     <td><%= form.label :shop_id %></td>
-     <td><%= form.select :shop_id, options_from_collection_for_select(Shop.all, 'id', 'name', form.object.shop_id), :class => 'form-control'%></td>
-   </tr>
- </table>
+  <div class="form-group">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, id: :item_quantity, :class => 'form-control', min: 0 %>
+  </div>
+  <div class="form-group">
+    <%= form.label :unit_id %>
+    <%= form.select :unit_id, options_for_select([['NULL', 'NULL']])+options_from_collection_for_select(Unit.all, 'id', 'name',form.object.unit_id),{}, :class => 'form-control'%>
+  </div>
+   <div class=" form-group">
+   <%= form.label :shop_id %>
+   <%= form.select :shop_id, options_from_collection_for_select(Shop.all, 'id', 'name', form.object.shop_id), {},:class => 'form-control'%>
+ </div>
+  <div class=" form-group">
+    <%= form.label :category_id %>
+    <%= select_tag 'category_id[]', options_from_collection_for_select(Category.all, 'id', 'name'), :class =>' taggingSelect2', multiple: 'true'%>
+  </tr>
+ 
  <div class="field">
   <%= form.label :description %>
   <%= form.cktext_area :description, id: :item_description %>
@@ -59,3 +58,13 @@
 </div>
 
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".taggingSelect2").select2({
+      placeholder: "Choose Category", //placeholder
+      tags: true
+    });
+  })
+</script>
+

@@ -34,4 +34,3 @@
 //= require morris.min
 //= require raphael.min
 //= require ckeditor/init
-//= require_tree .
