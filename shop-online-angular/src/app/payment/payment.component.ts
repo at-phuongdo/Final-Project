@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../service/order/order.service';
 import { CartService } from '../service/cart/cart.service';
+import { ApiService } from '../service/api/api.service';
 declare let paypal: any;
 declare let $: any;
 
@@ -20,6 +21,10 @@ export class PaymentComponent implements OnInit {
   total: any;
   checkPaypal: boolean;
   paypal: boolean;
+  cityList: any;
+  districtList: any;
+  villageList: any;
+  address: any;
 
   constructor(
     private orderService: OrderService, 
@@ -27,18 +32,25 @@ export class PaymentComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private _fb: FormBuilder,
-    private toasterService: ToasterService
+    private toasterService: ToasterService,
+    private apiService: ApiService
     ) {
     this.paymentForm = this._fb.group({
       name: new FormControl(''),
       phone: new FormControl(''),
-      address: new FormControl('')
+      city: new FormControl(''),
+      district: new FormControl(''),
+      village: new FormControl(''),
+      street: new FormControl('')
     });
     this.checkPaypal = true;
     this.paypal = false;
   }
 
   ngOnInit() {
+    this.apiService.getCity().subscribe(data => {
+      this.cityList = data.data;
+     });
     this.orderItems = this.cartService.carts;
     this.total = Math.floor(this.cartService.getTotal() / 21000);
     if (!this.orderItems[0]) {
@@ -51,6 +63,7 @@ export class PaymentComponent implements OnInit {
   }
 
   order(info) {
+    this.address= info.street+","+ $('#village option:selected').text() +","+ $('#district option:selected').text() +","+ $('#city option:selected').text()
     if (this.checkPaypal) {
       if (!localStorage.getItem('currentUser')) {
         alert('You need to login');
@@ -59,8 +72,9 @@ export class PaymentComponent implements OnInit {
       let data = {
         'name': info.name,
         'phone': info.phone,
-        'address': info.address,
-        'orderItems': this.orderItems
+        'address': this.address,
+        'orderItems': this.orderItems,
+        'payment': this.paypal ? "Paypal" : "COD"
       }
       this.orderService.createOrder(data).subscribe((a: any) => {
         this.cartService.removeCart();
@@ -84,6 +98,7 @@ export class PaymentComponent implements OnInit {
     }
     if (value == 'cod') {
       this.paypal = false;
+      this.checkPaypal = true;
     }
   }
 
@@ -116,5 +131,17 @@ export class PaymentComponent implements OnInit {
         }
       }, '#paypal-button-container');
     }));
+  }
+
+  getDistrict(id) {
+    this.apiService.getDistrict(id).subscribe(data => {
+      this.districtList = data.data;
+    });
+  }
+
+  getVillage(id){
+    this.apiService.getVillage(id).subscribe(data => {
+      this.villageList = data.data;
+    })
   }
 }

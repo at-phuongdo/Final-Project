@@ -1,34 +1,64 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <h2>Order detail</h2>
+  <p id="notice"><%= notice %></p>
+  <table class="table table-bordered col-md-12">
+    <tr>
+      <td><strong>ID</strong></td>
+      <td><%= @order.id%></td>
+    </tr>
+    <tr>
+      <td><strong>Name:</strong></td>
+      <td><%= @order.name %></td>
+    </tr>
 
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
+    <tr>
+      <td><strong>Address:</strong></td>
+      <td><%= @order.address %></td>
+    </tr>
 
-<p>
-  <strong>Address:</strong>
-  <%= @order.address %>
-</p>
+    <tr>
+      <td><strong>Phone:</strong></td>
+      <td><%= @order.phone %></td>
+    </tr>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @order.phone %>
-</p>
+    <tr>
+      <td><strong>Status:</strong></td>
+      <td><%= @order.status %></td>
+    </tr>
 
-<p>
-  <strong>Status:</strong>
-  <%= @order.status %>
-</p>
+    <tr>
+      <td><strong>Trans at:</strong></td>
+      <td><%= @order.trans_at %></td>
+    </tr>
 
-<p>
-  <strong>Trans at:</strong>
-  <%= @order.trans_at %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @order.user %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+    <tr>
+      <td><strong>Email:</strong></td>
+      <td><%= @order.user.email %></td>
+    </tr>
+  </table>
+  <div>
+    <h3>List Item of Order</h3>
+    <table class="table table-bordered col-md-12">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_items.each do |order_item|%>
+        <tr>
+          <td><%= order_item.id%></td>
+          <td><%= order_item.item.name%></td>
+          <td><%= order_item.quantity%></td>
+          <td><%= order_item.price%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%= link_to 'Edit', edit_order_path(@order), :class => 'btn btn-primary' %> |
+<%= link_to 'Back', orders_path, :class => 'btn btn-warning' %>

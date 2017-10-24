@@ -1,7 +1,6 @@
-
 <div class="row">
   <div class="col col-md-8">
-    <h1>Items</h1>
+    <h1>Result</h1>
   </div>
   <div class="col col-md-4">
     <%= form_tag search_items_path, method: :get do %>
@@ -25,7 +24,7 @@
   </thead>
 
   <tbody>
-    <% @items.each do |item| %>
+    <% @items_search.each do |item| %>
     <tr>
       <td><%= item.name %></td>
       <td><%= item.price %></td>
@@ -41,20 +40,3 @@
   </tbody>
 </table>
 
-<div class="box-footer clearfix">
- <ul class="pagination pagination-sm no-margin pull-right">
-   <li>
-     <%= link_to items_path(page: params[:page].to_i-1 < 1 ? 1 : params[:page].to_i-1) do %>
-     <span>&laquo;</span>
-     <% end %>
-   </li>
-   <% for i in (@start_page..@end_page)%>
-   <li> <%=link_to i, items_path(:page => i)%></li>
-   <% end %>
-   <li>
-     <%= link_to items_path(page: (params[:page].to_i>@page_numbers ? @page_numbers : params[:page].to_i)) do %>
-     <span>&raquo;</span>
-     <% end %>
-   </li>
- </ul>
-</div>

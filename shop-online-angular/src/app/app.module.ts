@@ -1,3 +1,4 @@
+import { ApiService } from './service/api/api.service';
 import { CommentService } from './service/comment/comment.service';
 import { AppService } from './service/app.service';
 import { CategoryService } from './service/category/category.service';
@@ -92,7 +93,8 @@ import { Ng2CloudinaryModule } from 'ng2-cloudinary';
     AppService,
     CommentService,
     ToasterService,
-    ShopService
+    ShopService,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

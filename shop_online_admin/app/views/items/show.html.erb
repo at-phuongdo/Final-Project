@@ -12,7 +12,7 @@
 
   <tr>
     <td><strong>Avatar:</strong></td>
-    <td> <%= image_tag(@item.avatar, size: "100") %></td>
+    <td> <%= image_tag(@item.avatar, size: "100") if @item.avatar %></td>
   </tr>
 
   <tr>
@@ -27,17 +27,20 @@
 
   <tr>
     <td> <strong>Unit:</strong></td>
-    <td><%= Unit.find(@item.unit_id).name%></td>
+    <td><%= @unit_name %></td>
   </tr>
 
   <tr>
     <td><strong>Category:</strong></td>
-    <td><%= Category.find(ItemsCategory.find_by(item_id: @item.id).category_id).name %></td>
+    <td><% @category_name. each do |name|%>
+      <p><%= name.name %></p>
+      <%end%>
+    </td>
   </tr>
 
   <tr>
     <td><strong>Shop:</strong></td>
-    <td><%= Shop.find(@item.shop_id).name %></td>
+    <td><%= @shop_name %></td>
   </tr>
 </table>
 

@@ -6,6 +6,7 @@
   <table class="table table-responsive">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Name</th>
           <th>Address</th>
           <th>Phone</th>
@@ -19,15 +20,16 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
+          <td><%= order.id %></td>
           <td><%= order.name %></td>
           <td><%= order.address %></td>
           <td><%= order.phone %></td>
           <td><%= order.status %></td>
           <td><%= order.trans_at %></td>
-          <td><%= order.user.email %></td>
-          <td><%= link_to 'Show', order %></td>
-          <td><%= link_to 'Edit', edit_order_path(order) %></td>
-          <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= order.user['email'] %></td>
+          <td><%= link_to 'Show', order ,:class => 'btn btn-primary'%></td>
+          <td><%= link_to 'Edit', edit_order_path(order) ,:class => 'btn btn-warning'%></td>
+          <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } ,:class => 'btn btn-danger'%></td>
         </tr>
         <% end %>
       </tbody>
@@ -35,5 +37,22 @@
 
     <br>
 
+  </div>
+  <div class="box-footer clearfix">
+    <ul class="pagination pagination-sm no-margin pull-right">
+      <li>
+        <%= link_to orders_path(page: params[:page].to_i-1 < 1 ? 1 : params[:page].to_i-1) do %>
+        <span>&laquo;</span>
+        <% end %>
+      </li>
+      <% for i in (@start_page..@end_page)%>
+      <li> <%=link_to i, orders_path(:page => i)%></li>
+      <% end %>
+      <li>
+        <%= link_to orders_path(page: (params[:page].to_i+1>@page_numbers ? @page_numbers : params[:page].to_i+1)) do %>
+        <span>&raquo;</span>
+        <% end %>
+      </li>
+    </ul>
   </div>
 </div>
