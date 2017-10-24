@@ -6,6 +6,8 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryService } from './service/category/category.service';
 import { ShopService } from './service/shop/shop.service';
+import { ItemService } from './service/item/item.service';
+declare let $: any;
 
 @Component({
   selector: 'app-root',
@@ -24,28 +26,33 @@ export class AppComponent implements OnInit, OnDestroy{
   listCategory: any;
   subCategory: any;
   listShops: any;
+  search: string;
+  searchName: any;
+  searchList: any;
 
   constructor(private userService: UserService,
-              private cartService: CartService,
-              private categoryService: CategoryService,
-              private _fb: FormBuilder,
-              private router: Router,
-              private toasterSevice: ToasterService,
-              private shopService: ShopService) {
+    private cartService: CartService,
+    private categoryService: CategoryService,
+    private _fb: FormBuilder,
+    private router: Router,
+    private toasterSevice: ToasterService,
+    private shopService: ShopService,
+    private itemService: ItemService) {
     this.quantity = 0;
   }
 
-    public toasterconfig : ToasterConfig = 
-      new ToasterConfig({
-          animation: 'fade',
-          showCloseButton: { 'warning': true, 'error': false },
-          tapToDismiss: true, 
-          timeout: 2000,
-          limit: 5,
-          closeHtml: '<button>Close</button>',
-    });
+  public toasterconfig : ToasterConfig = 
+  new ToasterConfig({
+    animation: 'fade',
+    showCloseButton: { 'warning': true, 'error': false },
+    tapToDismiss: true, 
+    timeout: 2000,
+    limit: 5,
+    closeHtml: '<button>Close</button>',
+  });
 
   ngOnInit() {
+    $('.search-name').hide();
     if (localStorage.getItem('currentUser')) {
       this.checkLogin = true;
       this.userService.getUserByToken(localStorage.getItem('currentUser')).subscribe((user: any) => {
@@ -72,21 +79,63 @@ export class AppComponent implements OnInit, OnDestroy{
     }
   }
 
-  search(key: string) {
+  searchItem(key: string) {
     this.router.navigate(['search'], { queryParams: { key: key['key'] } });
   }
 
   getAllCategory(){
     this.categoryService.getAllCategory().subscribe(data => {
-     this.listCategory = data.categories;
+      this.listCategory = data.categories;
     })
   }
 
-getAllShops() {
-  this.shopService.getAll().subscribe( data => {
-    this.listShops = data.slice(0,6);
-  });
-}
+  getAllShops() {
+    this.shopService.getAll().subscribe( data => {
+      this.listShops = data.slice(0,6);
+    });
+  }
+
+  somethingSearch(newvalue) {
+    this.search = newvalue;
+    this.itemService.search(this.search.toString(), 1, 12).subscribe((data: any) => {
+      this.searchName = data.items;
+      console.log(this.searchName);
+    }, error => {
+      console.error("Error");
+    });
+  }
+
+  // showListSearch(event:any) {
+  //   let key = event.keyCode || event.which;
+  //   if(key == 13) {
+  //     this.itemService.search(this.search.toString(), 1, 12).subscribe((data: any) => {
+  //       this.searchName = data.items;
+  //     }, error => {
+  //       console.error("Error");
+  //     });
+  //   }
+  // }
+
+  closeSearch() {
+    this.search = null;
+    $('.search-name').hide();
+  }
+
+  disableSearch(){
+    $('.search-name').hide();
+  }
+
+  enableSearch(){
+    $('.search-name').show();
+  }
+
+  disableScrolling() {
+    window.scrollTo(0,0);
+    var x = window.scrollX;
+    var y = window.scrollY;
+    window.onscroll = function() { window.scrollTo(x, y); };
+  }
+
   ngOnDestroy() {
 
   }
