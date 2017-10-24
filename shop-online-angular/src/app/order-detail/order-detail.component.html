@@ -22,14 +22,14 @@
             </td>
             <td class="invert">{{order_item.item.name}}</td>
             <td class="invert">
-              <div class="quantity" *ngIf=" status ">
+              <div class="quantity" *ngIf=" status && payment.status != 'Paypal'">
                 <div class="quantity-select">
                   <button class="entry value-minus" (click)="removeQuantity(order_item)">&nbsp;</button>
                   <div class="entry value"><span>{{order_item.quantity}}</span></div>
                   <button class="entry value-plus active" (click)="addItemToCart(order_item)">&nbsp;</button>
                 </div>
               </div>
-              <div *ngIf=" !status ">
+              <div *ngIf=" !status || !(payment.status != 'Paypal')">
                 {{order_item.quantity }}
               </div>
             </td>
@@ -45,7 +45,7 @@
         </ul>
       </div>
     </div>
-    <div *ngIf=" status ">
+    <div *ngIf=" status && payment.status != 'Paypal'">
       <div class="checkout-right-basket animated wow slideInRight btn-primary" data-wow-delay=".5s">
         <button (click) = updateOrder() class=" btn-update">Update</button>
       </div>
