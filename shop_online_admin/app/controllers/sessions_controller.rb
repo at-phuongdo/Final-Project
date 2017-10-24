@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if params[:session][:email] || params[:session][:password]
       user = User.find_by(email: params[:session][:email])
       if user && user.authenticate(params[:session][:password])
-        if user.role == 'admin'
+        if user.role == 'admin' || user.role == 'root_admin'
           log_in user
           redirect_to users_path
         else
