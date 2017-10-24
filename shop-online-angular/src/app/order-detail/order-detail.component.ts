@@ -16,6 +16,7 @@ export class OrderDetailComponent implements OnInit {
   total: number;
   idOrder: number;
   status: boolean;
+  payment: any;
   constructor(private orderService: OrderService,
     private route: ActivatedRoute,
     private toasterService: ToasterService,
@@ -27,11 +28,12 @@ export class OrderDetailComponent implements OnInit {
     this.sub = this.route.params.subscribe( params => {
       this.idOrder = params['id']
       this.orderService.getDetailOrder(params['id']).subscribe( data => {
-        if (data[0].order['status'] == 'Waiting') {
+        this.orderItems = data.order_items;
+        if (this.orderItems[0].order['status'] == 'Waiting') {
           this.status = true;
         }
-        this.orderItems = data;
         this.total = this.getTotal(this.orderItems);
+        this.payment = data.meta['payment']
       });
     });
   }

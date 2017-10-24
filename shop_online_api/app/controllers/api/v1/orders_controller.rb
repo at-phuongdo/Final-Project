@@ -16,7 +16,8 @@ class Api::V1::OrdersController < ApplicationController
     order = Order.find_by(id: params[:id])
     if order
       order_items = order.order_items
-      render json: order_items, status: :ok
+      payment = order.payment
+      render json: order_items, adapter: :json, meta: { payment: payment, status: :ok }
     else
       render json: { msg: 'Order not found, status: :unprocessable_entity'}
     end
@@ -31,6 +32,7 @@ class Api::V1::OrdersController < ApplicationController
       @order.update(user_id: user.id, status: 'Waiting')
       order_items = params[:orderItems]
       if order_items && @order.save
+        Payment.create(order_id: @order.id, status: params['payment'])
         ActiveRecord::Base.transaction do
           order_items.each do |order_item|
             OrderItem.create(price: order_item[:price], quantity: order_item[:quantity], item_id: order_item[:id], order_id: @order.id)

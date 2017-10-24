@@ -73,7 +73,8 @@ export class PaymentComponent implements OnInit {
         'name': info.name,
         'phone': info.phone,
         'address': this.address,
-        'orderItems': this.orderItems
+        'orderItems': this.orderItems,
+        'payment': this.paypal ? "Paypal" : "COD"
       }
       this.orderService.createOrder(data).subscribe((a: any) => {
         this.cartService.removeCart();
@@ -97,6 +98,7 @@ export class PaymentComponent implements OnInit {
     }
     if (value == 'cod') {
       this.paypal = false;
+      this.checkPaypal = true;
     }
   }
 
