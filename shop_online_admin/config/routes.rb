@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
-  resources :users
+  resources :users do
+    member do
+      post :reset_password
+      get :profile
+    end
+  end
   resources :units
   resources :supliers
   resources :shops

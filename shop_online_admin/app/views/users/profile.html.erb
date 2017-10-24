@@ -1,7 +1,12 @@
-<%= form_with(model: user, local: true) do |form| %>
+<%= form_with(model: current_user, local: true) do |form| %>
 <div class="box-body col-md-10">
 
-
+  <div class="form-group">
+    <img src="<%=@current_user.avatar%>" style="width: 200px">
+    <br>
+    <%= form.label :avatar %> 
+    <%= form.file_field :avatar, id: :user_avatar%>
+  </div>
   <div class="form-group">
     <%= form.label :email %>
     <%= form.text_field :email, id: :user_email,:class => 'form-control' %>
@@ -43,32 +48,8 @@
     <%= form.date_field :birthday, id: :user_birthday,:class => 'form-control' %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :avatar %> 
-    <%= form.file_field :avatar, id: :user_avatar%>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :role %>
-    <% if current_user.role == 'root_admin'%>
-    <%= form.select :role,[["Admin", "admin"], ["Member", "member"]],{},{:class => 'form-control'}%>
-    <% else%>
-    <%= form.select :role,[["Member", "member"]],{},{:class => 'form-control'}%>
-    <%end%>
-  </div>
-
   <div class="actions">
     <%= form.submit :class => 'btn btn-primary' %>
   </div>
-  <% if user.errors.any? %>
-  <div id="error_explanation errors">
-    <h2><%= pluralize(user.errors.count, "Error:") %></h2>
-    <ul>
-      <% user.errors.full_messages.each do |message| %>
-      <li class="btn-danger"><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
 </div>
 <% end %>
