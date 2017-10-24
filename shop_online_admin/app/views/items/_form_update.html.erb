@@ -44,7 +44,7 @@
  </div>
  <div class=" form-group">
   <%= form.label :category_id %>
-  <%= select_tag 'category_id[]', options_from_collection_for_select(Category.where.not(parent_id: 0), 'id', 'name'), :class =>' taggingSelect2, form-control', multiple: 'true'%>
+  <%= select_tag 'category_id[]', options_from_collection_for_select(Category.where.not(parent_id: 0), 'id', 'name',@item.categorys.ids), :class =>' taggingSelect2, form-control', multiple: 'true'%>
 </tr>
 </div>
 

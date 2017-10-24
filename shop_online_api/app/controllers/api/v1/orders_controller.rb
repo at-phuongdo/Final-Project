@@ -37,6 +37,7 @@ class Api::V1::OrdersController < ApplicationController
           order_items.each do |order_item|
             OrderItem.create(price: order_item[:price], quantity: order_item[:quantity], item_id: order_item[:id], order_id: @order.id)
             item = Item.find_by(id: order_item[:id])
+            item.update(status: 'Hết Hàng') if item[:quantity] - order_item[:quantity] == 0
             item.update(quantity: item[:quantity] - order_item[:quantity])
             sum += order_item[:quantity] * order_item[:price]
           end
@@ -63,6 +64,7 @@ class Api::V1::OrdersController < ApplicationController
           temp = order_item1.quantity - order_item[:quantity]
           render json: { msg: "#{item.name} don't have enough quantity!", status: :unprocessable_entity } if item[:quantity] + temp < 0
           order_item1.update(quantity: order_item[:quantity])
+          item.update(status: 'Hết Hàng') if item[:quantity] - temp == 0
           item.update(quantity: item[:quantity] - temp)
           sum += order_item[:quantity] * order_item[:price]
         end
