@@ -1,9 +1,8 @@
-
 <div class="container-fluid">
   <div>
     <div class="row">
       <div class="col col-md-8">
-      <h1>Users</h1>
+      <h1>Result</h1>
       </div>
       <div class="col col-md-4">
         <%= form_tag search_users_path, method: :get do %>
@@ -28,7 +27,7 @@
       </thead>
 
       <tbody>
-        <% @users.each do |user| %>
+        <% @users_search.each do |user| %>
         <tr>
           <td><%= user.firstname %></td>
           <td><%= user.lastname %></td>
@@ -45,22 +44,5 @@
       </tbody>
     </table>
     <br>
-  </div>
-  <div class="box-footer clearfix">
-    <ul class="pagination pagination-sm no-margin pull-right">
-      <li>
-        <%= link_to users_path(page: params[:page].to_i-1 < 1 ? 1 : params[:page].to_i-1) do %>
-        <span>&laquo;</span>
-        <% end %>
-      </li>
-      <% for i in (@start_page..@end_page)%>
-      <li> <%=link_to i, users_path(:page => i)%></li>
-      <% end %>
-      <li>
-        <%= link_to users_path(page: (params[:page].to_i+1>@page_numbers ? @page_numbers : params[:page].to_i+1)) do %>
-        <span>&raquo;</span>
-        <% end %>
-      </li>
-    </ul>
   </div>
 </div>

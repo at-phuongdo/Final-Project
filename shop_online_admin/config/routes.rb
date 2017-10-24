@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       post :reset_password
       get :profile
     end
+    collection do
+      get :search
+    end
   end
   resources :units
   resources :supliers
@@ -13,7 +16,11 @@ Rails.application.routes.draw do
   resources :orders
   resources :order_items
   resources :items_categories
-  resources :items
+  resources :items do
+    collection do
+      get :search
+    end
+  end
   resources :images_items
   resources :comments
   resources :categories

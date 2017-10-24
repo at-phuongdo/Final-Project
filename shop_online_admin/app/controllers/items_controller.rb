@@ -7,11 +7,13 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @page_numbers = (Item.all.count / 10).ceil + 1
-    page = params[:page].to_i > 0 ? params[:page].to_i : 1
-    @items = Item.all.limit(10).offset((page - 1) * 10)
-    paginate(@page_numbers, page)
-  end
+   q = params[:q]
+   @items_search = Item.search(name_or_status_cont: q).result
+   @page_numbers = (Item.all.count / 10).ceil + 1
+   page = params[:page].to_i > 0 ? params[:page].to_i : 1
+   @items = Item.all.limit(10).offset((page - 1) * 10)
+   paginate(@page_numbers, page)
+ end
 
   # GET /items/1
   # GET /items/1.json
@@ -93,6 +95,11 @@ class ItemsController < ApplicationController
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    q = params[:q]
+    @items_search = Item.search(name_or_status_cont: q).result
   end
 
   private
