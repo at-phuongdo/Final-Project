@@ -90,6 +90,11 @@ class UsersController < ApplicationController
   def profile
   end
 
+  def search
+    q = params[:q]
+    @users_search = User.search(firstname_or_lastname_or_email_cont: q).result
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
