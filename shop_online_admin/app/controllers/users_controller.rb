@@ -1,13 +1,19 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :reset_password]
   before_action :logged
 
   # GET /users
   # GET /users.json
   def index
-    @page_numbers = (User.all.count / 10).ceil + 1
-    page = params[:page].to_i > 0 ? params[:page].to_i : 1
-    @users = User.all.limit(10).offset((page - 1) * 10)
+    if current_user.role == 'root_admin'
+      @page_numbers = (User.where.not(role: ['root_admin']).count / 10).ceil + 1
+      page = params[:page].to_i > 0 ? params[:page].to_i : 1
+      @users = User.where.not(role: ['root_admin']).limit(10).offset((page - 1) * 10)
+    else
+      @page_numbers = (User.where.not(role: ['root_admin', 'admin']).count / 10).ceil + 1
+      page = params[:page].to_i > 0 ? params[:page].to_i : 1
+      @users = User.where.not(role: ['root_admin', 'admin']).limit(10).offset((page - 1) * 10)
+    end
     paginate(@page_numbers, page)
   end
 
@@ -35,6 +41,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
+        @user.update(confirm_at: Time.now)
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -76,6 +83,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def reset_password
+    @user.update(password: '12345')
+  end
+
+  def profile
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -84,6 +98,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password_digest, :firstname, :lastname, :phone, :address, :gender, :birthday, :avatar, :role, :password_confirmation)
+      params.require(:user).permit(:email, :password, :firstname, :lastname, :phone, :address, :gender, :birthday, :avatar, :role, :password_confirmation)
     end
   end
