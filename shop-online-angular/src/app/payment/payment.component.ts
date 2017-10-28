@@ -136,6 +136,7 @@ export class PaymentComponent implements OnInit {
   getDistrict(id) {
     this.apiService.getDistrict(id).subscribe(data => {
       this.districtList = data.data;
+      this.getVillage(this.districtList[0].CityId);
     });
   }
 

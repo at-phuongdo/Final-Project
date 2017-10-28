@@ -40,4 +40,8 @@ export class OrderService {
   getDetailOrder(order_id) {
     return this.http.get(this.url + 'orders/' + order_id).map((res: Response) => res.json());
   }
+
+  removeOrderItem(id) {
+    return this.http.delete(this.url + 'order_items/' + id).map((res: Response) => res.json());
+  }
 }

@@ -11,6 +11,7 @@
               <th>Name</th>
               <th>Quality</th>
               <th>Price</th>
+              <th *ngIf=" status && payment.status != 'Paypal'">Remove</th>
             </tr>
           </thead>
           <tr class="rem1" *ngFor=" let order_item of orderItems; let i=index">
@@ -34,6 +35,11 @@
               </div>
             </td>
             <td class="invert">{{order_item.price | currency: "VND" }}</td>
+            <td class="invert" *ngIf=" status && payment.status != 'Paypal'">
+              <div class="rem">
+              <button class="btn btn-danger close1" (click)="removeOrderItem(order_item.id)"></button>
+              </div>
+            </td>
           </tr>
         </table>
       </div>

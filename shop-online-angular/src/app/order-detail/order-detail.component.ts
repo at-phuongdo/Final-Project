@@ -27,15 +27,20 @@ export class OrderDetailComponent implements OnInit {
     this.total =0;
     this.sub = this.route.params.subscribe( params => {
       this.idOrder = params['id']
-      this.orderService.getDetailOrder(params['id']).subscribe( data => {
+      this.getDetailOrder(this.idOrder);
+    });
+  }
+
+  getDetailOrder(id) {
+    this.orderService.getDetailOrder(id).subscribe( data => {
         this.orderItems = data.order_items;
+        console.log(this.orderItems);
         if (this.orderItems[0].order['status'] == 'Waiting') {
           this.status = true;
         }
         this.total = this.getTotal(this.orderItems);
         this.payment = data.meta['payment']
       });
-    });
   }
 
   addItemToCart(product: any) {
@@ -85,6 +90,12 @@ export class OrderDetailComponent implements OnInit {
       this.router.navigate(['history-orders']);
     }, (err: any) => {
       this.toasterService.pop('warning','Update Fail');
+    });
+  }
+
+  removeOrderItem(id) {
+    this.orderService.removeOrderItem(id).subscribe((data: any) =>{
+      this.getDetailOrder(this.idOrder);
     });
   }
 

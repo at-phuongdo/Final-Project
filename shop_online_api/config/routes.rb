@@ -34,5 +34,7 @@ Rails.application.routes.draw do
     resources :shops, only: [:show, :index]
 
     resources :comments
+
+    resources :order_items, only: :destroy
   end
 end

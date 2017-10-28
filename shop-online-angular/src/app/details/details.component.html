@@ -21,7 +21,8 @@
         <tr>
           <td><h4 class="table-title">Status</h4></td>
           <td>
-            <h4>{{detail.status}}</h4>
+            <h4 *ngIf = " detail.quantity !== 0">{{detail.status}}</h4>
+            <h4 *ngIf = " detail.quantity === 0">Hết Hàng</h4>
           </td>
         </tr>
         <tr>
