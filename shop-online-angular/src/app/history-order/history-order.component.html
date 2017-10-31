@@ -1,0 +1,58 @@
+<div class="new-collections">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-primary">
+          <div class="box-header text-center">
+            <h3 class="box-title">History Orders</h3>
+          </div>
+          <div class="box-body table-responsive no-padding animated wow slideInUp" data-wow-delay=".5s">
+            <table class="table table-hover  timetable_sub" id="table-order-history">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Ordered at</th>
+                  <th>Status</th>
+                  <th>Custom Address</th>
+                  <th>Name</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor=" let order of listOrders">
+                  <td>{{order.id}}</td>
+                  <td>{{order.created_at}}</td>
+                  <td>{{order.status}}</td>
+                  <td>{{order.address}}</td>
+                  <td>{{order.name}}</td>
+                  <td>
+                    <button class="btn btn-default" style="color: #D8703F;"(click)="detailOrder(order.id)">Detail</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <nav class="numbering animated wow slideInRight" data-wow-delay=".5s">
+      <ul class="pagination paging" *ngIf=" total > 0 ">
+        <li>
+          <a  aria-label="Previous" [routerLink]="['/history-orders']" [queryParams]="{page: page > 1 ? (page - 1) : page } ">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li [ngClass]="{'active': i == page}" *ngFor=" let i of totalpage ">
+          <a [routerLink]="['/history-orders']" [queryParams]="{page: i}">{{i}}</a>
+        </li>
+        <li>
+          <a aria-label="Next" [routerLink]="['/history-orders']" [queryParams]="{page: page < total ? (page + 1) : page }" >
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div> 
+</div>

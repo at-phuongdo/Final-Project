@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <h2>User detail</h2>
+  <p id="notice"><%= notice %></p>
+  <table class="table table-bordered col-md-12">
+    <tr>
+      <td><strong>Avatar:</strong></td>
+      <td><img src="<%= @user.avatar %>" style="width: 100px; height: 100px" alt="user_image"></td>
+    </tr>
+    <tr>
+      <td><strong>Email:</strong></td>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td><strong>Firstname:</strong></td>
+      <td><%= @user.firstname %></td>
+    </tr>
+    <tr>
+      <td><strong>Lastname:</strong></td>
+      <td><%= @user.lastname %></td>
+    </tr>
+    <tr>
+      <td><strong>Phone:</strong></td>
+      <td><%= @user.phone %></td>
+    </tr>
+    <tr>
+      <td><strong>Address:</strong></td>
+      <td><%= @user.address %></td>
+    </tr>
+    <tr>
+      <td><strong>Gender:</strong></td>
+      <td><%= @user.gender %></td>
+    </tr>
+    <tr>
+      <td><strong>Birthday:</strong></td>
+      <td><%= @user.birthday %></td>
+    </tr>
+
+    <tr>
+      <td><strong>Role:</strong></td>
+      <td><%= @user.role %></td>
+    </tr>
+  </table>
+  <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-primary' %> 
+  <%= link_to 'Back', users_path, :class => 'btn btn-warning' %>
+</div>

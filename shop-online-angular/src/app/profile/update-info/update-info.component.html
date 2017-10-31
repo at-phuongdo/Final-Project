@@ -1,0 +1,110 @@
+<div class="col-md-8 profile-info" *ngIf="user">
+  <div class="table-responsive">
+    <form ngNoForm [formGroup]="updateForm" (ngSubmit)="update(updateForm.value)">
+      <table class="table table-condensed table-responsive table-user-information">
+        <tbody>
+          <tr>
+            <td>
+              <strong>
+                <span class="glyphicon glyphicon-user "></span>
+                First Name
+                <span class="star">(*)</span>
+              </strong>
+            </td>
+            <td class="text-primary">
+            <input type="text" placeholder="First Name..." required=" " formControlName="firstname" >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                <span class="glyphicon glyphicon-user "></span>
+                Last Name
+                <span class="star">(*)</span>
+              </strong>
+            </td>
+            <td class="text-primary">
+            <input type="text" placeholder="Last Name..." required=" " formControlName="lastname" >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                <span class="glyphicon glyphicon-bookmark"></span>
+                Gender
+                <span class="star">(*)</span>
+              </strong>
+            </td>
+            <td class="text-primary">
+              <select #gender formControlName="gender">
+                <option [value]= "gen" *ngFor=" let gen of genderArr" >{{gen}}</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                <span class="glyphicon glyphicon-envelope"></span>
+                Email
+                <span class="star">(*)</span>
+              </strong>
+            </td>
+            <td class="text-primary">
+              <input type="text" placeholder="Email..." formControlName="email"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                <span class="glyphicon glyphicon-calendar "></span>
+                Birthday
+                <span class="star">(*)</span>
+              </strong>
+            </td>
+            <td class="text-primary">
+              <input type="date" formControlName="birthday">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                <span class="glyphicon glyphicon-home"></span>
+                Address
+                <span class="star">(*)</span>
+              </strong>
+            </td>
+            <td class="text-primary">
+              <input type="text" formControlName="address">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                <span class="glyphicon glyphicon-phone "></span>
+                Phone Number
+                <span class="star">(*)</span>
+              </strong>
+            </td>
+            <td class="text-primary">
+              <input type="text" formControlName="phone">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>
+                <span class="glyphicon glyphicon-phone "></span>
+                Avatar
+              </strong>
+            </td>
+            <td class="text-primary">
+              <input type="hidden" formControlName="avatar" [(ngModel)]="avatar" value="{{avatar}}">
+              <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="item-add btn btn-default" type="submit"> Update</button>
+      <button class="item-add btn btn-default" (click)="cancel()">Cancel</button>
+    </form>
+  </div>
+</div>

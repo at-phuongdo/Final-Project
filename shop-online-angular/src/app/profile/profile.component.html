@@ -1,0 +1,32 @@
+<div class="new-collections">
+  <div class="container">
+      <div class="panel-body inf-content">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="box box-primary">
+              <div class="box-header text-center">
+                <h3 class="box-title animated wow slideInUp" data-wow-delay=".5s">User Information</h3>
+              </div>
+              <div class="box-body animated wow zoomIn" data-wow-delay=".5s">
+                <div class="col-md-4">
+                  <div class="col-md-12" >
+                    <img alt="" title="" class="img-circle img-thumbnail isTooltip"
+                    src="{{avatar}}"
+                    data-original-title="Usuario" *ngIf="false">
+                    <img alt="" style="width:90%;margin: 5%;height: 200px" title="" class="img-circle img-thumbnail isTooltip"
+                    src="{{avatar}}" data-original-title="Usuario">
+                  </div>
+
+                  <div class="col-md-12 box-bottom">
+                    <button class="btn-profile btn btn-default col-md-5" (click)="editProfile()">Edit Profile</button>
+                    <button class="btn-profile btn btn-default col-md-5" (click)="showHistoryOrder()">History Orders</button>
+                  </div>
+                </div>
+                <router-outlet></router-outlet>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

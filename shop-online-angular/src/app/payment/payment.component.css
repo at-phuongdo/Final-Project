@@ -1,0 +1,26 @@
+#paypal-button-container {
+  margin-top: 5px;
+  height: 20px;
+  float: right;
+  padding: 10px;
+}
+
+select {
+  outline: none;
+  border: 1px solid #DBDBDB;
+  padding: 10px 10px 10px 45px;
+  font-size: 14px;
+  color: #d8703f;
+  display: block;
+  width: 100%;
+  margin-top: 1em;
+}
+
+.input-order {
+  height: 120%;
+  color: #d8703f;
+}
+
+.street {
+  margin-top: 15px;
+}

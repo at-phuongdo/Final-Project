@@ -1,0 +1,74 @@
+<%= form_with(model: user, local: true) do |form| %>
+<div class="box-body col-md-10">
+
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :user_email,:class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password %>
+    <%= form.password_field :password, id: :user_password_digest,:class => 'form-control' %>
+  </div>
+
+
+  <div class="form-group">
+    <%= form.label :firstname %>
+    <%= form.text_field :firstname, id: :user_firstname,:class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :lastname %>
+    <%= form.text_field :lastname, id: :user_lastname,:class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, id: :user_phone,:class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_field :address, id: :user_address,:class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gender %>
+    <%= form.select :gender, [['Male', "male"], ['Female', "female"], ['Other', "other"]],{},{:class => 'form-control'} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :birthday %>
+    <%= form.date_field :birthday, id: :user_birthday,:class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :avatar %> 
+    <%= form.file_field :avatar, id: :user_avatar%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :role %>
+    <% if current_user.role == 'root_admin'%>
+    <%= form.select :role,[["Admin", "admin"], ["Member", "member"]],{},{:class => 'form-control'}%>
+    <% else%>
+    <%= form.select :role,[["Member", "member"]],{},{:class => 'form-control'}%>
+    <%end%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :class => 'btn btn-primary' %>
+  </div>
+  <% if user.errors.any? %>
+  <div id="error_explanation errors">
+    <h2><%= pluralize(user.errors.count, "Error:") %></h2>
+    <ul>
+      <% user.errors.full_messages.each do |message| %>
+      <li class="btn-danger"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>
+<% end %>

@@ -1,0 +1,5 @@
+<div class="container">
+  <h2 class="title">Hello <%=@user.firstname%>, please click on the link below to active your account</h2>
+  <%=confirm_api_v1_confirmation_url(@user.confirm_token)%>
+</div>
+

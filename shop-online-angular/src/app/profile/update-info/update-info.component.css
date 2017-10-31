@@ -1,0 +1,29 @@
+.text-primary{
+  color: #D8703F;
+  font-size: 16px;
+}
+
+.profile-info {
+  padding-left: 1em;
+}
+
+.profile-info input ,.profile-info select{
+    border: none;
+    outline: none;
+    width: 80%;
+    height: 50px;
+    margin: 0;
+    z-index: 10;
+    font-size: 14px;
+    padding-left: 1em;
+    padding-right: 4em;
+    background-color: white;
+}
+
+.star {
+  color: red;
+}
+
+.item_add {
+  color: #D8703F;
+}

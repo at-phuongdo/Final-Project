@@ -1,0 +1,63 @@
+<div class="new-collections">
+  <div class="container">
+    <h3 class="animated wow slideInDown title" data-wow-delay=".5s">Order {{idOrder}} </h3>
+    <div class="row">
+      <div class="col-md-9">
+        <table class=" timetable_sub animated wow slideInUp" data-wow-delay=".5s">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th style="width: 30%">Product</th>
+              <th>Name</th>
+              <th>Quality</th>
+              <th>Price</th>
+              <th *ngIf=" status && payment.status != 'Paypal'">Remove</th>
+            </tr>
+          </thead>
+          <tr class="rem1" *ngFor=" let order_item of orderItems; let i=index">
+            <td class="invert">{{i+1}}</td>
+            <td class="invert-image">
+              <a [routerLink]="['/detail', order_item.item.id]">
+                <img src="{{order_item.item.avatar}}" alt=" " class="img-responsive" />
+              </a>
+            </td>
+            <td class="invert">{{order_item.item.name}}</td>
+            <td class="invert">
+              <div class="quantity" *ngIf=" status && payment.status != 'Paypal'">
+                <div class="quantity-select">
+                  <button class="entry value-minus" (click)="removeQuantity(order_item)">&nbsp;</button>
+                  <div class="entry value"><span>{{order_item.quantity}}</span></div>
+                  <button class="entry value-plus active" (click)="addItemToCart(order_item)">&nbsp;</button>
+                </div>
+              </div>
+              <div *ngIf=" !status || !(payment.status != 'Paypal')">
+                {{order_item.quantity }}
+              </div>
+            </td>
+            <td class="invert">{{order_item.price | currency: "VND" }}</td>
+            <td class="invert" *ngIf=" status && payment.status != 'Paypal'">
+              <div class="rem">
+              <button class="btn btn-danger close1" (click)="removeOrderItem(order_item.id)"></button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-3 checkout-left-basket animated wow slideInRight" data-wow-delay=".5s" style="background-color: white">
+        <h4>Continue to basket</h4>
+        <ul>
+          <li *ngFor="let order_item of orderItems">{{order_item.item.name}}<span>{{order_item.price * order_item.quantity}}</span></li>
+          <li style="color: black; border-top: 1px solid #b1a8a8; padding: 5px 0px; font-size: 18px">Total<i>-</i><span>{{total}}</span></li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf=" status && payment.status != 'Paypal'">
+      <div class="checkout-right-basket animated wow slideInRight btn-primary" data-wow-delay=".5s">
+        <button (click) = updateOrder() class=" btn-update">Update</button>
+      </div>
+      <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
+        <a [routerLink]="['/history-orders']">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>
