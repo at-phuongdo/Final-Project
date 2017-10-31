@@ -1,3 +1,0 @@
-function displayName() {
-  alert('Phuong');
-}
