@@ -17,7 +17,7 @@
 
   <tr>
     <td><strong>Status:</strong></td>
-    <td><%= @item.status %></td>
+    <td><%= @item.quantity == 0 ? 'Hết hàng' : 'Còn hàng' %></td>
   </tr>
 
   <tr>

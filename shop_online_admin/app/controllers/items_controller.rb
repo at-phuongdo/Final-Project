@@ -9,9 +9,9 @@ class ItemsController < ApplicationController
   def index
    q = params[:q]
    @items_search = Item.search(name_or_status_cont: q).result
-   @page_numbers = (Item.all.count / 10).ceil + 1
+   @page_numbers = (Item.all.order(created_at: :DESC).count / 10).ceil + 1
    page = params[:page].to_i > 0 ? params[:page].to_i : 1
-   @items = Item.all.limit(10).offset((page - 1) * 10)
+   @items = Item.all.order(created_at: :DESC).limit(10).offset((page - 1) * 10)
    paginate(@page_numbers, page)
  end
 
@@ -68,7 +68,6 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
-    binding.pry
     if params[:item][:avatar]
       image = Cloudinary::Uploader.upload(params[:item][:avatar])
       params[:item][:avatar] = image['url']
@@ -118,6 +117,6 @@ class ItemsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def item_params
-    params.require(:item).permit(:name, :price, :avatar, :status, :quantity, :description, :unit_id, :shop_id, :image_id)
+    params.require(:item).permit(:name, :price, :avatar, :quantity, :description, :unit_id, :shop_id, :image_id)
   end
 end

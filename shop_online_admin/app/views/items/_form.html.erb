@@ -27,10 +27,6 @@
     <%= form.file_field :image_id,:multiple => true %>
   </div>
   <div class="form-group">
-    <%= form.label :status %>
-    <%= form.select :status, [['Còn hàng', "Còn hàng"], ['Hết hàng', "Hết hàng"]],{},{:class => 'form-control'}  %>
-  </div>
-  <div class="form-group">
     <%= form.label :quantity %>
     <%= form.number_field :quantity, id: :item_quantity, :class => 'form-control', min: 0 %>
   </div>
