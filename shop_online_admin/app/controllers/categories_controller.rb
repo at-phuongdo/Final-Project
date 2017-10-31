@@ -5,10 +5,12 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @page_numbers = (Category.all.count / 10).ceil + 1
+    list_cate = Category.where(parent_id: 0).order(created_at: :DESC)
+    @page_numbers = ((list_cate.count - 1) / 5).ceil + 1
     page = params[:page].to_i > 0 ? params[:page].to_i : 1
-    @categories = Category.all.limit(10).offset((page - 1) * 10)
+    @parent_cate = list_cate.limit(5).offset((page - 1) * 5)
     paginate(@page_numbers, page)
+    @parent_cate = Category.where(parent_id: 0).order(created_at: :DESC)
   end
 
   # GET /categories/1
@@ -16,6 +18,11 @@ class CategoriesController < ApplicationController
   def show
     parent = Category.find_by(id: @category.parent_id)
     @parent_name = parent ? Category.find_by(id: @category.parent_id).name : 'This is parent category'
+    items_category = @category.items
+    @page_numbers = (items_category.order(created_at: :DESC).count / 10).ceil + 1
+    page = params[:page].to_i > 0 ? params[:page].to_i : 1
+    @items_category = items_category.order(created_at: :DESC).limit(10).offset((page - 1) * 10)
+    paginate(@page_numbers, page)
   end
 
   # GET /categories/new
@@ -59,6 +66,22 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
+    if @category.parent_id == 0
+      sub_cate = Category.where(parent_id: @category.id)
+      if sub_cate
+        sub_cate.each do |sub_cat|
+          list_items = sub_cat.items
+          if list_items[0]
+            list_items.each do |item|
+              count_item = ItemsCategory.where(item_id: item.id).count
+              item.destroy if count_item == 1
+              ItemsCategory.where('category_id = ? AND item_id = ?', sub_cat.id, item.id).destroy_all
+            end
+          end
+        end
+      end
+      sub_cate.destroy_all
+    end
     @category.destroy
     respond_to do |format|
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
@@ -76,4 +99,4 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name, :description, :parent_id)
     end
-end
+  end

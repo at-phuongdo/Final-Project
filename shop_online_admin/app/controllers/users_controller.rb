@@ -8,11 +8,11 @@ class UsersController < ApplicationController
     if current_user.role == 'root_admin'
       @page_numbers = (User.where.not(role: ['root_admin']).count / 10).ceil + 1
       page = params[:page].to_i > 0 ? params[:page].to_i : 1
-      @users = User.where.not(role: ['root_admin']).limit(10).offset((page - 1) * 10)
+      @users = User.where.not(role: ['root_admin']).order(created_at: :DESC).limit(10).offset((page - 1) * 10)
     else
       @page_numbers = (User.where.not(role: ['root_admin', 'admin']).count / 10).ceil + 1
       page = params[:page].to_i > 0 ? params[:page].to_i : 1
-      @users = User.where.not(role: ['root_admin', 'admin']).limit(10).offset((page - 1) * 10)
+      @users = User.where.not(role: ['root_admin', 'admin']).order(created_at: :DESC).limit(10).offset((page - 1) * 10)
     end
     paginate(@page_numbers, page)
   end
