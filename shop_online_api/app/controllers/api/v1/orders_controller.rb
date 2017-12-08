@@ -29,7 +29,7 @@ class Api::V1::OrdersController < ApplicationController
     sum  = 0
     if user
       @order = Order.new(order_params)
-      @order.update(user_id: user.id, status: 'Waiting')
+      @order.update(user_id: user.id, status: params['payment'] != 'Paypal' ? 'Waiting' : 'Ordered')
       order_items = params[:orderItems]
       if order_items && @order.save
         Payment.create(order_id: @order.id, status: params['payment'])
@@ -53,6 +53,8 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   def update
+    confirm_token = request.headers['Access-token']
+    user = User.find_by(confirm_token: confirm_token)
     order = Order.find_by(id: params[:id])
     if order.status == 'Waiting'
       sum = 0
@@ -70,6 +72,7 @@ class Api::V1::OrdersController < ApplicationController
         end
       end
       render json: order, status: :ok
+      user.send_order(order, new_order_items, sum)
     end
   end
 
